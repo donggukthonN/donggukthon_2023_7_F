@@ -1,23 +1,19 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {
-  Init,
-  Home,
-  NotFound,
-  Upload
-} from "./pages";
+import { Init, NotFound, Detail, Delete, Home, End } from "./pages";
 
 function App() {
   return (
     <div className="App">
-      {/* Router라는 파일짜서 빼도 될듯 */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Init />}></Route>
-          <Route paht="/home" element={<Home />}></Route>
+          <Route path="/home" element={<Home />}></Route>
+          <Route path="/detail" element={<Detail />}></Route>
+          <Route path="/delete" element={<Delete />}></Route>
+          <Route path="/end" element={<End />}></Route>
           <Route path="*" element={<NotFound />}></Route>
-          <Route path="/upload" element={<Upload />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
@@ -25,4 +21,3 @@ function App() {
 }
 
 export default App;
-

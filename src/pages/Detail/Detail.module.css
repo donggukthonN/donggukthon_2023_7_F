@@ -1,0 +1,25 @@
+.Detailpage {
+  height: 100vh;
+  background-image: url("../../assets/DetailBackimg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-attachment: fixed;
+}
+
+.Detailcomponent {
+  margin: auto;
+  margin-top: 20vh;
+}
+
+.PhotoUpload {
+  margin-top: 1vh;
+}
+
+.DetailButtons {
+  display: flex;
+  margin-top: 1vh;
+}
