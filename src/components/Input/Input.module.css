@@ -1,49 +1,48 @@
 .my-input {
-    width: 50%;
-    height: 50vh;
-  }
-  
-  .searchBox {
-    margin-top: 5vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .search {
-    border-radius: 0.5rem 0 0 0.5rem;
-    width: 70%;
-    height: 4.5vh;
-    border: 0;
-    background-color: #eeeeee;
-  }
-  .searchButton {
-    width: 12%;
-    border-radius: 0 0.5rem 0.5rem 0;
-    border: 0;
-    background-color: black;
-  }
-  
-  .searchImg {
-    width: 60%;
-    height: 60%;
-    z-index: 9;
-  }
-  
-  .SearchInputFrame {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .locationInput {
-    width: 18rem;
-    height: 3.5vh;
-    border: 0.38rem #900305 solid;
-    background-color: white;
-    font-size: 0.7rem;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+  width: 50%;
+  height: 50vh;
+}
+
+.searchBox {
+  margin-top: 5vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search {
+  border-radius: 0.5rem 0 0 0.5rem;
+  width: 70%;
+  height: 4.5vh;
+  border: 0;
+  background-color: #eeeeee;
+}
+.searchButton {
+  width: 12%;
+  border-radius: 0 0.5rem 0.5rem 0;
+  border: 0;
+  background-color: black;
+}
+
+.searchImg {
+  width: 60%;
+  height: 60%;
+  z-index: 9;
+}
+
+.SearchInputFrame {
+  display: flex;
+  justify-content: center;
+}
+
+.locationInput {
+  width: 16.8rem;
+  height: 3.5vh;
+  border: 0.38rem #900305 solid;
+  background-color: white;
+  font-size: 0.7rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

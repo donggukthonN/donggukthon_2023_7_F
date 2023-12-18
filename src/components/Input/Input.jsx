@@ -73,12 +73,12 @@ function PasswordCheck() {
   const changeText = (e) => {
     if (e.nativeEvent.data === null) {
       if (real.length > 0) {
-        setNewT("⛄".repeat(real.length - 1));
+        setNewT("🍪".repeat(real.length - 1));
         real.pop();
       }
     } else {
       real.push(e.nativeEvent.data);
-      setNewT("⛄".repeat(real.length));
+      setNewT("🍪".repeat(real.length));
     }
   };
 
