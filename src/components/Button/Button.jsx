@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useCallback } from "react";
+import photoAnalize from "../../apis/photoAnalize.js";
 import {
   emptyheart,
   fullheart,
@@ -94,10 +95,61 @@ const HeartButton = () => {
 };
 
 function PhotoUpload() {
+  const [imageSrc, setImageSrc] = useState();
+  const inputRef = useRef();
+
+  const onUploadImage = useCallback(async (e) => {
+    if (!e.target.files) {
+      return;
+    }
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    // if (file) {
+    //   try {
+    //     const result = await photoAnalize(file);
+    //     console.log("Server Response:", result);
+    //     // 서버 응답을 처리하거나 상태를 업데이트할 수 있습니다.
+    //   } catch (error) {
+    //     console.error("Error uploading image:", error);
+    //     // 에러 처리 로직을 추가할 수 있습니다.
+    //   }
+    // }
+
+    return new Promise((resolve) => {
+      console.log(reader);
+      reader.onload = () => {
+        console.log(reader.result);
+        setImageSrc(reader.result); // 파일의 컨텐츠
+        resolve();
+      };
+    });
+  }, []);
+
+  const onUploadImageButtonClick = useCallback(() => {
+    if (!inputRef.current) {
+      return;
+    }
+    inputRef.current.click();
+  }, []);
+
   return (
     <div>
-      <button className={styles.PhotoUpload}>
-        <span className={styles.Phototext}>작품 업로드</span>
+      <input
+        className={styles.imageInput}
+        type="file"
+        accept="image/*"
+        ref={inputRef}
+        onChange={onUploadImage}
+      />
+
+      <button className={styles.PhotoUpload} onClick={onUploadImageButtonClick}>
+        {imageSrc ? (
+          <img src={imageSrc} alt="upload" className={styles.uploadImage} />
+        ) : (
+          <span className={styles.Phototext}>작품 업로드</span>
+        )}
       </button>
     </div>
   );
@@ -106,8 +158,7 @@ function PhotoUpload() {
 function PhotoDisplay() {
   return (
     <div>
-      <button className={styles.PhotoDisplay}>
-      </button>
+      <button className={styles.PhotoDisplay}></button>
     </div>
   );
 }
@@ -121,41 +172,6 @@ function Showoff() {
     </div>
   );
 }
-
-// function ShareButton() {
-//   return (
-//     <button className="Share-Button">
-//       <div className="Sharee-property">
-//         <img
-//           src={instagram}
-//           alt="Instagram"
-//           style={{ width: "0.2rem", height: "0.2rem", padding: "auto" }}
-//         />
-//         <span className="Share-Text"> 공유하기</span>
-//       </div>
-//     </button>
-//   );
-// }
-
-// function PhotoUpload() {
-//   return (
-//     <div>
-//       <button className="Photo-Upload">
-//         <span className="Photo-text">작품 업로드</span>
-//       </button>
-//     </div>
-//   );
-// }
-
-// function Showoff() {
-//   return (
-//     <div>
-//       <button className="Showoff-Button">
-//         <span className="Showoff-Text">내 눈사람 자랑하기</span>
-//       </button>
-//     </div>
-//   );
-// }
 
 function SnowmanList() {
   const [selectedButton, setSelectedButton] = useState("LikeList");
