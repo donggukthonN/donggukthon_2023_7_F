@@ -1,17 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export const useGeoLocation = (options) => {
   const [loc, setLocation] = useState();
   const [error, setError] = useState("");
 
-  const handleSuccess = (pos) => {
+  const handleSuccess = useCallback((pos) => {
     const { latitude, longitude } = pos.coords;
 
     setLocation({
       latitude,
       longitude,
     });
-  };
+  }, []);
 
   const handleError = (err) => {
     setError(err.message);
@@ -26,7 +26,7 @@ export const useGeoLocation = (options) => {
     }
 
     geolocation.getCurrentPosition(handleSuccess, handleError, options);
-  }, [options]);
+  }, [options, handleSuccess]);
 
   return { loc, error };
 };
