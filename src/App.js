@@ -12,6 +12,8 @@ import {
   Upload,
   Location,
   Complete,
+  First
+  
 } from "./pages";
 
 function App() {
@@ -30,6 +32,7 @@ function App() {
           <Route path="/search" element={<Search />}></Route>
           <Route path="*" element={<NotFound />}></Route>
           <Route path="/complete" element={<Complete />}></Route>
+          <Route path="/first" element={<First />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
