@@ -166,10 +166,6 @@ function SnowmanList() {
 
   return (
     <div className={styles.SnowmanList}>
-      {" "}
-      {/* Use styles.SnowmanList instead of "SnowmanList" */}
-      <hr className={styles.Listline}></hr>{" "}
-      {/* Use styles.Listline instead of "Listline" */}
       <button
         className={
           selectedButton === "LikeList"

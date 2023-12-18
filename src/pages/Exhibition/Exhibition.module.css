@@ -15,6 +15,11 @@
     background-size: cover;
     background-repeat: no-repeat;
   }
+
+  .Best {
+    width: 32vw;
+    height: 15vh;
+  }
   
   .line {
     margin-top: 1rem;
@@ -26,6 +31,7 @@
   
   .displayContainer {
     display: grid;
+    margin-top: 2vh;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 0.5rem 1vw;
   }

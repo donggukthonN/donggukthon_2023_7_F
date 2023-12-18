@@ -143,22 +143,12 @@
 
 /* SnowmanList.css */
 
-.Listline {
-  border: none;
-  /* 테두리 없음 */
-  height: 0.1rem;
-  /* 가로줄 두께 */
-  background-color: white;
-  /* 가로줄 색상 */
-  margin: 10px 0;
-  /* 위아래 여백 */
-}
-
 .LikeList,
 .NewList {
-  width: 5.5rem;
-  height: 1rem;
-  font-size: 0.3rem;
+  width: 7rem;
+  height: 1.5rem;
+  font-size: 0.7rem;
+  font-weight: 400;
   cursor: pointer;
   padding: 4px 8px;
   border: none;
