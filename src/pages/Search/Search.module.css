@@ -1,0 +1,5 @@
+.frame {
+  height: 100vh;
+  background-image: url("../../assets/initBackground.svg");
+  background-size: cover;
+}
