@@ -13,6 +13,7 @@ import {
   Location,
   Complete,
   First,
+  LoadingPage,
 } from "./pages/index";
 
 function App() {
@@ -28,9 +29,10 @@ function App() {
           <Route path="/end" element={<End />}></Route>
           <Route path="/location" element={<Location />}></Route>
           <Route path="/search" element={<Search />}></Route>
-          <Route path="*" element={<NotFound />}></Route>
           <Route path="/complete" element={<Complete />}></Route>
           <Route path="/first" element={<First />}></Route>
+          <Route path="/loading" element={<LoadingPage />}></Route>
+          <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

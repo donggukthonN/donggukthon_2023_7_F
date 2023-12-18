@@ -9,6 +9,7 @@ import {
   DeleteButton,
 } from "../../components/Button/Button";
 import { useEffect, useState } from "react";
+import LoadingPage from "../Loading/LoadingPage";
 
 const Detail = () => {
   const [lat, setLat] = useState();
@@ -29,19 +30,23 @@ const Detail = () => {
 
   return (
     <div className={styles.Detailpage}>
-      <div className={styles.Detailcomponent}>
-        <div className={styles.LocationInput}>
-          <LocationInput location={address ? address : "현재 위치 로딩중"} />
+      {address ? (
+        <div className={styles.Detailcomponent}>
+          <div className={styles.LocationInput}>
+            <LocationInput location={address} />
+          </div>
+          <div className={styles.PhotoUpload}>
+            <PhotoUpload />
+          </div>
+          <div className={styles.DetailButtons}>
+            <HeartButton />
+            <ShareButton />
+            <DeleteButton />
+          </div>
         </div>
-        <div className={styles.PhotoUpload}>
-          <PhotoUpload />
-        </div>
-        <div className={styles.DetailButtons}>
-          <HeartButton />
-          <ShareButton />
-          <DeleteButton />
-        </div>
-      </div>
+      ) : (
+        <LoadingPage title={"현재 위치를 파악중입니다."} />
+      )}
     </div>
   );
 };
