@@ -1,4 +1,5 @@
 import { LocationInput } from "../../components/index";
+import { useGeoLocation } from "../../hooks/useGeoLocation";
 import {
   HeartButton,
   PhotoUpload,
@@ -9,11 +10,18 @@ import {
 import styles from "../../pages/Detail/Detail.module.css";
 
 const Detail = () => {
+  const { loc } = useGeoLocation();
   return (
     <div className={styles.Detailpage}>
       <div className={styles.Detailcomponent}>
         <div className={styles.LocationInput}>
-          <LocationInput location={"test"} />
+          <LocationInput
+            location={
+              loc
+                ? `lat : ${loc.latitude} lng : ${loc.longitude}`
+                : "현재 위치 로딩중"
+            }
+          />
         </div>
         <div className={styles.PhotoUpload}>
           <PhotoUpload />
