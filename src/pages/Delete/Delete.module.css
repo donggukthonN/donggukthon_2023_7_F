@@ -1,0 +1,13 @@
+.Detailcomponent {
+    margin: auto;
+    margin-top: 10vh;
+}
+
+.PhotoUpload {
+    margin-top: 1vh;
+}
+
+.DetailButtons {
+    display: flex;
+    margin-top: 1vh;
+}
