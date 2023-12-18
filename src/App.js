@@ -11,6 +11,7 @@ import {
   Search,
   Upload,
   Location,
+  Search,
   Complete
 } from "./pages";
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/end" element={<End />}></Route>
           <Route path="/search" element={<Search />}></Route>
           <Route path="/location" element={<Location />}></Route>
+          <Route path="/search" element={<Search />}></Route>
           <Route path="*" element={<NotFound />}></Route>
           <Route path="/complete" element={<Complete />}></Route>
         </Routes>
