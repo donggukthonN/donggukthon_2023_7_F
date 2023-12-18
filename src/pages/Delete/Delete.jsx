@@ -3,6 +3,7 @@ import {
   HeartButton,
   PhotoUpload,
   ShareButton,
+  PhotoDisplay
 } from "../../components/Button/Button";
 import { PasswordCheck } from "../../components/Input/Input";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
@@ -13,8 +14,8 @@ const Delete = () => {
   const { loc } = useGeoLocation();
 
   return (
-    <div className={styles.Detailpage}>
-      <div className={styles.Detailcomponent}>
+    <div className={styles.Deletepage}>
+      <div className={styles.Deletecomponen}>
         <div className={styles.LocationInput}>
           <LocationInput
             location={
@@ -24,10 +25,10 @@ const Delete = () => {
             }
           />
         </div>
-        <div className={styles.PhotoUpload}>
-          <PhotoUpload />
+        <div className={styles.PhotoDisplay}>
+          <PhotoDisplay />
         </div>
-        <div className={styles.DetailButtons}>
+        <div className={styles.DeleteButtons}>
           <HeartButton />
           <ShareButton />
           <PasswordCheck />

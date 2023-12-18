@@ -11,7 +11,6 @@ import {
   Search,
   Upload,
   Location,
-  Search,
   Complete
 } from "./pages";
 
