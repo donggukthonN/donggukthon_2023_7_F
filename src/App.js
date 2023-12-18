@@ -1,7 +1,12 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Init, Home, NotFound } from "./pages";
+import {
+  Init,
+  Home,
+  NotFound,
+  Upload
+} from "./pages";
 
 function App() {
   return (
@@ -12,6 +17,7 @@ function App() {
           <Route path="/" element={<Init />}></Route>
           <Route paht="/home" element={<Home />}></Route>
           <Route path="*" element={<NotFound />}></Route>
+          <Route path="/upload" element={<Upload />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
@@ -19,3 +25,4 @@ function App() {
 }
 
 export default App;
+
