@@ -10,6 +10,7 @@ import {
   End,
   Upload,
   Location,
+  Complete
 } from "./pages";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/end" element={<End />}></Route>
           <Route path="/location" element={<Location />}></Route>
           <Route path="*" element={<NotFound />}></Route>
+          <Route path="/complete" element={<Complete />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
