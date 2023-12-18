@@ -29,3 +29,4 @@ export { default as SNOWING } from "./snowing.svg";
 export { default as SEARCH_IMAGE } from "./search.svg";
 export { default as SNOWMAN_IMAGE } from "./snowMan.svg";
 export { FRAME_DATA };
+export { default as Santahat } from "./Santahat.svg"

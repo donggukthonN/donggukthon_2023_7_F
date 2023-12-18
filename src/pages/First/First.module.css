@@ -17,14 +17,25 @@
     margin-bottom: 45%;
   }
   
-  .logo {
-    width: 70vw;
-    height: 20vh;
+  .santahat {
+    margin-top: 18vh;
+    height: 7vh;
+    margin-left: 15%;
+  }
+
+  .startguide {
+    position: absolute;
+    margin: auto;
+    margin-top: 28vh;
+    font-size: 1.2rem;
+    font-weight: 900;
   }
   
   .snowMan {
     width: 50vw;
     height: 25vh;
     justify-self: flex-end;
+    margin-left: 10%;
+    margin-top: 35vh;
   }
   
