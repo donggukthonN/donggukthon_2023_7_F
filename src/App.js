@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
   Init,
   Home,
+  NotFound,
   Upload
 } from "./pages";
 
@@ -13,6 +14,9 @@ function App() {
       {/* Router라는 파일짜서 빼도 될듯 */}
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Init />}></Route>
+          <Route paht="/home" element={<Home />}></Route>
+          <Route path="*" element={<NotFound />}></Route>
           <Route path="/upload" element={<Upload />}></Route>
         </Routes>
       </BrowserRouter>
