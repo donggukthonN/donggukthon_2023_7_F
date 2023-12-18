@@ -6,7 +6,6 @@ import { useGeoLocation } from "../../hooks/useGeoLocation";
 
 const Location = () => {
   const { loc } = useGeoLocation();
-  console.log(loc);
   useEffect(() => {
     if (loc && loc.latitude && loc.longitude) {
       setCenter({
