@@ -1,196 +1,191 @@
 .button_sample {
-    border: 2px solid transparent;
-    /* 테두리를 투명으로 설정합니다. */
-    border-image: url('../../assets/woodframe.svg') 30 round;
-    /* 이미지 파일의 경로를 설정하고, 원하는 테두리 스타일을 지정합니다. */
-    background-color: white;
-    /* 배경색을 흰색으로 설정합니다. */
-    padding: 10px 20px;
-    color: black;
-    /* 텍스트 색상을 원하는 색으로 설정합니다. */
-    font-size: 16px;
-    cursor: pointer;
-    outline: none;
-    /* 클릭 시 버튼 주변의 파란 테두리를 제거합니다. */
-  }
-  
-  .button_sample:hover,
-  .button_sample:focus {
-    background-color: black;
-    color: white;
-    border-image: url('../../assets/woodframe.svg') 30 round;
-  }
-  
-  /* SearchButton.css */
-  
-  .SearchButton {
-    /* position: absolute; */
-    width: 10%;
-    height: 3vh;
-    /* margin-top: 1rem;
-    margin-left: 86%; */
-    padding: auto;
-    background-color: #2E2E30;
-    border: none;
-    border-radius: 5rem;
-  }
-  
-  .searchicon {
-    align-items: center;
-  }
-  
-  /* DeleteButton.css */
-  
-  .DeleteButton {
-    /* position: absolute; */
-    width: 4.4rem;
-    height: 3vh;
-    margin-top: 0.4vh;
-    /* margin-left: 63%; */
-    background-color: white;
-    border-color: black;
-    border-width: 0.08rem;
-    border-radius: 0.2rem;
-    padding: 0px 10px;
-    text-align: center;
-    font-size: 0.6rem;
-    font-weight: 700;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .ShareButton {
-    /* position: absolute; */
-    width: 4.4rem;
-    height: 3vh;
-    margin-top: 0.3vh;
-    margin-right: 0.3rem;
-    margin-left: 5rem;
-    background-color: white;
-    border-color: black;
-    border-width: 0.08rem;
-    border-radius: 0.2rem;
-    padding: 0px 10px;
-    text-align: center;
-    font-size: 0.6rem;
-    font-weight: 700;
-  }
+  border: 2px solid transparent;
+  /* 테두리를 투명으로 설정합니다. */
+  border-image: url('../../assets/woodframe.svg') 30 round;
+  /* 이미지 파일의 경로를 설정하고, 원하는 테두리 스타일을 지정합니다. */
+  background-color: white;
+  /* 배경색을 흰색으로 설정합니다. */
+  padding: 10px 20px;
+  color: black;
+  /* 텍스트 색상을 원하는 색으로 설정합니다. */
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  /* 클릭 시 버튼 주변의 파란 테두리를 제거합니다. */
+}
 
-  
-  /* HeartButton.css */
-  .heartbutton-position {
-    position: absolute;
-    /* margin-top: 54vh;
-    margin-left: 25%; */
-  }
-  
-  /* Photo-Upload.css */
-  
-  .PhotoUpload {
-    /* position: absolute; */
-    width: 18.5rem;
-    height: 40vh;
-    /* margin-top: 45%;
-    margin-left: 25%; */
-    background-color: white;
-    border-image: url('../../assets/woodframe.svg') 20 round;
-    border-width: 10.8px;
-    /* 이미지에서 모서리까지의 간격을 설정하세요 */
-    border-image-slice: 90;
-    /* 이미지에서 내용의 영역을 설정하세요 */
-  }
-  
-  .Phototext {
-    font-size: 0.8rem;
-    font-weight: 800;
-    text-align: center;
-  }
-  
-  /* Photo-Display.css */
-  
-  .PhotoDisplay {
-    /* position: absolute; */
-    width: 18.5rem;
-    height: 40vh;
-    /* margin-top: 45%;
-    margin-left: 25%; */
-    background-color: white;
-    border-image: url('../../assets/woodframe.svg') 20 round;
-    border-width: 10.8px;
-    /* 이미지에서 모서리까지의 간격을 설정하세요 */
-    border-image-slice: 90;
-    /* 이미지에서 내용의 영역을 설정하세요 */
-  }
-  
-  /* Showoff.css */
-  
-  .ShowoffButton {
-    position: absolute;
-    width: 15rem;
-    height: 5vh;
-    margin-top: 33vh;
-    /* margin-left: 30%; */
-    border-radius: 0.6rem 0.6rem 0.1rem 0.1rem;
-    background-color: #1A1A1A;
-  }
-  
-  .ShowoffText {
-    font-size: 0.7rem;
-    color: white;
-    text-align: center;
-  }
-  
-  /* SnowmanList.css */
-  
-  /* .SnowmanList {
-    position: absolute;
-    margin-top: 0.5rem;
-    margin-left: 20%;
-  } */
-  
-  .Listline {
-    border: none;
-    /* 테두리 없음 */
-    height: 0.1rem;
-    /* 가로줄 두께 */
-    background-color: white;
-    /* 가로줄 색상 */
-    margin: 10px 0;
-    /* 위아래 여백 */
-  }
-  
-  .LikeList,
-  .NewList {
-    width: 5.5rem;
-    height: 1rem;
-    font-size: 0.3rem;
-    cursor: pointer;
-    padding: 4px 8px;
-    border: none;
-    outline: none;
-    background-color: #F2F2F2;
-  }
-  
-  .LikeList.selected,
-  .NewList.selected {
-    border-bottom: 0.02rem solid black;
-    font-weight: 800;
-  }
-  
-  /* UploadButton.css */
-  
-  .UploadButton {
-    /* position: absolute; */
-    width: 11rem;
-    height: 4.5vh;
-    /* margin-top: 60vh;
-      margin-left: 30%; */
-    border-radius: 0.5rem;
-    background-color: #1A1A1A;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.8rem;
-    color: white;
-    text-align: center;
-  }
+.button_sample:hover,
+.button_sample:focus {
+  background-color: black;
+  color: white;
+  border-image: url('../../assets/woodframe.svg') 30 round;
+}
+
+/* SearchButton.css */
+
+.SearchButton {
+  /* position: absolute; */
+  width: 10%;
+  height: 3vh;
+  /* margin-top: 1rem;
+  margin-left: 86%; */
+  padding: auto;
+  background-color: #2E2E30;
+  border: none;
+  border-radius: 5rem;
+}
+
+.searchicon {
+  align-items: center;
+}
+
+/* DeleteButton.css */
+
+.DeleteButton {
+  /* position: absolute; */
+  width: 4.4rem;
+  height: 3vh;
+  margin-top: 0.4vh;
+  /* margin-left: 63%; */
+  background-color: white;
+  border-color: black;
+  border-width: 0.08rem;
+  border-radius: 0.2rem;
+  padding: 0px 10px;
+  text-align: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Share-Button.css */
+
+.ShareButton {
+  /* position: absolute; */
+  width: 4.4rem;
+  height: 3vh;
+  margin-top: 0.3vh;
+  margin-right: 0.3rem;
+  margin-left: 3.5rem;
+  background-color: white;
+  border-color: black;
+  border-width: 0.08rem;
+  border-radius: 0.2rem;
+  padding: 0px 10px;
+  text-align: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+
+/* HeartButton.css */
+.heartbutton-position {
+  position: absolute;
+  /* margin-top: 54vh;
+  margin-left: 25%; */
+}
+
+/* Photo-Upload.css */
+
+.PhotoUpload {
+  /* position: absolute; */
+  width: 17rem;
+  height: 38vh;
+  /* margin-top: 45%;
+  margin-left: 25%; */
+  background-color: white;
+  border-image: url('../../assets/woodframe.svg') 20 round;
+  border-width: 10.8px;
+  /* 이미지에서 모서리까지의 간격을 설정하세요 */
+  border-image-slice: 90;
+  /* 이미지에서 내용의 영역을 설정하세요 */
+}
+
+.Phototext {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* Photo-Display.css */
+
+.PhotoDisplay {
+  /* position: absolute; */
+  width: 17rem;
+  height: 38vh;
+  /* margin-top: 45%;
+  margin-left: 25%; */
+  background-color: white;
+  border-image: url('../../assets/woodframe.svg') 20 round;
+  border-width: 10.8px;
+  /* 이미지에서 모서리까지의 간격을 설정하세요 */
+  border-image-slice: 90;
+  /* 이미지에서 내용의 영역을 설정하세요 */
+}
+
+/* Showoff.css */
+
+.ShowoffButton {
+  position: absolute;
+  width: 15rem;
+  height: 5vh;
+  margin-top: 33vh;
+  /* margin-left: 30%; */
+  border-radius: 0.6rem 0.6rem 0.1rem 0.1rem;
+  background-color: #1A1A1A;
+}
+
+.ShowoffText {
+  font-size: 0.7rem;
+  color: white;
+  text-align: center;
+}
+
+/* SnowmanList.css */
+
+.Listline {
+  border: none;
+  /* 테두리 없음 */
+  height: 0.1rem;
+  /* 가로줄 두께 */
+  background-color: white;
+  /* 가로줄 색상 */
+  margin: 10px 0;
+  /* 위아래 여백 */
+}
+
+.LikeList,
+.NewList {
+  width: 5.5rem;
+  height: 1rem;
+  font-size: 0.3rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border: none;
+  outline: none;
+  background-color: #F2F2F2;
+}
+
+.LikeList.selected,
+.NewList.selected {
+  border-bottom: 0.02rem solid black;
+  font-weight: 800;
+}
+
+/* UploadButton.css */
+
+.UploadButton {
+  /* position: absolute; */
+  width: 11rem;
+  height: 4.5vh;
+  /* margin-top: 60vh;
+    margin-left: 30%; */
+  border-radius: 0.5rem;
+  background-color: #1A1A1A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: white;
+  text-align: center;
+}
