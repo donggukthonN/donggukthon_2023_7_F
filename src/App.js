@@ -11,7 +11,7 @@ import {
   Search,
   Upload,
   Location,
-  Complete
+  Complete,
 } from "./pages";
 
 function App() {
