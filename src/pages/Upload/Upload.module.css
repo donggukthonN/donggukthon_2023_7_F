@@ -21,6 +21,10 @@
   height: 7rem;
 }
 
+.TitleInput {
+  margin-top: -3vh;
+}
+
 .PhotoUpload {
   margin-top: 1vh;
 }
