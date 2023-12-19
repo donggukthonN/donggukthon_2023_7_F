@@ -9,6 +9,6 @@ export { default as Location } from "./Location/Location";
 export { default as Complete } from "./Complete/Complete";
 export { default as First } from "./First/First";
 export { default as Search } from "./Search/Search";
-export { default as Exhibition } from "./Exhibition/Exhibition";
+// export { default as Exhibition } from "./Exhibition/Exhibition";
 export { default as LoadingPage } from "./Loading/LoadingPage";
 

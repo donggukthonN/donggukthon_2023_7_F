@@ -1,0 +1,72 @@
+.frame {
+  height: 100vh;
+  width: 100vw;
+}
+
+.back {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  overflow: scroll;
+  background-image:
+    url("../../assets/initBackground.svg");
+  /* url("../../assets/snowing.svg"); */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.HomeTop {
+  display: flex;
+  margin-top: 1vh;
+}
+
+.HomeDeco {
+  margin-left: 7rem;
+  margin-top: 0.5vh;
+  width: 10rem;
+}
+
+.BestImg {
+  margin-top: 2vh;
+  display: flex;
+}
+
+.Best {
+  width: 8rem;
+  margin-right: 2rem;
+  border-image: url('../../assets/First.svg') 20 round;
+  border-width: 20px;
+  /* 이미지에서 모서리까지의 간격을 설정하세요 */
+  border-image-slice: 50;
+  /* 이미지에서 내용의 영역을 설정하세요 */
+}
+
+.Second {
+  width: 8rem;
+  border-image: url('../../assets/Second.svg') 20 round;
+  border-width: 11px;
+  /* 이미지에서 모서리까지의 간격을 설정하세요 */
+  border-image-slice: 90;
+  /* 이미지에서 내용의 영역을 설정하세요 */
+}
+
+.line {
+  margin-bottom: 1rem;
+  width: 95vw;
+  border: 2px white solid;
+  background-color: transparent;
+}
+
+.displayContainer {
+  display: grid;
+  margin-top: 2vh;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem 1vw;
+}
+
+.image {
+  width: 32vw;
+  height: 15vh;
+}

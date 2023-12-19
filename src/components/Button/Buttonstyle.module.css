@@ -29,10 +29,10 @@
 
 .SearchButton {
   /* position: absolute; */
-  width: 10%;
+  width: 3rem;
   height: 3vh;
-  /* margin-top: 1rem;
-  margin-left: 86%; */
+  margin-left: 3.85rem;
+  margin-top: 1.5vh;
   padding: auto;
   background-color: #2e2e30;
   border: none;

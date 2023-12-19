@@ -13,7 +13,7 @@ import {
   Location,
   Complete,
   First,
-  Exhibition,
+  LoadingPage
 } from "./pages/index";
 
 function App() {
