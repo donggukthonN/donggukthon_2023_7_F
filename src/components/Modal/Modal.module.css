@@ -24,6 +24,7 @@
     width: 100%;
     height: 100%;
     margin-top: 1.3rem;
+   
     overflow: scroll;
   }
   
@@ -34,10 +35,13 @@
     width: 100%;
     height: 100%;
     display: none;
+   
   }
   
   .modalDisplayBlock {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .modalMain {
@@ -47,8 +51,7 @@
     width: 30rem;
     height: 15vh;
     max-width: 50%;
-    margin-top: 45vh;
-    margin-left: 5.5rem;
+
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
