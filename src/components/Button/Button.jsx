@@ -106,16 +106,16 @@ function PhotoUpload() {
     const reader = new FileReader();
     reader.readAsDataURL(file);
 
-    // if (file) {
-    //   try {
-    //     const result = await photoAnalize(file);
-    //     console.log("Server Response:", result);
-    //     // 서버 응답을 처리하거나 상태를 업데이트할 수 있습니다.
-    //   } catch (error) {
-    //     console.error("Error uploading image:", error);
-    //     // 에러 처리 로직을 추가할 수 있습니다.
-    //   }
-    // }
+    if (file) {
+      try {
+        const result = await photoAnalize(file);
+        console.log("Server Response:", result);
+        // 서버 응답을 처리하거나 상태를 업데이트할 수 있습니다.
+      } catch (error) {
+        console.error("Error uploading image:", error);
+        // 에러 처리 로직을 추가할 수 있습니다.
+      }
+    }
 
     return new Promise((resolve) => {
       console.log(reader);
@@ -182,6 +182,10 @@ function SnowmanList() {
 
   return (
     <div className={styles.SnowmanList}>
+      {" "}
+      {/* Use styles.SnowmanList instead of "SnowmanList" */}
+      <hr className={styles.Listline}></hr>{" "}
+      {/* Use styles.Listline instead of "Listline" */}
       <button
         className={
           selectedButton === "LikeList"

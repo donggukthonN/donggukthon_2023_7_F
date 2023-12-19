@@ -13,9 +13,7 @@ import {
   Location,
   Complete,
   First,
-  Exhibition
-  LoadingPage,
-
+  Exhibition,
 } from "./pages/index";
 
 function App() {
@@ -34,9 +32,7 @@ function App() {
           <Route path="/complete" element={<Complete />}></Route>
           <Route path="/first" element={<First />}></Route>
           <Route path="/exhibition" element={<Exhibition />}></Route>
-          <Route path="/loading" element={<LoadingPage />}></Route>
           <Route path="*" element={<NotFound />}></Route>
-
         </Routes>
       </BrowserRouter>
     </div>
