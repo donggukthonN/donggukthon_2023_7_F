@@ -1,5 +1,5 @@
 import React from "react";
-import { SnowmanList, SearchButton, HomeHeartButton } from "../../components/Button/Button";
+import { SnowmanList, SearchButton, HomeHeartButton, Showoff } from "../../components/Button/Button";
 import styles from "./Home.module.css";
 import { FRAME_DATA, HomeDeco, dummy, First, Second } from "../../assets";
 import Photoframe from "./Photoframe";
@@ -21,12 +21,14 @@ function Home() {
         </div>
         <hr className={styles.line} />
         <SnowmanList />
+        <Showoff />
         <div className={styles.displayContainer}>
           {FRAME_DATA &&
             FRAME_DATA.map((data, index) => (
               <Photoframe key={index} data={data} />
             ))}
         </div>
+        
       </div>
     </div>
   );
