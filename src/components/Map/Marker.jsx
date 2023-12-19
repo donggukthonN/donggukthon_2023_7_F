@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 
 const Marker = (options) => {
+  // console.log(options);
   const [marker, setMarker] = React.useState();
-
   useEffect(() => {
     if (!marker) {
       setMarker(new window.google.maps.Marker());
@@ -20,6 +20,7 @@ const Marker = (options) => {
       marker.setOptions(options);
       marker.addListener("click", (e) => {
         const markerPosition = marker.getPosition();
+        console.log(markerPosition);
         if (markerPosition) {
           const lat = markerPosition.lat();
           const lng = markerPosition.lng();
