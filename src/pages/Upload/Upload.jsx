@@ -8,6 +8,9 @@ import LoadingPage from "../Loading/LoadingPage";
 import styles from "../../pages/Upload/Upload.module.css";
 
 const Upload = () => {
+  // 일단 한 번 정보 받고, 로컬스토리지에 던지기.
+  // 주소도.
+
   const [lat, setLat] = useState();
   const [lng, setLng] = useState();
   const [address, setAddress] = useState();
