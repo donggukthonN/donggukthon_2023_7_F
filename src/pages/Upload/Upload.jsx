@@ -30,7 +30,7 @@ const Upload = () => {
       <div className={styles.Uploadpage}>
         <div>
           <div className={styles.PhotoUpload}>
-            <LocationInput location={address ? address : "위치 설정 하기"} />
+            < TitleInput />
           </div>
           <div className={styles.PhotoUpload}>
             <PhotoUpload />
