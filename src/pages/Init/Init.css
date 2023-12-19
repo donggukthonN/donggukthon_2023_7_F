@@ -20,7 +20,6 @@
 .logo {
   width: 70vw;
   height: 20vh;
-  opacity: 0;
 }
 
 .snowMan {
@@ -34,9 +33,4 @@
   left: 35vw;
   top: 20vh; */
   width: 30vw;
-}
-
-span {
-  position: absolute;
-  top: 30vh;
 }
