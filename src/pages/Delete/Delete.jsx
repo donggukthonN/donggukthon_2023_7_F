@@ -33,7 +33,7 @@ const Delete = () => {
   useEffect(() => {
     try {
       const handleOnephoto = async () => {
-        const res = await getOnephoto(1);
+        const res = await getOnephoto(8);
         console.log(res);
       };
       handleOnephoto();
@@ -42,12 +42,12 @@ const Delete = () => {
     }
   }, []);
 
-  const [photo_id, setPhotoId] = useState(1); // 예시로 photo_id 설정
+  const [photo_id, setPhotoId] = useState(8); // 예시로 photo_id 설정
   const [password, setPassword] = useState('1234'); // 예시로 password 설정
 
   const handleDeletePhoto = async () => {
     try {
-      const response = await DeletePhoto(photo_id, { password });
+      const response = await DeletePhoto();
       console.log(response);
       // 서버 응답을 기반으로 추가적인 로직 수행 가능
     } catch (error) {
@@ -68,7 +68,7 @@ const Delete = () => {
           <div className={styles.DeleteButtons}>
             <HeartButton />
             <ShareButton />
-            <PasswordCheck
+            <PasswordCheck onSubmitPassword={handleDeletePhoto}
             />
           </div>
         </div>

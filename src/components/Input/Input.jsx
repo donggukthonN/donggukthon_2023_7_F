@@ -47,7 +47,7 @@ function PasswordInput({ onPasswordChange }) {
   );
 }
 
-function PasswordCheck() {
+function PasswordCheck({ onSubmitPassword }) {
   const [newT, setNewT] = useState("");
   const [isAuthenticated, setAuthenticated] = useState(false);
   const [isDeleted, setDeleted] = useState(false);
@@ -107,7 +107,9 @@ function PasswordCheck() {
   //     alert('인증되지 않았습니다. 먼저 비밀번호를 인증하세요.');
   //   }
   // };
-
+  const onClick = () => {
+    onSubmitPassword()
+  }
   return (
     <div>
       {isDeleted ? (
@@ -125,7 +127,7 @@ function PasswordCheck() {
               value={newT}
             ></input>
           </div>
-          <button className={styles.PhotodeleteBtn} onClick={handlePhotoDelete}>
+          <button className={styles.PhotodeleteBtn} onClick={onClick}>
             삭제하기
           </button>
           {/* <button onClick={handleDeleteAccount}>계정 삭제</button> */}
