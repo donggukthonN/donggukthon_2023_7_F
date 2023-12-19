@@ -88,7 +88,11 @@ const Init = () => {
           cursor: "grab",
         }}
       />
-      {textFlag && <span>눈사람에게 모자를 씌워주세요</span>}
+      {textFlag && (
+        <span style={{ position: "absolute", top: "30vh" }}>
+          눈사람에게 모자를 씌워주세요
+        </span>
+      )}
       <img
         src={SNOWMAN_IMAGE}
         alt="snowMan"
