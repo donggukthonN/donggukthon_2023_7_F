@@ -17,6 +17,7 @@
   border: 0;
   background-color: #eeeeee;
 }
+
 .searchButton {
   width: 12%;
   border-radius: 0 0.5rem 0.5rem 0;
@@ -36,14 +37,16 @@
 }
 
 .locationInput {
+  margin-top: 1.5vh;
   width: 16.2rem;
-  height: 1.3vh;
-  border: 0.5rem #D9D9D9 solid;
-  background-color: #D9D9D9;
-  padding: 8px 0;
-  font-size: 0.7rem;
+  height: 3.5vh;
+  border: 0.38rem #900305 solid;
+  background-color: white;
+  font-size: 1rem;
   font-weight: 600;
   text-align: center;
+  justify-content: center;
+  align-items: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
