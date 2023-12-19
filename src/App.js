@@ -21,7 +21,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Init />}></Route>
+          <Route path="/" element={<First />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/detail" element={<Detail />}></Route>
           <Route path="/delete" element={<Delete />}></Route>
@@ -30,7 +30,7 @@ function App() {
           <Route path="/location" element={<Location />}></Route>
           <Route path="/search" element={<Search />}></Route>
           <Route path="/complete" element={<Complete />}></Route>
-          <Route path="/first" element={<First />}></Route>
+          {/* <Route path="/first" element={<First />}></Route> */}
           <Route path="/exhibition" element={<Exhibition />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
