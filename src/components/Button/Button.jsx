@@ -9,6 +9,7 @@ import {
   trashcan,
 } from "./image.jsx";
 
+import LoadingPage from "../../pages/Loading/LoadingPage.jsx";
 import styles from "./Buttonstyle.module.css";
 
 function Button() {
@@ -133,6 +134,8 @@ const HomeHeartButton = () => {
 
 function PhotoUpload() {
   const [imageSrc, setImageSrc] = useState();
+  const [snowFlag, setSnowFlag] = useState(false);
+  const [lodaing, setLoading] = useState(false);
   const inputRef = useRef();
 
   const onUploadImage = useCallback(async (e) => {
@@ -144,24 +147,24 @@ function PhotoUpload() {
     reader.readAsDataURL(file);
 
     if (file) {
+      setLoading(true);
+
       try {
         const result = await photoAnalize(file);
-        console.log("Server Response:", result);
-        // 서버 응답을 처리하거나 상태를 업데이트할 수 있습니다.
+        if (result) {
+          setSnowFlag(result);
+
+          reader.readAsDataURL(file);
+          reader.onload = () => {
+            setImageSrc(reader.result); // 파일의 컨텐츠
+          };
+        }
       } catch (error) {
         console.error("Error uploading image:", error);
-        // 에러 처리 로직을 추가할 수 있습니다.
+      } finally {
+        setLoading(false);
       }
     }
-
-    return new Promise((resolve) => {
-      console.log(reader);
-      reader.onload = () => {
-        console.log(reader.result);
-        setImageSrc(reader.result); // 파일의 컨텐츠
-        resolve();
-      };
-    });
   }, []);
 
   const onUploadImageButtonClick = useCallback(() => {
@@ -173,21 +176,34 @@ function PhotoUpload() {
 
   return (
     <div>
-      <input
-        className={styles.imageInput}
-        type="file"
-        accept="image/*"
-        ref={inputRef}
-        onChange={onUploadImage}
-      />
+      {lodaing ? (
+        <LoadingPage title={"사진을 분석중입니다."} />
+      ) : (
+        <>
+          <input
+            className={styles.imageInput}
+            type="file"
+            accept="image/*"
+            ref={inputRef}
+            onChange={onUploadImage}
+          />
 
-      <button className={styles.PhotoUpload} onClick={onUploadImageButtonClick}>
-        {imageSrc ? (
-          <img src={imageSrc} alt="upload" className={styles.uploadImage} />
-        ) : (
-          <span className={styles.Phototext}>작품 업로드</span>
-        )}
-      </button>
+          <button
+            className={styles.PhotoUpload}
+            onClick={onUploadImageButtonClick}
+          >
+            {snowFlag ? (
+              <img
+                src={imageSrc && imageSrc}
+                alt="upload"
+                className={styles.uploadImage}
+              />
+            ) : (
+              <span className={styles.Phototext}>작품 업로드</span>
+            )}
+          </button>
+        </>
+      )}
     </div>
   );
 }
@@ -268,5 +284,5 @@ export {
   Showoff,
   SnowmanList,
   UploadButton,
-  HomeHeartButton
+  HomeHeartButton,
 };
