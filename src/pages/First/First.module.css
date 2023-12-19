@@ -1,41 +1,74 @@
 .background {
-    height: 100vh;
-    background-image: url("../../assets/initBackground.svg");
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-  
-  .title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 35%;
-    width: 100%;
-    height: 25%;
-    margin-bottom: 45%;
-  }
-  
-  .santahat {
-    margin-top: 18vh;
-    height: 7vh;
-    margin-left: 15%;
-  }
+  height: 100vh;
+  background-image: url("../../assets/initBackground.svg");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  overflow: hidden;
+}
 
-  .startguide {
-    position: absolute;
-    margin: auto;
-    margin-top: 28vh;
-    font-size: 1.2rem;
-    font-weight: 900;
+.hatBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: flex-start;
+}
+
+.santahat {
+  padding-left: 7vw;
+  height: 7vh;
+}
+
+.startguide {
+  font-size: 1.2rem;
+  font-weight: 900;
+  flex: 1;
+}
+
+.snowMan {
+  padding-left: 5vw;
+  width: 45vw;
+  justify-self: flex-end;
+}
+
+.snowManBox {
+  padding-top: 24vh;
+  padding-bottom: 5vh;
+}
+
+.guideOff {
+  display: none;
+}
+
+@keyframes hatAnimation {
+  0% {
+    transform: translateY(-100%);
   }
-  
-  .snowMan {
-    width: 50vw;
-    height: 25vh;
-    justify-self: flex-end;
-    margin-left: 10%;
-    margin-top: 35vh;
+  100% {
+    transform: translateY(30vh);
   }
-  
+}
+
+.moveHat {
+  height: 7vh;
+  padding-left: 8vw;
+  animation: hatAnimation 2s ease-in-out forwards;
+}
+
+.afterLogo {
+  margin-right: 7vw;
+  width: 70vw;
+  height: 20vh;
+  padding-left: 7vw;
+  animation: hatAnimation 2s ease-in-out forwards;
+}
+
+.logo {
+  margin-right: 7vw;
+  width: 70vw;
+  height: 20vh;
+}
