@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
 import { useReverseGeocoding } from "../../hooks/useReverseGeocoding";
-import { LocationInput } from "../../components/index";
-import { PhotoUpload, LocationFirstButton } from "../../components/Button/Button";
+import { LocationInput, LocationFirstButton } from "../../components/index";
+import { PhotoUpload } from "../../components/Button/Button";
 import { TitleInput } from "../../components/Input/Input";
 import LoadingPage from "../Loading/LoadingPage";
 import styles from "../../pages/Upload/Upload.module.css";

@@ -9,7 +9,6 @@ import {
   trashcan,
 } from "./image.jsx";
 
-import Modal from "../Modal/Modal.jsx";
 import LoadingPage from "../../pages/Loading/LoadingPage.jsx";
 import styles from "./Buttonstyle.module.css";
 
@@ -274,29 +273,6 @@ function UploadButton() {
   );
 }
 
-function LocationFirstButton() {
-  const [showModal, setShowModal] = useState(false);
-
-  const handleOpenModal = () => {
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
-  return (
-    <div>
-      <button onClick={handleOpenModal} className={styles.UploadButton}>
-        <p className={styles.UploadText}>전시하기</p>
-      </button>
-      <Modal show={showModal} handleClose={handleCloseModal}>
-        <p>위치를 먼저 등록해주세요</p>
-      </Modal>
-    </div>
-  );
-}
-
 export {
   Button,
   SearchButton,
@@ -309,5 +285,4 @@ export {
   SnowmanList,
   UploadButton,
   HomeHeartButton,
-  LocationFirstButton,
 };
