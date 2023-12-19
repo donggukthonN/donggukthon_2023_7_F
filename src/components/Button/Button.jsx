@@ -1,4 +1,5 @@
 import React, { useState, useRef, useCallback } from "react";
+import { Link } from "react-router-dom";
 import photoAnalize from "../../apis/photoAnalize.js";
 import {
   emptyheart,
@@ -16,7 +17,7 @@ function Button() {
 
 function SearchButton() {
   return (
-    <button className={styles.SearchButton}>
+    <Link to="/search" className={styles.SearchButton}>
       <div className={styles.searchicon}>
         <img
           src={searchicon}
@@ -24,7 +25,7 @@ function SearchButton() {
           style={{ width: "0.6rem", height: "0.6rem", padding: "auto" }}
         />
       </div>
-    </button>
+    </Link>
   );
 }
 
@@ -202,9 +203,9 @@ function PhotoDisplay() {
 function Showoff() {
   return (
     <div>
-      <button className={styles.ShowoffButton}>
+      <Link to="/upload" className={styles.ShowoffButton}>
         <span className={styles.ShowoffText}>내 눈사람 자랑하기</span>
-      </button>
+      </Link>
     </div>
   );
 }
@@ -249,9 +250,9 @@ function SnowmanList() {
 function UploadButton() {
   return (
     <div>
-      <button className={styles.UploadButton}>
+      <Link to="/Complete" className={styles.UploadButton}>
         <p className={styles.UploadText}>전시하기</p>
-      </button>
+      </Link>
     </div>
   );
 }
