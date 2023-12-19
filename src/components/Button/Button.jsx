@@ -40,10 +40,7 @@ function DeleteButton() {
           alt="Trashcan"
           style={{ width: "0.4rem", height: "0.4rem", padding: "auto" }}
         />
-        <Link to="/delete" className={styles.DeleteText}>
-          {" "}
-          삭제하기
-        </Link>
+        <Link to="/delete" className={styles.DeleteText}> 삭제하기</Link>
       </div>
     </button>
   );
