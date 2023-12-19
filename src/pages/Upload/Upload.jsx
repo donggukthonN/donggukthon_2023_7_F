@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useGeoLocation } from "../../hooks/useGeoLocation";
 import { useReverseGeocoding } from "../../hooks/useReverseGeocoding";
 import { LocationInput } from "../../components/index";
 import { PhotoUpload, UploadButton } from "../../components/Button/Button";
@@ -8,48 +7,43 @@ import LoadingPage from "../Loading/LoadingPage";
 import styles from "../../pages/Upload/Upload.module.css";
 
 const Upload = () => {
-  // 일단 한 번 정보 받고, 로컬스토리지에 던지기.
-  // 주소도.
-
-  const [lat, setLat] = useState();
-  const [lng, setLng] = useState();
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
   const [address, setAddress] = useState();
-  const { loc } = useGeoLocation();
   useEffect(() => {
-    if (loc) {
-      setLat(loc.latitude);
-      setLng(loc.longitude);
+    if (localStorage.getItem("lat") && localStorage.getItem("lng")) {
+      setLat(localStorage.getItem("lat"));
+      setLng(localStorage.getItem("lng"));
     }
-  }, [loc]);
+  }, []);
   const data = useReverseGeocoding(lat, lng);
 
   useEffect(() => {
     setAddress(data);
+    if (data) {
+      setLng(localStorage.setItem("address", data));
+    }
   }, [data]);
 
   return (
     <div className={styles.Uploadback}>
-      {address ? (
-        <div className={styles.Uploadpage}>
-          <div>
-            <div className={styles.TitleInput}>
-              <TitleInput />
-            </div>
-            <div className={styles.PhotoUpload}>
-              <PhotoUpload />
-            </div>
+      <div className={styles.Uploadpage}>
+        <div>
+          <div className={styles.PhotoUpload}>
+            <LocationInput location={address ? address : "위치 설정 하기"} />
           </div>
-          <div className={styles.UploadInput}>
-            {" "}
-            <Name /> <PasswordInput />{" "}
-          </div>
-          <div className={styles.UploadButton}>
-            <UploadButton />
+          <div className={styles.PhotoUpload}>
+            <PhotoUpload />
           </div>
         </div>
-      ) : (
-        <LoadingPage title={"현재 위치를 파악중입니다."} />
-      )}
+        <div className={styles.UploadInput}>
+          {" "}
+          <Name /> <PasswordInput />{" "}
+        </div>
+        <div className={styles.UploadButton}>
+          <UploadButton />
+        </div>
+      </div>
     </div>
   );
 };
