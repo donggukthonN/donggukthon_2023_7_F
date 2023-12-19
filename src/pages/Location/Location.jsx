@@ -45,6 +45,7 @@ const Location = () => {
           </Link>
         </div>
       </Wrapper>
+      <Link to="/upload" className={styles.LocationButton}><p>설정하기</p></Link>
     </div>
   );
 };
