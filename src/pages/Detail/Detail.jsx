@@ -8,8 +8,9 @@ import {
   ShareButton,
   DeleteButton,
 } from "../../components/Button/Button";
-import { useEffect, useState } from "react";
+import react, { useEffect, useState } from "react";
 import LoadingPage from "../Loading/LoadingPage";
+import getOnephoto from "../../apis/getOnephoto";
 
 const Detail = () => {
   const [lat, setLat] = useState();
@@ -27,6 +28,18 @@ const Detail = () => {
   useEffect(() => {
     setAddress(data);
   }, [data]);
+
+  useEffect(() => {
+    try {
+      const handleOnephoto = async () => {
+        const res = await getOnephoto(1);
+        console.log(res);
+      };
+      handleOnephoto();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   return (
     <div className={styles.Detailpage}>
