@@ -1,17 +1,20 @@
-import React from "react";
+import React,{useEffect} from "react";
 import {
   SnowmanList,
   SearchButton,
   HomeHeartButton,
   Showoff,
 } from "../../components/Button/Button";
+import getPhotoAll from "../../apis/getPhotoAll";
 import styles from "./Home.module.css";
 import { FRAME_DATA, HomeDeco, First, Second } from "../../assets";
 import Photoframe from "./Photoframe";
 
 function Home() {
   // const FRAME_DATA = [/* your image URLs or data here */];
-
+  useEffect(()=>{
+    getPhotoAll("LIKES")
+  },[])
   return (
     <div className={styles.frame}>
       <div className={styles.back}>
