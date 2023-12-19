@@ -20,10 +20,23 @@
 .logo {
   width: 70vw;
   height: 20vh;
+  opacity: 0;
 }
 
 .snowMan {
   width: 50vw;
   height: 25vh;
   justify-self: flex-end;
+}
+
+.santaHat {
+  /* position: absolute;
+  left: 35vw;
+  top: 20vh; */
+  width: 30vw;
+}
+
+span {
+  position: absolute;
+  top: 30vh;
 }
