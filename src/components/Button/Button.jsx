@@ -162,9 +162,13 @@ function PhotoUpload() {
           reader.onload = () => {
             setImageSrc(reader.result); // 파일의 컨텐츠
           };
+        } else {
+          <Modal>
+            <p>AI 분석 결과 눈사람이 아닙니다!</p>
+          </Modal>;
         }
       } catch (error) {
-        console.error("Error uploading image:", error);
+        console.log(error);
       } finally {
         setLoading(false);
       }
