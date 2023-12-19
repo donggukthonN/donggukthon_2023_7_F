@@ -1,3 +1,5 @@
+import { PhotoUpload } from "../components/Button/Button";
+
 export { default as Home } from "./Home/Home";
 export { default as Init } from "./Init/Init";
 export { default as NotFound } from "./NotFound/NotFound";
@@ -11,4 +13,4 @@ export { default as First } from "./First/First";
 export { default as Search } from "./Search/Search";
 // export { default as Exhibition } from "./Exhibition/Exhibition";
 export { default as LoadingPage } from "./Loading/LoadingPage";
-
+export { default as PhotoUpload } from "./Photoupload/Photoupload"

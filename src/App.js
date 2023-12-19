@@ -13,7 +13,8 @@ import {
   Location,
   Complete,
   First,
-  LoadingPage
+  LoadingPage,
+  PhotoUpload
 } from "./pages/index";
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<First />}></Route>
+          <Route path="/" element={<Init />}></Route>
           <Route path="/home" element={<Home />}></Route>
           <Route path="/detail" element={<Detail />}></Route>
           <Route path="/delete" element={<Delete />}></Route>
@@ -32,6 +33,7 @@ function App() {
           <Route path="/complete" element={<Complete />}></Route>
           <Route path="/first" element={<First />}></Route>
           <Route path="*" element={<NotFound />}></Route>
+          <Route path="/photoupload" element={<PhotoUpload />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

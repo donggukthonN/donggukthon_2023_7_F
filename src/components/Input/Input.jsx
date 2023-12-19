@@ -26,25 +26,25 @@ function Name() {
 const real = [];
 
 function PasswordInput() {
-  //   const [password, setPassword] = useState(""); // 비밀번호 상태를 관리하기 위한 state
+    const [newT, setPassword] = useState(""); // 비밀번호 상태를 관리하기 위한 state
 
-  //   const handlePasswordChange = (e) => {
-  //     setPassword(e.target.value); // 입력 값이 변경될 때마다 상태 업데이트
-  //   };
+    const handlePasswordChange = (e) => {
+      setPassword(e.target.value); // 입력 값이 변경될 때마다 상태 업데이트
+    };
 
-  const [newT, setNewT] = useState("");
+  // const [newT, setNewT] = useState("");
 
-  const changeText = (e) => {
-    if (e.nativeEvent.data === null) {
-      if (real.length > 0) {
-        setNewT("🍪".repeat(real.length - 1));
-        real.pop();
-      }
-    } else {
-      real.push(e.nativeEvent.data);
-      setNewT("🍪".repeat(real.length));
-    }
-  };
+  // const changeText = (e) => {
+  //   if (e.nativeEvent.data === null) {
+  //     if (real.length > 0) {
+  //       setNewT("🍪".repeat(real.length - 1));
+  //       real.pop();
+  //     }
+  //   } else {
+  //     real.push(e.nativeEvent.data);
+  //     setNewT("🍪".repeat(real.length));
+  //   }
+  // };
 
   return (
     <div className={styles.passwordInputContainer}>
@@ -52,9 +52,7 @@ function PasswordInput() {
         className={styles.passwordInput}
         type="text"
         placeholder="비밀번호"
-        onChange={(e) => {
-          changeText(e);
-        }}
+        onChange={handlePasswordChange}
         value={newT}
       ></input>
     </div>
@@ -146,7 +144,26 @@ function PasswordCheck() {
         </div>
       )}
     </div>
+    
   );
 }
 
-export { input, Name, PasswordInput, PasswordCheck };
+function TitleInput() {
+  const [title, setTitle] = useState(""); // 이름 상태를 관리하기 위한 state
+
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value); // 입력 값이 변경될 때마다 상태 업데이트
+  };
+
+  return (
+    <input
+      className={styles.titleInput}
+      type="text"
+      placeholder="제목을 입력하세요"
+      value={title}
+      onChange={handleTitleChange}
+    />
+  );
+};
+
+export { input, Name, PasswordInput, PasswordCheck, TitleInput };
