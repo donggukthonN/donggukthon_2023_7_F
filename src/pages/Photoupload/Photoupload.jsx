@@ -4,7 +4,6 @@ import { useReverseGeocoding } from "../../hooks/useReverseGeocoding";
 import { LocationInput, LocationFirstButton } from "../../components/index";
 import { PhotoUpload } from "../../components/Button/Button";
 import { TitleInput } from "../../components/Input/Input";
-import LoadingPage from "../Loading/LoadingPage";
 import styles from "../../pages/Upload/Upload.module.css";
 
 const Photoupload = () => {
@@ -26,28 +25,23 @@ const Photoupload = () => {
 
   return (
     <div className={styles.Uploadback}>
-      {address ? (
-        <div className={styles.Uploadpage}>
-          <div>
-            <div className={styles.PhotoUpload}>
-              <LocationInput location={address} />
-            </div>
-            <div className={styles.PhotoUpload}>
-              <PhotoUpload />
-            </div>
+      <div className={styles.Uploadpage}>
+        <div>
+          <div className={styles.PhotoUpload}>
+            <LocationInput location={address} />
           </div>
-          <div className={styles.UploadTitle}>
-            {" "}
-            <TitleInput />
-            {" "}
-          </div>
-          <div className={styles.UploadButton}>
-            <LocationFirstButton />
+          <div className={styles.PhotoUpload}>
+            <PhotoUpload />
           </div>
         </div>
-      ) : (
-        <LoadingPage title={"현재 위치를 파악중입니다."} />
-      )}
+        <div className={styles.UploadTitle}>
+          {" "}
+          <TitleInput />{" "}
+        </div>
+        <div className={styles.UploadButton}>
+          <LocationFirstButton />
+        </div>
+      </div>
     </div>
   );
 };

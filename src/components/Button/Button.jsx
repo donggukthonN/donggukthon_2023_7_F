@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import photoAnalize from "../../apis/photoAnalize.js";
 import {
@@ -63,13 +63,37 @@ function ShareButton() {
   );
 }
 
-const HeartButton = () => {
+const HeartButton = ({ photoId }) => {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
 
+  useEffect(() => {
+    const likedStatus =
+      JSON.parse(localStorage.getItem(`liked_${photoId}`)) || false;
+    const likeCountValue =
+      JSON.parse(localStorage.getItem(`likeCount_${photoId}`)) || 0;
+
+    setLiked(likedStatus);
+    setLikeCount(likeCountValue);
+  }, [photoId]);
+
   const handleLikeToggle = () => {
-    setLiked(!liked);
-    setLikeCount(liked ? likeCount - 1 : likeCount + 1);
+    const newLikedStatus = !liked;
+
+    localStorage.setItem(`liked_${photoId}`, JSON.stringify(newLikedStatus));
+
+    setLikeCount((prevLikeCount) => {
+      const updatedLikeCount = newLikedStatus
+        ? prevLikeCount + 1
+        : prevLikeCount - 1;
+      localStorage.setItem(
+        `likeCount_${photoId}`,
+        JSON.stringify(updatedLikeCount)
+      );
+      return updatedLikeCount;
+    });
+
+    setLiked(newLikedStatus);
   };
 
   return (
@@ -99,43 +123,58 @@ const HeartButton = () => {
   );
 };
 
-const HomeHeartButton = () => {
+const HomeHeartButton = ({ photoId }) => {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
 
+  useEffect(() => {
+    const likedStatus =
+      JSON.parse(localStorage.getItem(`liked_${photoId}`)) || false;
+    const likeCountValue =
+      JSON.parse(localStorage.getItem(`likeCount_${photoId}`)) || 0;
+
+    setLiked(likedStatus);
+    setLikeCount(likeCountValue);
+  }, [photoId]);
+
   const handleLikeToggle = () => {
-    setLiked(!liked);
-    setLikeCount(liked ? likeCount - 1 : likeCount + 1);
+    const newLikedStatus = !liked;
+
+    localStorage.setItem(`liked_${photoId}`, JSON.stringify(newLikedStatus));
+
+    setLikeCount((prevLikeCount) => {
+      const updatedLikeCount = newLikedStatus
+        ? prevLikeCount + 1
+        : prevLikeCount - 1;
+      localStorage.setItem(
+        `likeCount_${photoId}`,
+        JSON.stringify(updatedLikeCount)
+      );
+      return updatedLikeCount;
+    });
+
+    setLiked(newLikedStatus);
   };
 
   return (
-    <div className={styles.heartbuttonposition}>
-      <button
+    <div className={styles.heartContainer}>
+      <div
         onClick={handleLikeToggle}
         style={{ background: "none", border: "none", cursor: "pointer" }}
+        className={styles.heartCenter}
       >
         {liked ? (
-          <img
-            src={fullheart}
-            alt="Heart"
-            style={{ width: "1.5rem", height: "1.5rem" }}
-          />
+          <img src={fullheart} alt="Heart" className={styles.heart} />
         ) : (
-          <img
-            src={emptyheart}
-            alt="Heart"
-            style={{ width: "1.5rem", height: "1.5rem" }}
-          />
+          <img src={emptyheart} alt="Heart" className={styles.heart} />
         )}
-      </button>
-      <span style={{ marginLeft: "0.2rem", fontSize: "1.5rem" }}>
-        {likeCount}
-      </span>
+      </div>
+      <span>{likeCount}</span>
     </div>
   );
 };
 
-function PhotoUpload() {
+function PhotoUpload({ onSuccessPhoto }) {
   const [showModal, setShowModal] = useState(false);
 
   const handleCloseModal = () => {
@@ -159,8 +198,8 @@ function PhotoUpload() {
       try {
         const result = await photoAnalize(file);
         if (result) {
+          onSuccessPhoto(file);
           setSnowFlag(result);
-
           reader.readAsDataURL(file);
           reader.onload = () => {
             setImageSrc(reader.result); // 파일의 컨텐츠
@@ -231,8 +270,8 @@ function PhotoDisplay() {
 
 function Showoff() {
   return (
-    <div>
-      <Link to="/photoupload" className={styles.ShowoffButton}>
+    <div className={styles.ShowoffButton}>
+      <Link to="/photoupload">
         <span className={styles.ShowoffText}>내 눈사람 자랑하기</span>
       </Link>
     </div>
@@ -276,12 +315,13 @@ function SnowmanList() {
   );
 }
 
-function UploadButton() {
+function UploadButton({ onClick }) {
+  const handleClick = () => {
+    onClick();
+  };
   return (
-    <div>
-      <Link to="/Complete" className={styles.UploadButton}>
-        <p className={styles.UploadText}>전시하기</p>
-      </Link>
+    <div className={styles.UploadButton} onClick={handleClick}>
+      <p className={styles.UploadText}>전시하기</p>
     </div>
   );
 }

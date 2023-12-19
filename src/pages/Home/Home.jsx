@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   SnowmanList,
   SearchButton,
   HomeHeartButton,
   Showoff,
 } from "../../components/Button/Button";
+import getPhotoAll from "../../apis/getPhotoAll";
 import styles from "./Home.module.css";
 import { FRAME_DATA, HomeDeco, First, Second } from "../../assets";
 import Photoframe from "./Photoframe";
 
 function Home() {
-  // const FRAME_DATA = [/* your image URLs or data here */];
-
+  const [imageData, setImageData] = useState([]);
+  useEffect(() => {
+    try {
+      const handlePhotoAll = async () => {
+        const res = await getPhotoAll("LIKES");
+        setImageData(res);
+        console.log(res);
+      };
+      handlePhotoAll();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
   return (
     <div className={styles.frame}>
       <div className={styles.back}>
@@ -33,9 +45,13 @@ function Home() {
         <SnowmanList />
         <Showoff />
         <div className={styles.displayContainer}>
-          {FRAME_DATA &&
-            FRAME_DATA.map((data, index) => (
-              <Photoframe key={index} data={data} />
+          {imageData &&
+            imageData.map((image, index) => (
+              <Photoframe
+                key={index}
+                data={FRAME_DATA[index]}
+                image={image.imageUrl}
+              />
             ))}
         </div>
       </div>

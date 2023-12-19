@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { fullheart, emptyheart } from "../../components/Button/image"
+import { fullheart, emptyheart } from "../../components/Button/image";
 
 import styles from "./Photoframe.module.css";
 
-function Photoframe({ data }) {
+function Photoframe({ data, image }) {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
 
@@ -14,29 +14,28 @@ function Photoframe({ data }) {
 
   return (
     <div className={styles.Photoframe}>
-      <img src={data} alt="액자" className={styles.image} />
-      <div className={styles.heartbuttonposition}>
-        <button
+      <div
+        style={{
+          backgroundImage: `url("https://donggukthon-seven-bucket.s3.ap-northeast-2.amazonaws.com/${image}")`,
+          backgroundSize: "cover",
+          marginBottom: "0.5vh",
+        }}
+      >
+        <img src={data} alt="액자" className={styles.image} />
+      </div>
+      <div className={styles.heartContainer}>
+        <div
           onClick={handleLikeToggle}
           style={{ background: "none", border: "none", cursor: "pointer" }}
+          className={styles.heartCenter}
         >
           {liked ? (
-            <img
-              src={fullheart}
-              alt="Heart"
-              style={{ width: "1.5rem", height: "1.5rem" }}
-            />
+            <img src={fullheart} alt="Heart" className={styles.heart} />
           ) : (
-            <img
-              src={emptyheart}
-              alt="Heart"
-              style={{ width: "1.5rem", height: "1.5rem" }}
-            />
+            <img src={emptyheart} alt="Heart" className={styles.heart} />
           )}
-        </button>
-        <span style={{ marginLeft: "0.2rem", fontSize: "1.5rem" }}>
-          {likeCount}
-        </span>
+        </div>
+        <span>{likeCount}</span>
       </div>
     </div>
   );
