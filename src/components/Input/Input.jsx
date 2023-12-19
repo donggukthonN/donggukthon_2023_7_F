@@ -5,11 +5,12 @@ function input() {
   return <input type="text" />;
 }
 
-function Name() {
+function Name({ onUsernameChange }) {
   const [name, setName] = useState(""); // 이름 상태를 관리하기 위한 state
 
   const handleNameChange = (e) => {
     setName(e.target.value); // 입력 값이 변경될 때마다 상태 업데이트
+    onUsernameChange(name);
   };
 
   return (
@@ -25,26 +26,13 @@ function Name() {
 
 const real = [];
 
-function PasswordInput() {
-    const [newT, setPassword] = useState(""); // 비밀번호 상태를 관리하기 위한 state
+function PasswordInput({ onPasswordChange }) {
+  const [newT, setPassword] = useState(""); // 비밀번호 상태를 관리하기 위한 state
 
-    const handlePasswordChange = (e) => {
-      setPassword(e.target.value); // 입력 값이 변경될 때마다 상태 업데이트
-    };
-
-  // const [newT, setNewT] = useState("");
-
-  // const changeText = (e) => {
-  //   if (e.nativeEvent.data === null) {
-  //     if (real.length > 0) {
-  //       setNewT("🍪".repeat(real.length - 1));
-  //       real.pop();
-  //     }
-  //   } else {
-  //     real.push(e.nativeEvent.data);
-  //     setNewT("🍪".repeat(real.length));
-  //   }
-  // };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value); // 입력 값이 변경될 때마다 상태 업데이트
+    onPasswordChange(newT);
+  };
 
   return (
     <div className={styles.passwordInputContainer}>
@@ -144,15 +132,14 @@ function PasswordCheck() {
         </div>
       )}
     </div>
-    
   );
 }
 
-function TitleInput() {
-  const [title, setTitle] = useState(""); // 이름 상태를 관리하기 위한 state
-
+function TitleInput({ onTitleChange }) {
+  const [title, setTitle] = useState("");
   const handleTitleChange = (e) => {
-    setTitle(e.target.value); // 입력 값이 변경될 때마다 상태 업데이트
+    setTitle(e.target.value);
+    onTitleChange(title); // 입력 값이 변경될 때마다 상태 업데이트
   };
 
   return (
@@ -164,6 +151,6 @@ function TitleInput() {
       onChange={handleTitleChange}
     />
   );
-};
+}
 
 export { input, Name, PasswordInput, PasswordCheck, TitleInput };
