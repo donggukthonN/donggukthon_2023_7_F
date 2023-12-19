@@ -135,7 +135,7 @@ const HomeHeartButton = () => {
   );
 };
 
-function PhotoUpload() {
+function PhotoUpload({ onSuccessPhoto }) {
   const [showModal, setShowModal] = useState(false);
 
   const handleCloseModal = () => {
@@ -159,8 +159,8 @@ function PhotoUpload() {
       try {
         const result = await photoAnalize(file);
         if (result) {
+          onSuccessPhoto(file);
           setSnowFlag(result);
-
           reader.readAsDataURL(file);
           reader.onload = () => {
             setImageSrc(reader.result); // 파일의 컨텐츠
@@ -276,12 +276,13 @@ function SnowmanList() {
   );
 }
 
-function UploadButton() {
+function UploadButton({ onClick }) {
+  const handleClick = () => {
+    onClick();
+  };
   return (
-    <div>
-      <Link to="/Complete" className={styles.UploadButton}>
-        <p className={styles.UploadText}>전시하기</p>
-      </Link>
+    <div className={styles.UploadButton} onClick={handleClick}>
+      <p className={styles.UploadText}>전시하기</p>
     </div>
   );
 }

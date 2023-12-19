@@ -7,7 +7,6 @@ const Map = ({ onClick, onIdle, children, ...options }) => {
   React.useEffect(() => {
     if (ref.current && !map) {
       setMap(new window.google.maps.Map(ref.current, {}));
-      console.log(ref.current);
     }
   }, [ref, map]);
 
