@@ -8,7 +8,7 @@ import {
   searchicon,
   trashcan,
 } from "./image.jsx";
-
+import Modal from "../Modal/Modal.jsx";
 import LoadingPage from "../../pages/Loading/LoadingPage.jsx";
 import styles from "./Buttonstyle.module.css";
 
@@ -39,7 +39,10 @@ function DeleteButton() {
           alt="Trashcan"
           style={{ width: "0.4rem", height: "0.4rem", padding: "auto" }}
         />
-        <Link to="/delete" className={styles.DeleteText}> 삭제하기</Link>
+        <Link to="/delete" className={styles.DeleteText}>
+          {" "}
+          삭제하기
+        </Link>
       </div>
     </button>
   );
@@ -133,6 +136,11 @@ const HomeHeartButton = () => {
 };
 
 function PhotoUpload() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
   const [imageSrc, setImageSrc] = useState();
   const [snowFlag, setSnowFlag] = useState(false);
   const [lodaing, setLoading] = useState(false);
@@ -148,7 +156,6 @@ function PhotoUpload() {
 
     if (file) {
       setLoading(true);
-
       try {
         const result = await photoAnalize(file);
         if (result) {
@@ -159,9 +166,7 @@ function PhotoUpload() {
             setImageSrc(reader.result); // 파일의 컨텐츠
           };
         } else {
-          <Modal>
-            <p>AI 분석 결과 눈사람이 아닙니다!</p>
-          </Modal>;
+          setShowModal(true);
         }
       } catch (error) {
         console.log(error);
@@ -208,6 +213,10 @@ function PhotoUpload() {
           </button>
         </>
       )}
+      <Modal show={showModal} handleClose={handleCloseModal}>
+        <p>눈사람을 올려주세요!</p>
+      </Modal>
+      ;
     </div>
   );
 }
