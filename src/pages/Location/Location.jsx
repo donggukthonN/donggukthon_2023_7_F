@@ -39,8 +39,12 @@ const Location = () => {
             <Marker key={i} position={latLng} />
           ))}
         </Map>
+        <div>
+          <Link to="/upload" className={styles.locationButton}>
+            <span className={styles.selectText}>위치 설정하기</span>
+          </Link>
+        </div>
       </Wrapper>
-      <Link to="/upload" className={styles.LocationButton}><p>설정하기</p></Link>
     </div>
   );
 };

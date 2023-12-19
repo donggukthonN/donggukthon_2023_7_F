@@ -14,7 +14,6 @@ export const useReverseGeocoding = (lat, lng) => {
           setAdd(address);
           // console.log("Current Address:", address);
         }
-        console.log(lat, lng);
       } catch (error) {
         console.error("Error fetching address:", error);
       }

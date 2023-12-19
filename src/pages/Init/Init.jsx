@@ -46,8 +46,7 @@ const Init = () => {
 
     setOpacity((prevOpacity) => Math.min(prevOpacity + 0.05, 1));
     touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-    console.log(position.x);
-    console.log(position.y);
+
     if (
       Math.abs(position.x - snowLocation.x) < 10 &&
       Math.abs(position.y - snowLocation.y) < 10
