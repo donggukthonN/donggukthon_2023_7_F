@@ -12,7 +12,10 @@ import {
   Upload,
   Location,
   Complete,
-  Init,
+  First,
+  LoadingPage,
+  PhotoUpload,
+  Init
   // LoadingPage
 } from "./pages/index";
 
@@ -31,6 +34,7 @@ function App() {
           <Route path="/search" element={<Search />}></Route>
           <Route path="/complete" element={<Complete />}></Route>
           <Route path="*" element={<NotFound />}></Route>
+          <Route path="/photoupload" element={<PhotoUpload />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

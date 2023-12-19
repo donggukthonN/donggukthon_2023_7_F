@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Wrapper } from "@googlemaps/react-wrapper";
 import Map from "../../components/Map/Map";
 import Marker from "../../components/Map/Marker";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
+import styles from "../../pages/Location/Location.module.css";
 
 const Location = () => {
   const { loc } = useGeoLocation();
@@ -38,6 +40,7 @@ const Location = () => {
           ))}
         </Map>
       </Wrapper>
+      <Link to="/upload" className={styles.LocationButton}><p>설정하기</p></Link>
     </div>
   );
 };

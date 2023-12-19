@@ -9,6 +9,7 @@ import {
   trashcan,
 } from "./image.jsx";
 
+import Modal from '../Modal/Modal.jsx';
 import LoadingPage from "../../pages/Loading/LoadingPage.jsx";
 import styles from "./Buttonstyle.module.css";
 
@@ -39,7 +40,7 @@ function DeleteButton() {
           alt="Trashcan"
           style={{ width: "0.4rem", height: "0.4rem", padding: "auto" }}
         />
-        <span className={styles.Delete - Text}> 삭제하기</span>
+        <Link to="/delete" className={styles.DeleteText}> 삭제하기</Link>
       </div>
     </button>
   );
@@ -273,6 +274,27 @@ function UploadButton() {
   );
 }
 
+function LocationFirstButton() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+  return (
+    <div>
+      <button onClick={handleOpenModal} className={styles.UploadButton}><p className={styles.UploadText}>전시하기</p></button>
+      <Modal show={showModal} handleClose={handleCloseModal}>
+        {/* Add your modal content here */}
+        <p>위치를 먼저 등록해주세요</p>
+      </Modal>
+    </div>
+  );
+}
+
 export {
   Button,
   SearchButton,
@@ -285,4 +307,5 @@ export {
   SnowmanList,
   UploadButton,
   HomeHeartButton,
+  LocationFirstButton
 };

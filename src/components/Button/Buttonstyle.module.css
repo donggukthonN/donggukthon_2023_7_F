@@ -73,6 +73,7 @@
   object-fit: fill;
   /* height: 100%; */
 }
+
 .ShareButton {
   /* position: absolute; */
   width: 4.4rem;
@@ -141,7 +142,7 @@
   position: absolute;
   width: 15rem;
   height: 5vh;
-  margin-top: 51vh;
+  margin-top: 45vh;
   margin-left: -8rem;
   border-radius: 0.6rem 0.6rem 0.1rem 0.1rem;
   background-color: #1a1a1a;
