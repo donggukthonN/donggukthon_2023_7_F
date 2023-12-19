@@ -1,5 +1,5 @@
 import styles from "../../pages/Detail/Detail.module.css";
-import { LocationInput } from "../../components/index";
+import { LocationInput, Title } from "../../components/index";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
 import { useReverseGeocoding } from "../../hooks/useReverseGeocoding";
 import {
@@ -32,8 +32,8 @@ const Detail = () => {
     <div className={styles.Detailpage}>
       {address ? (
         <div className={styles.Detailcomponent}>
-          <div className={styles.LocationInput}>
-            <LocationInput location={address} />
+          <div className={styles.TitleInput}>
+            <Title />
           </div>
           <div className={styles.PhotoUpload}>
             <PhotoUpload />

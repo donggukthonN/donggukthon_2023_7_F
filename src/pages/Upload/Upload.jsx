@@ -3,7 +3,7 @@ import { useGeoLocation } from "../../hooks/useGeoLocation";
 import { useReverseGeocoding } from "../../hooks/useReverseGeocoding";
 import { LocationInput } from "../../components/index";
 import { PhotoUpload, UploadButton } from "../../components/Button/Button";
-import { Name, PasswordInput } from "../../components/Input/Input";
+import { Name, PasswordInput, TitleInput } from "../../components/Input/Input";
 import LoadingPage from "../Loading/LoadingPage";
 import styles from "../../pages/Upload/Upload.module.css";
 
@@ -32,8 +32,8 @@ const Upload = () => {
       {address ? (
         <div className={styles.Uploadpage}>
           <div>
-            <div className={styles.PhotoUpload}>
-              <LocationInput location={address} />
+            <div className={styles.TitleInput}>
+              <TitleInput />
             </div>
             <div className={styles.PhotoUpload}>
               <PhotoUpload />
