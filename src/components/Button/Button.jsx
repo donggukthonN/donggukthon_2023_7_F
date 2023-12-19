@@ -1,4 +1,5 @@
 import React, { useState, useRef, useCallback } from "react";
+import { Link } from "react-router-dom";
 import photoAnalize from "../../apis/photoAnalize.js";
 import {
   emptyheart,
@@ -16,7 +17,7 @@ function Button() {
 
 function SearchButton() {
   return (
-    <button className={styles.SearchButton}>
+    <Link to="/search" className={styles.SearchButton}>
       <div className={styles.searchicon}>
         <img
           src={searchicon}
@@ -24,7 +25,7 @@ function SearchButton() {
           style={{ width: "0.6rem", height: "0.6rem", padding: "auto" }}
         />
       </div>
-    </button>
+    </Link>
   );
 }
 
@@ -88,6 +89,42 @@ const HeartButton = () => {
         )}
       </button>
       <span style={{ marginLeft: "0.2rem", fontSize: "2rem" }}>
+        {likeCount}
+      </span>
+    </div>
+  );
+};
+
+const HomeHeartButton = () => {
+  const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
+
+  const handleLikeToggle = () => {
+    setLiked(!liked);
+    setLikeCount(liked ? likeCount - 1 : likeCount + 1);
+  };
+
+  return (
+    <div className={styles.heartbuttonposition}>
+      <button
+        onClick={handleLikeToggle}
+        style={{ background: "none", border: "none", cursor: "pointer" }}
+      >
+        {liked ? (
+          <img
+            src={fullheart}
+            alt="Heart"
+            style={{ width: "1.5rem", height: "1.5rem" }}
+          />
+        ) : (
+          <img
+            src={emptyheart}
+            alt="Heart"
+            style={{ width: "1.5rem", height: "1.5rem" }}
+          />
+        )}
+      </button>
+      <span style={{ marginLeft: "0.2rem", fontSize: "1.5rem" }}>
         {likeCount}
       </span>
     </div>
@@ -166,9 +203,9 @@ function PhotoDisplay() {
 function Showoff() {
   return (
     <div>
-      <button className={styles.ShowoffButton}>
+      <Link to="/upload" className={styles.ShowoffButton}>
         <span className={styles.ShowoffText}>내 눈사람 자랑하기</span>
-      </button>
+      </Link>
     </div>
   );
 }
@@ -209,12 +246,13 @@ function SnowmanList() {
     </div>
   );
 }
+
 function UploadButton() {
   return (
     <div>
-      <button className={styles.UploadButton}>
+      <Link to="/Complete" className={styles.UploadButton}>
         <p className={styles.UploadText}>전시하기</p>
-      </button>
+      </Link>
     </div>
   );
 }
@@ -230,4 +268,5 @@ export {
   Showoff,
   SnowmanList,
   UploadButton,
+  HomeHeartButton
 };
