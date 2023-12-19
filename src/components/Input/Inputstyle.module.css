@@ -1,0 +1,88 @@
+.my-input {
+  width: 50%;
+  height: 50vh;
+}
+
+/* Name.css */
+.nameInput {
+  /* position: absolute; */
+  width: 5rem;
+  height: 2.5vh;
+  margin-top: 1vh;
+  /* margin-left: 25%; */
+  text-align: center;
+  font-size: 0.5rem;
+  font-weight: 600;
+  background-color: white;
+  border-image: url('../../assets/uploadinput.svg') 20 round;
+  border-width: 0.2rem;
+  /* 이미지에서 모서리까지의 간격을 설정하세요 */
+  border-image-slice: 10;
+  /* 이미지에서 내용의 영역을 설정하세요 */
+}
+
+/* PasswordInput.css */
+.passwordInput {
+  /* position: absolute; */
+  width: 5rem;
+  height: 2.5vh;
+  margin-top: 1vh;
+  margin-left: 5.5rem;
+  text-align: center;
+  font-size: 0.5rem;
+  font-weight: 600;
+  background-color: white;
+  border-image: url('../../assets/uploadinput.svg') 20 round;
+  border-width: 0.2rem;
+  /* 이미지에서 모서리까지의 간격을 설정하세요 */
+  border-image-slice: 10;
+  /* 이미지에서 내용의 영역을 설정하세요 */
+}
+
+/* PasswordCheck.css */
+.PhotodeletePw {
+  width: 4rem;
+  height: 2.6vh;
+  margin-top: 0.3vh;
+  margin-bottom: 0.5vh;
+  /* margin-top: -3vh;
+  margin-left: 25%; */
+  text-align: center;
+  font-size: 0.5rem;
+  font-weight: 600;
+  border-color: black;
+  border-width: 0.08rem;
+  border-radius: 0.2rem;
+}
+
+.PhotodeleteBtn {
+  /* position: absolute; */
+  width: 4.4rem;
+  height: 3vh;
+  /* margin-top: 54vh;
+    margin-left: 50%; */
+  background-color: black;
+  border-color: black;
+  border-width: 0.08rem;
+  border-radius: 0.2rem;
+  display: inline-block;
+  padding: 0px 10px;
+  margin: auto;
+  text-align: center;
+  font-size: 0.5rem;
+  font-weight: 500;
+  color: white;
+}
+
+.titleInput {
+  margin-top: 1vh;
+  width: 16.2rem;
+  height: 3.5vh;
+  border: 0.38rem #900305 solid;
+  background-color: white;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
