@@ -10,8 +10,7 @@
   /* justify-content: center; */
   align-items: center;
   overflow: scroll;
-  background-image:
-    url("../../assets/initBackground.svg");
+  background-image: url("../../assets/initBackground.svg");
   /* url("../../assets/snowing.svg"); */
   background-size: cover;
   background-repeat: no-repeat;
@@ -31,11 +30,13 @@
 .BestImg {
   margin-top: 2vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3vw;
 }
 
 .Best {
   width: 10rem;
-  margin-right: 2rem;
 }
 
 .Second {
@@ -51,9 +52,9 @@
 
 .displayContainer {
   display: grid;
-  margin-top: 2vh;
+  margin: 2rem;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 0.5rem 1vw;
+  gap: 2rem 2rem;
 }
 
 .image {
