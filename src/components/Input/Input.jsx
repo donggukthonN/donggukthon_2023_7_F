@@ -10,7 +10,7 @@ function Name({ onUsernameChange }) {
 
   const handleNameChange = (e) => {
     setName(e.target.value); // 입력 값이 변경될 때마다 상태 업데이트
-    onUsernameChange(name);
+    onUsernameChange(e.target.value);
   };
 
   return (
@@ -31,7 +31,7 @@ function PasswordInput({ onPasswordChange }) {
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value); // 입력 값이 변경될 때마다 상태 업데이트
-    onPasswordChange(newT);
+    onPasswordChange(e.target.value);
   };
 
   return (
@@ -139,7 +139,7 @@ function TitleInput({ onTitleChange }) {
   const [title, setTitle] = useState("");
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
-    onTitleChange(title); // 입력 값이 변경될 때마다 상태 업데이트
+    onTitleChange(e.target.value);
   };
 
   return (
