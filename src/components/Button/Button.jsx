@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import photoAnalize from "../../apis/photoAnalize.js";
 import {
@@ -63,14 +63,32 @@ function ShareButton() {
   );
 }
 
-const HeartButton = () => {
+const HeartButton = ({ photoId }) => {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
 
+  useEffect(() => {
+    const likedStatus = JSON.parse(localStorage.getItem(`liked_${photoId}`)) || false;
+    const likeCountValue = JSON.parse(localStorage.getItem(`likeCount_${photoId}`)) || 0;
+
+    setLiked(likedStatus);
+    setLikeCount(likeCountValue);
+  }, [photoId]);
+
   const handleLikeToggle = () => {
-    setLiked(!liked);
-    setLikeCount(liked ? likeCount - 1 : likeCount + 1);
+    const newLikedStatus = !liked;
+
+    localStorage.setItem(`liked_${photoId}`, JSON.stringify(newLikedStatus));
+
+    setLikeCount((prevLikeCount) => {
+      const updatedLikeCount = newLikedStatus ? prevLikeCount + 1 : prevLikeCount - 1;
+      localStorage.setItem(`likeCount_${photoId}`, JSON.stringify(updatedLikeCount));
+      return updatedLikeCount;
+    });
+
+    setLiked(newLikedStatus);
   };
+
 
   return (
     <div className={styles.heartbuttonposition}>
@@ -99,13 +117,30 @@ const HeartButton = () => {
   );
 };
 
-const HomeHeartButton = () => {
+const HomeHeartButton = ({ photoId }) => {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
 
+  useEffect(() => {
+    const likedStatus = JSON.parse(localStorage.getItem(`liked_${photoId}`)) || false;
+    const likeCountValue = JSON.parse(localStorage.getItem(`likeCount_${photoId}`)) || 0;
+
+    setLiked(likedStatus);
+    setLikeCount(likeCountValue);
+  }, [photoId]);
+
   const handleLikeToggle = () => {
-    setLiked(!liked);
-    setLikeCount(liked ? likeCount - 1 : likeCount + 1);
+    const newLikedStatus = !liked;
+
+    localStorage.setItem(`liked_${photoId}`, JSON.stringify(newLikedStatus));
+
+    setLikeCount((prevLikeCount) => {
+      const updatedLikeCount = newLikedStatus ? prevLikeCount + 1 : prevLikeCount - 1;
+      localStorage.setItem(`likeCount_${photoId}`, JSON.stringify(updatedLikeCount));
+      return updatedLikeCount;
+    });
+
+    setLiked(newLikedStatus);
   };
 
   return (
@@ -128,7 +163,7 @@ const HomeHeartButton = () => {
           />
         )}
       </button>
-      <span style={{ marginLeft: "0.2rem", fontSize: "1.5rem" }}>
+      <span style={{ marginLeft: "0.1rem", fontSize: "1.5rem" }}>
         {likeCount}
       </span>
     </div>
