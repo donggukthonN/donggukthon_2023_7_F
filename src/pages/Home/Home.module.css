@@ -34,22 +34,12 @@
 }
 
 .Best {
-  width: 8rem;
+  width: 10rem;
   margin-right: 2rem;
-  border-image: url('../../assets/First.svg') 20 round;
-  border-width: 20px;
-  /* 이미지에서 모서리까지의 간격을 설정하세요 */
-  border-image-slice: 50;
-  /* 이미지에서 내용의 영역을 설정하세요 */
 }
 
 .Second {
-  width: 8rem;
-  border-image: url('../../assets/Second.svg') 20 round;
-  border-width: 11px;
-  /* 이미지에서 모서리까지의 간격을 설정하세요 */
-  border-image-slice: 90;
-  /* 이미지에서 내용의 영역을 설정하세요 */
+  width: 10rem;
 }
 
 .line {

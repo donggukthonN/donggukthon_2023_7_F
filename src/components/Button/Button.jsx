@@ -94,6 +94,42 @@ const HeartButton = () => {
   );
 };
 
+const HomeHeartButton = () => {
+  const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
+
+  const handleLikeToggle = () => {
+    setLiked(!liked);
+    setLikeCount(liked ? likeCount - 1 : likeCount + 1);
+  };
+
+  return (
+    <div className={styles.heartbuttonposition}>
+      <button
+        onClick={handleLikeToggle}
+        style={{ background: "none", border: "none", cursor: "pointer" }}
+      >
+        {liked ? (
+          <img
+            src={fullheart}
+            alt="Heart"
+            style={{ width: "1.5rem", height: "1.5rem" }}
+          />
+        ) : (
+          <img
+            src={emptyheart}
+            alt="Heart"
+            style={{ width: "1.5rem", height: "1.5rem" }}
+          />
+        )}
+      </button>
+      <span style={{ marginLeft: "0.2rem", fontSize: "1.5rem" }}>
+        {likeCount}
+      </span>
+    </div>
+  );
+};
+
 function PhotoUpload() {
   const [imageSrc, setImageSrc] = useState();
   const inputRef = useRef();
@@ -106,16 +142,16 @@ function PhotoUpload() {
     const reader = new FileReader();
     reader.readAsDataURL(file);
 
-    // if (file) {
-    //   try {
-    //     const result = await photoAnalize(file);
-    //     console.log("Server Response:", result);
-    //     // 서버 응답을 처리하거나 상태를 업데이트할 수 있습니다.
-    //   } catch (error) {
-    //     console.error("Error uploading image:", error);
-    //     // 에러 처리 로직을 추가할 수 있습니다.
-    //   }
-    // }
+    if (file) {
+      try {
+        const result = await photoAnalize(file);
+        console.log("Server Response:", result);
+        // 서버 응답을 처리하거나 상태를 업데이트할 수 있습니다.
+      } catch (error) {
+        console.error("Error uploading image:", error);
+        // 에러 처리 로직을 추가할 수 있습니다.
+      }
+    }
 
     return new Promise((resolve) => {
       console.log(reader);
@@ -182,6 +218,10 @@ function SnowmanList() {
 
   return (
     <div className={styles.SnowmanList}>
+      {" "}
+      {/* Use styles.SnowmanList instead of "SnowmanList" */}
+      <hr className={styles.Listline}></hr>{" "}
+      {/* Use styles.Listline instead of "Listline" */}
       <button
         className={
           selectedButton === "LikeList"
@@ -205,6 +245,7 @@ function SnowmanList() {
     </div>
   );
 }
+
 function UploadButton() {
   return (
     <div>
@@ -226,4 +267,5 @@ export {
   Showoff,
   SnowmanList,
   UploadButton,
+  HomeHeartButton
 };
