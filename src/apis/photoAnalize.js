@@ -8,7 +8,7 @@ const photoAnalize = async (imageFile) => {
     const formData = new FormData();
     formData.append("image", imageFile);
     console.log(formData);
-    const response = await axios.post(`${API_URL}/photo/analyze/`, formData, {
+    const response = await axios.post(`${API_URL}/photo/analyze`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
