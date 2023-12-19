@@ -68,8 +68,10 @@ const HeartButton = ({ photoId }) => {
   const [likeCount, setLikeCount] = useState(0);
 
   useEffect(() => {
-    const likedStatus = JSON.parse(localStorage.getItem(`liked_${photoId}`)) || false;
-    const likeCountValue = JSON.parse(localStorage.getItem(`likeCount_${photoId}`)) || 0;
+    const likedStatus =
+      JSON.parse(localStorage.getItem(`liked_${photoId}`)) || false;
+    const likeCountValue =
+      JSON.parse(localStorage.getItem(`likeCount_${photoId}`)) || 0;
 
     setLiked(likedStatus);
     setLikeCount(likeCountValue);
@@ -81,14 +83,18 @@ const HeartButton = ({ photoId }) => {
     localStorage.setItem(`liked_${photoId}`, JSON.stringify(newLikedStatus));
 
     setLikeCount((prevLikeCount) => {
-      const updatedLikeCount = newLikedStatus ? prevLikeCount + 1 : prevLikeCount - 1;
-      localStorage.setItem(`likeCount_${photoId}`, JSON.stringify(updatedLikeCount));
+      const updatedLikeCount = newLikedStatus
+        ? prevLikeCount + 1
+        : prevLikeCount - 1;
+      localStorage.setItem(
+        `likeCount_${photoId}`,
+        JSON.stringify(updatedLikeCount)
+      );
       return updatedLikeCount;
     });
 
     setLiked(newLikedStatus);
   };
-
 
   return (
     <div className={styles.heartbuttonposition}>
@@ -122,8 +128,10 @@ const HomeHeartButton = ({ photoId }) => {
   const [likeCount, setLikeCount] = useState(0);
 
   useEffect(() => {
-    const likedStatus = JSON.parse(localStorage.getItem(`liked_${photoId}`)) || false;
-    const likeCountValue = JSON.parse(localStorage.getItem(`likeCount_${photoId}`)) || 0;
+    const likedStatus =
+      JSON.parse(localStorage.getItem(`liked_${photoId}`)) || false;
+    const likeCountValue =
+      JSON.parse(localStorage.getItem(`likeCount_${photoId}`)) || 0;
 
     setLiked(likedStatus);
     setLikeCount(likeCountValue);
@@ -135,8 +143,13 @@ const HomeHeartButton = ({ photoId }) => {
     localStorage.setItem(`liked_${photoId}`, JSON.stringify(newLikedStatus));
 
     setLikeCount((prevLikeCount) => {
-      const updatedLikeCount = newLikedStatus ? prevLikeCount + 1 : prevLikeCount - 1;
-      localStorage.setItem(`likeCount_${photoId}`, JSON.stringify(updatedLikeCount));
+      const updatedLikeCount = newLikedStatus
+        ? prevLikeCount + 1
+        : prevLikeCount - 1;
+      localStorage.setItem(
+        `likeCount_${photoId}`,
+        JSON.stringify(updatedLikeCount)
+      );
       return updatedLikeCount;
     });
 
@@ -144,28 +157,19 @@ const HomeHeartButton = ({ photoId }) => {
   };
 
   return (
-    <div className={styles.heartbuttonposition}>
-      <button
+    <div className={styles.heartContainer}>
+      <div
         onClick={handleLikeToggle}
         style={{ background: "none", border: "none", cursor: "pointer" }}
+        className={styles.heartCenter}
       >
         {liked ? (
-          <img
-            src={fullheart}
-            alt="Heart"
-            style={{ width: "1.5rem", height: "1.5rem" }}
-          />
+          <img src={fullheart} alt="Heart" className={styles.heart} />
         ) : (
-          <img
-            src={emptyheart}
-            alt="Heart"
-            style={{ width: "1.5rem", height: "1.5rem" }}
-          />
+          <img src={emptyheart} alt="Heart" className={styles.heart} />
         )}
-      </button>
-      <span style={{ marginLeft: "0.1rem", fontSize: "1.5rem" }}>
-        {likeCount}
-      </span>
+      </div>
+      <span>{likeCount}</span>
     </div>
   );
 };
@@ -266,8 +270,8 @@ function PhotoDisplay() {
 
 function Showoff() {
   return (
-    <div>
-      <Link to="/photoupload" className={styles.ShowoffButton}>
+    <div className={styles.ShowoffButton}>
+      <Link to="/photoupload">
         <span className={styles.ShowoffText}>내 눈사람 자랑하기</span>
       </Link>
     </div>

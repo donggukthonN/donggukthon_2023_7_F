@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import styles from "./select.module.css";
 
-const Select = ({ title }) => {
-  const [searchType, setSearchType] = useState("author");
+const Select = ({ title, onSelectChange }) => {
+  // const [searchType, setSearchType] = useState("author");
 
   const handleRadioChange = (event) => {
-    setSearchType(event.target.id);
+    onSelectChange(event.target.id);
   };
   return (
     <div className={styles.frame}>
@@ -16,7 +16,6 @@ const Select = ({ title }) => {
             type="radio"
             id={"WRITER"}
             name={"search"}
-            checked={searchType === "WRITER"}
             onChange={handleRadioChange}
           />
           작가 이름
@@ -26,7 +25,6 @@ const Select = ({ title }) => {
             type="radio"
             id={"TITLE"}
             name={"search"}
-            checked={searchType === "TITLE"}
             onChange={handleRadioChange}
           />
           작품 제목
@@ -37,7 +35,6 @@ const Select = ({ title }) => {
             type="radio"
             id={"LOCATION"}
             name={"search"}
-            checked={searchType === "LOCATION"}
             onChange={handleRadioChange}
           />
           위치

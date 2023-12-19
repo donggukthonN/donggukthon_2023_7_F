@@ -143,10 +143,11 @@
 
 .ShowoffButton {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 15rem;
   height: 5vh;
-  top: 90%;
-  left: 18vw;
   top: 90%;
   left: 18vw;
   /* margin-top: 45vh;
@@ -209,4 +210,21 @@
   justify-content: center;
   align-items: center;
   padding: 10px 0;
+}
+
+.heartContainer {
+  width: 25%;
+  display: flex;
+  align-self: flex-start;
+  justify-content: space-around;
+  align-items: center;
+}
+.heartCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heart {
+  width: 5vw;
 }
