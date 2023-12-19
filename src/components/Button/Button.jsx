@@ -40,10 +40,7 @@ function DeleteButton() {
           alt="Trashcan"
           style={{ width: "0.4rem", height: "0.4rem", padding: "auto" }}
         />
-        <Link to="/delete" className={styles.DeleteText}>
-          {" "}
-          삭제하기
-        </Link>
+        <Link to="/delete" className={styles.DeleteText}> 삭제하기</Link>
       </div>
     </button>
   );
@@ -223,7 +220,7 @@ function PhotoDisplay() {
 function Showoff() {
   return (
     <div>
-      <Link to="/upload" className={styles.ShowoffButton}>
+      <Link to="/photoupload" className={styles.ShowoffButton}>
         <span className={styles.ShowoffText}>내 눈사람 자랑하기</span>
       </Link>
     </div>
@@ -287,13 +284,13 @@ function LocationFirstButton() {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
   return (
     <div>
       <button onClick={handleOpenModal} className={styles.UploadButton}>
         <p className={styles.UploadText}>전시하기</p>
       </button>
       <Modal show={showModal} handleClose={handleCloseModal}>
-        {/* Add your modal content here */}
         <p>위치를 먼저 등록해주세요</p>
       </Modal>
     </div>

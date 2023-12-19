@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useReverseGeocoding } from "../../hooks/useReverseGeocoding";
 import { LocationInput } from "../../components/index";
 import { PhotoUpload, UploadButton } from "../../components/Button/Button";
-import { Name, PasswordInput } from "../../components/Input/Input";
+import { Name, PasswordInput, TitleInput } from "../../components/Input/Input";
+import LoadingPage from "../Loading/LoadingPage";
 import styles from "../../pages/Upload/Upload.module.css";
 
 const Upload = () => {

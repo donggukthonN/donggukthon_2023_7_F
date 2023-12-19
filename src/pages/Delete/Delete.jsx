@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { LocationInput } from "../../components/index";
+import { LocationInput, Title } from "../../components/index";
 import LoadingPage from "../Loading/LoadingPage";
 import { useReverseGeocoding } from "../../hooks/useReverseGeocoding";
 import styles from "../../pages/Delete/Delete.module.css";
@@ -31,9 +31,9 @@ const Delete = () => {
   return (
     <div className={styles.Deletepage}>
       {address ? (
-        <div className={styles.Deletecomponen}>
-          <div className={styles.LocationInput}>
-            <LocationInput location={address} />
+        <div className={styles.Deletecomponent}>
+          <div className={styles.TitleInput}>
+            <Title />
           </div>
           <div className={styles.PhotoDisplay}>
             <PhotoDisplay />
