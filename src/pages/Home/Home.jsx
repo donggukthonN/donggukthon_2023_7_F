@@ -1,7 +1,7 @@
 import React from "react";
-import { SnowmanList, SearchButton, HeartButton } from "../../components/Button/Button";
+import { SnowmanList, SearchButton, HomeHeartButton } from "../../components/Button/Button";
 import styles from "./Home.module.css";
-import { FRAME_DATA, HomeDeco, dummy } from "../../assets";
+import { FRAME_DATA, HomeDeco, dummy, First, Second } from "../../assets";
 import Photoframe from "./Photoframe";
 import { xmas } from "../../components/Button/image"
 
@@ -16,8 +16,8 @@ function Home() {
         <SearchButton className={styles.SearchButton} />
         </div>
         <div className={styles.BestImg}>
-        <div><img src={dummy} alt="first" className={styles.Best} /><HeartButton /></div>
-        <div><img src={dummy} alt="first" className={styles.Second} /><HeartButton /></div>
+        <div><img src={First} alt="first" className={styles.Best} /><HomeHeartButton /></div>
+        <div><img src={Second} alt="first" className={styles.Second} /><HomeHeartButton /></div>
         </div>
         <hr className={styles.line} />
         <SnowmanList />

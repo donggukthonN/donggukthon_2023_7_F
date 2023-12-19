@@ -94,6 +94,42 @@ const HeartButton = () => {
   );
 };
 
+const HomeHeartButton = () => {
+  const [liked, setLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
+
+  const handleLikeToggle = () => {
+    setLiked(!liked);
+    setLikeCount(liked ? likeCount - 1 : likeCount + 1);
+  };
+
+  return (
+    <div className={styles.heartbuttonposition}>
+      <button
+        onClick={handleLikeToggle}
+        style={{ background: "none", border: "none", cursor: "pointer" }}
+      >
+        {liked ? (
+          <img
+            src={fullheart}
+            alt="Heart"
+            style={{ width: "1.5rem", height: "1.5rem" }}
+          />
+        ) : (
+          <img
+            src={emptyheart}
+            alt="Heart"
+            style={{ width: "1.5rem", height: "1.5rem" }}
+          />
+        )}
+      </button>
+      <span style={{ marginLeft: "0.2rem", fontSize: "1.5rem" }}>
+        {likeCount}
+      </span>
+    </div>
+  );
+};
+
 function PhotoUpload() {
   const [imageSrc, setImageSrc] = useState();
   const inputRef = useRef();
@@ -209,6 +245,7 @@ function SnowmanList() {
     </div>
   );
 }
+
 function UploadButton() {
   return (
     <div>
@@ -230,4 +267,5 @@ export {
   Showoff,
   SnowmanList,
   UploadButton,
+  HomeHeartButton
 };
