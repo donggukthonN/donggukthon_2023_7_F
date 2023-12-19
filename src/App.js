@@ -12,10 +12,8 @@ import {
   Upload,
   Location,
   Complete,
-  First,
-  LoadingPage,
   PhotoUpload,
-  Init
+  Init,
   // LoadingPage
 } from "./pages/index";
 
