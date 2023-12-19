@@ -10,6 +10,7 @@ import {
 } from "../../components/Button/Button";
 import { PasswordCheck } from "../../components/Input/Input";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
+import getOnephoto from "../../apis/getOnephoto";
 
 const Delete = () => {
   const [lat, setLat] = useState();
@@ -27,6 +28,19 @@ const Delete = () => {
   useEffect(() => {
     setAddress(data);
   }, [data]);
+
+  useEffect(() => {
+    try {
+      const handleOnephoto = async () => {
+        const res = await getOnephoto(1);
+        console.log(res);
+      };
+      handleOnephoto();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
 
   return (
     <div className={styles.Deletepage}>
