@@ -11,6 +11,7 @@ import {
 import { PasswordCheck } from "../../components/Input/Input";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
 import getOnephoto from "../../apis/getOnephoto";
+import DeletePhoto from '../../apis/DeletePhoto';
 
 const Delete = () => {
   const [lat, setLat] = useState();
@@ -41,6 +42,18 @@ const Delete = () => {
     }
   }, []);
 
+  const [photo_id, setPhotoId] = useState(1); // 예시로 photo_id 설정
+  const [password, setPassword] = useState('1234'); // 예시로 password 설정
+
+  const handleDeletePhoto = async () => {
+    try {
+      const response = await DeletePhoto(photo_id, { password });
+      console.log(response);
+      // 서버 응답을 기반으로 추가적인 로직 수행 가능
+    } catch (error) {
+      console.error('Error deleting photo:', error);
+    }
+  };
 
   return (
     <div className={styles.Deletepage}>
@@ -55,7 +68,8 @@ const Delete = () => {
           <div className={styles.DeleteButtons}>
             <HeartButton />
             <ShareButton />
-            <PasswordCheck />
+            <PasswordCheck
+            />
           </div>
         </div>
       ) : (
