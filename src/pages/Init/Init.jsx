@@ -12,11 +12,11 @@ const Init = () => {
   const [opacity, setOpacity] = useState(0);
   const snowmanRef = useRef(null);
   const [position, setPosition] = useState({
-    x: window.innerWidth / 2.7,
+    x: window.innerWidth / 2.755,
     y: window.innerHeight / 8,
   });
   const touchStart = useRef({
-    x: window.innerWidth / 2.7,
+    x: window.innerWidth / 2.755,
     y: window.innerHeight / 8,
   });
 
@@ -25,7 +25,6 @@ const Init = () => {
       if (snowmanRef.current) {
         const { left, top } = snowmanRef.current.getBoundingClientRect();
         setSnowLocation({ x: left + 40, y: top - 40 });
-        console.log(left, top);
       }
     };
     getSnowmanCoordinates();
@@ -57,7 +56,7 @@ const Init = () => {
       const timeoutId = setTimeout(() => {
         // 1초 뒤에 '/new-page'로 이동
         navigate("/home");
-      }, 1000);
+      }, 1500);
 
       // 컴포넌트가 언마운트되면 타임아웃 클리어
       return () => clearTimeout(timeoutId);
@@ -89,7 +88,7 @@ const Init = () => {
         }}
       />
       {textFlag && (
-        <span style={{ position: "absolute", top: "30vh" }}>
+        <span style={{ position: "absolute", top: "25vh" }}>
           눈사람에게 모자를 씌워주세요
         </span>
       )}
