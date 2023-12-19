@@ -9,7 +9,7 @@ const getPhotoAll = async (orderBy) => {
       },
       params: { orderBy },
     });
-    console.log(res);
+    return res.data;
   } catch (err) {
     console.error(err);
   }

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { fullheart, emptyheart } from "../../components/Button/image"
+import { fullheart, emptyheart } from "../../components/Button/image";
 
 import styles from "./Photoframe.module.css";
 
-function Photoframe({ data }) {
+function Photoframe({ data, image }) {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
 
@@ -13,7 +13,13 @@ function Photoframe({ data }) {
   };
 
   return (
-    <div className={styles.Photoframe}>
+    <div
+      className={styles.Photoframe}
+      style={{
+        backgroundImage: `url("https://donggukthon-seven-bucket.s3.ap-northeast-2.amazonaws.com/${image}")`,
+        backgroundSize: "cover",
+      }}
+    >
       <img src={data} alt="액자" className={styles.image} />
       <div className={styles.heartbuttonposition}>
         <button
