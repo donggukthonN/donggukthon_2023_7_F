@@ -1,0 +1,62 @@
+.frame {
+  height: 100vh;
+  width: 100vw;
+}
+
+.back {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  overflow: scroll;
+  background-image:
+    url("../../assets/initBackground.svg");
+  /* url("../../assets/snowing.svg"); */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.HomeTop {
+  display: flex;
+  margin-top: 1vh;
+}
+
+.HomeDeco {
+  margin-left: 7rem;
+  margin-top: 0.5vh;
+  width: 10rem;
+}
+
+.BestImg {
+  margin-top: 2vh;
+  display: flex;
+}
+
+.Best {
+  width: 10rem;
+  margin-right: 2rem;
+}
+
+.Second {
+  width: 10rem;
+}
+
+.line {
+  margin-bottom: 1rem;
+  width: 95vw;
+  border: 2px white solid;
+  background-color: transparent;
+}
+
+.displayContainer {
+  display: grid;
+  margin-top: 2vh;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem 1vw;
+}
+
+.image {
+  width: 32vw;
+  height: 15vh;
+}
