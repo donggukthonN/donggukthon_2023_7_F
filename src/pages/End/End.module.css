@@ -27,9 +27,10 @@
 }
 
 .EndHome {
-  position: absolute;
-  margin-top: -26.5vh;
-  margin-left: 46%;
+  margin-top: -14rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1.2rem;
   font-weight: 700;
   text-decoration: underline;
