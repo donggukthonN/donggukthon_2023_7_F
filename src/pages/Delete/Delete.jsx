@@ -17,6 +17,7 @@ const Delete = () => {
   const [title, setTitle] = useState(null);
   const [likes, setLikes] = useState(null);
   const [image, setImage] = useState(null);
+  // const [pwStatus, setPwStatus] = useState()
   const ID = parseInt(location.pathname.replace("/delete/", ""), 10);
 
   useEffect(() => {
@@ -34,15 +35,13 @@ const Delete = () => {
 
   const handleDeletePhoto = async (pw) => {
     if (pw && ID) {
-      console.log(pw);
       const res = await DeletePhoto(ID, pw);
       if (res.data === "포토 삭제 완료") {
         alert("삭제 완료");
-        navigate("/home");
+        navigate("/end");
       } else {
         alert("비밀번호 오류!");
       }
-
     }
   };
 

@@ -1,11 +1,11 @@
 .title {
-    width: 16.2rem;
-    height: 3.5vh;
-    border: 0.38rem #900305 solid;
-    background-color: white;
-    font-size: 1rem;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+  width: 16.2rem;
+  height: 3.5vh;
+  border: 0.38rem #900305 solid;
+  background-color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -45,13 +45,12 @@ function PasswordInput({ onPasswordChange }) {
     </div>
   );
 }
-const real = [];
+let real = [];
 
 function PasswordCheck({ onSubmitPassword }) {
   const [newT, setNewT] = useState("");
   const [isDeleted, setDeleted] = useState(false);
   const changeText = (e) => {
-    console.log(real);
     if (e.nativeEvent.data === null) {
       if (real.length > 0) {
         setNewT("🍪".repeat(real.length - 1));
@@ -63,9 +62,11 @@ function PasswordCheck({ onSubmitPassword }) {
     }
   };
 
-
-  const onClick = () => {
-    return onSubmitPassword(real.join(""));
+  const onClick = (e) => {
+    const pw = real.join("");
+    real = [];
+    setNewT("");
+    return onSubmitPassword(pw);
   };
   return (
     <div>
@@ -84,9 +85,9 @@ function PasswordCheck({ onSubmitPassword }) {
               value={newT}
             ></input>
           </div>
-          <Link to="/end" className={styles.PhotodeleteBtn} onClick={onClick}>
+          <div className={styles.PhotodeleteBtn} onClick={onClick}>
             삭제하기
-          </Link>
+          </div>
           {/* <button onClick={handleDeleteAccount}>계정 삭제</button> */}
         </div>
       )}
