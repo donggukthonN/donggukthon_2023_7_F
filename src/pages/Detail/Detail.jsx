@@ -2,13 +2,14 @@ import styles from "../../pages/Detail/Detail.module.css";
 import { useLocation } from "react-router-dom";
 import {
   HomeHeartButton,
-  PhotoUpload,
   ShareButton,
   DeleteButton,
 } from "../../components/Button/Button";
+import PhotoShow from "../../components/PhotoShow/PhotoShow";
 import { Title } from "../../components";
 import React, { useEffect, useState } from "react";
 import getOnephoto from "../../apis/getOnephoto";
+import { IMG_BASE_URL } from "../../utils/constant";
 
 const Detail = () => {
   const location = useLocation();
@@ -39,7 +40,7 @@ const Detail = () => {
           {title && <Title title={title} />}
         </div>
         <div className={styles.PhotoUpload}>
-          {image && <PhotoUpload serverPhoto={image} />}
+          {image && <PhotoShow serverPhoto={`${IMG_BASE_URL}/${image}`} />}
         </div>
         <div className={styles.DetailButtons}>
           {likes && <HomeHeartButton likes={likes} />}
