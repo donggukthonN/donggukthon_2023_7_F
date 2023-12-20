@@ -34,10 +34,10 @@ const Photoupload = () => {
             <PhotoUpload />
           </div>
         </div>
-        <div className={styles.UploadTitle}>
+        {/* <div className={styles.UploadTitle}>
           {" "}
           <TitleInput />{" "}
-        </div>
+        </div> */}
         <div className={styles.UploadButton}>
           <LocationFirstButton />
         </div>
