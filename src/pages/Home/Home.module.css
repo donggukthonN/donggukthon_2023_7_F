@@ -39,6 +39,13 @@
   width: 10rem;
 }
 
+.bestContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .Second {
   width: 10rem;
 }

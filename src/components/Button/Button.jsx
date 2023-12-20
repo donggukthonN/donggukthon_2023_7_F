@@ -123,7 +123,7 @@ const HeartButton = ({ photoId }) => {
   );
 };
 
-const HomeHeartButton = ({ photoId }) => {
+const HomeHeartButton = ({ photoId, likes }) => {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
 
@@ -169,7 +169,7 @@ const HomeHeartButton = ({ photoId }) => {
           <img src={emptyheart} alt="Heart" className={styles.heart} />
         )}
       </div>
-      <span>{likeCount}</span>
+      <span>{likes}</span>
     </div>
   );
 };
