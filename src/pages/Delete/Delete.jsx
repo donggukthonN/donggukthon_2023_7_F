@@ -30,7 +30,6 @@ const Delete = () => {
         setTitle(res.title);
         setImage(res.imageUrl);
         console.log(res);
-
       };
       handleOnephoto();
     } catch (error) {
@@ -68,8 +67,8 @@ const Delete = () => {
           </div>
         </div>
         <div className={styles.DeleteButtons}>
-          {likes && <HomeHeartButton likes={likes} />}
-          <ShareButton />
+          {/* {likes && <HomeHeartButton likes={likes} />} */}
+          {/* <ShareButton /> */}
           <PasswordCheck onSubmitPassword={handleDeletePhoto} />
         </div>
       </div>

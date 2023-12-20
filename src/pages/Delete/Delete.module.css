@@ -1,34 +1,36 @@
 .Deletepage {
-    height: 100vh;
-    background-image: url("../../assets/DetailBackimg.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top center;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-attachment: fixed;
+  height: 100vh;
+  background-image: url("../../assets/DetailBackimg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-attachment: fixed;
 }
 
 .Deletecomponent {
-    margin: auto;
-    margin-top: 20vh;
+  margin: auto;
+  margin-top: 20vh;
 }
 
 .imagecontainer {
-    margin-top: 1vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  margin-top: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .PhotoShow {
-    width: 16.4rem;
-    display: grid;
+  width: 16.4rem;
+  display: grid;
 }
 
 .DeleteButtons {
-    display: flex;
-    margin-top: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1vh;
 }

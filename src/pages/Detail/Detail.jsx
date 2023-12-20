@@ -41,10 +41,12 @@ const Detail = () => {
           {title && <Title title={title} />}
         </div>
         <div className={styles.imagecontainer}>
-          <div style={{
-            backgroundImage: `url(${IMG_BASE_URL}/${image})`,
-            backgroundSize: "cover",
-          }}>
+          <div
+            style={{
+              backgroundImage: `url(${IMG_BASE_URL}/${image})`,
+              backgroundSize: "cover",
+            }}
+          >
             <img src={woodframe} alt="first" className={styles.PhotoShow} />
           </div>
         </div>
@@ -52,12 +54,12 @@ const Detail = () => {
         {image && <PhotoShow serverPhoto={`${IMG_BASE_URL}/${image}`} />}
       </div> */}
         <div className={styles.DetailButtons}>
-          {likes && <HomeHeartButton likes={likes} />}
-          <ShareButton />
+          {/* {likes && <HomeHeartButton likes={likes} />} */}
+          {/* <ShareButton /> */}
           <DeleteButton id={ID} />
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 export default Detail;

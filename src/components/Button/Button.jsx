@@ -303,7 +303,7 @@ function SnowmanList({ toggleStatus }) {
         }
         onClick={() => handleButtonClick("DATE")}
       >
-        최신순
+        오래된순
       </button>
     </div>
   );
@@ -311,10 +311,11 @@ function SnowmanList({ toggleStatus }) {
 
 function UploadButton({ onClick }) {
   const handleClick = () => {
+    alert("전시 완료!");
     onClick();
   };
   return (
-    <Link to="/complete" className={styles.UploadButton} onClick={handleClick}>
+    <Link to="/home" className={styles.UploadButton} onClick={handleClick}>
       <p className={styles.UploadText}>전시하기</p>
     </Link>
   );
