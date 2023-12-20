@@ -111,7 +111,8 @@ const Home = () => {
                 data={FRAME_DATA[getRandomIndex()]}
                 image={data.imageUrl}
                 likes={data.likeCount}
-                photoID={data.photoID}
+                photoID={data.id}
+                moveDetail={moveDetail}
               />
             ))}
         </div>
