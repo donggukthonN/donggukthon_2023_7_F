@@ -1,8 +1,8 @@
 .PhotoShow {
     /* position: absolute; */
     width: 16.5rem;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
 }

@@ -7,30 +7,35 @@ import {
   ShareButton,
   PhotoDisplay,
 } from "../../components/Button/Button";
+import { woodframe } from "../../components/Button/image";
 import { PasswordCheck, PhotoShow } from "../../components/Input/Input";
 import getOnephoto from "../../apis/getOnephoto";
 import DeletePhoto from "../../apis/DeletePhoto";
+import { IMG_BASE_URL } from "../../utils/constant";
 
 const Delete = () => {
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
+  const ID = parseInt(location.pathname.replace("/delete/", ""), 10);
+
   const [title, setTitle] = useState(null);
   const [likes, setLikes] = useState(null);
   const [image, setImage] = useState(null);
-  // const [pwStatus, setPwStatus] = useState()
-  const ID = parseInt(location.pathname.replace("/delete/", ""), 10);
 
   useEffect(() => {
     try {
       const handleOnephoto = async () => {
         const res = await getOnephoto(ID);
-        // console.log(res);
         setLikes(res.likeCount);
         setTitle(res.title);
-        setImage(res.image);
+        setImage(res.imageUrl);
+        console.log(res);
+
       };
       handleOnephoto();
-    } catch (error) { }
+    } catch (error) {
+      console.log(error);
+    }
   }, [ID]);
 
   const handleDeletePhoto = async (pw) => {
@@ -51,8 +56,16 @@ const Delete = () => {
         <div className={styles.TitleInput}>
           {title && <Title title={title} />}
         </div>
-        <div className={styles.PhotoDisplay}>
-          <PhotoDisplay />
+        {/* imagecontainer 추가 */}
+        <div className={styles.imagecontainer}>
+          <div
+            style={{
+              backgroundImage: `url(${IMG_BASE_URL}/${image})`,
+              backgroundSize: "cover",
+            }}
+          >
+            <img src={woodframe} alt="first" className={styles.PhotoShow} />
+          </div>
         </div>
         <div className={styles.DeleteButtons}>
           {likes && <HomeHeartButton likes={likes} />}

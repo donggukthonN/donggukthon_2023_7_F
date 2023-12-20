@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./PhotoShow.module.css";
 import { woodframephoto } from "../../assets";
+import { woodframe } from "../Button/image";
 
 function PhotoShow({ serverPhoto }) {
   return (
@@ -10,9 +11,10 @@ function PhotoShow({ serverPhoto }) {
         style={{
           backgroundImage: `url(${serverPhoto})`,
           backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
-        <img src={woodframephoto} alt="first" className={styles.photoImage} />
+        <img src={woodframe} alt="woodframe" className={styles.photoImage} />
       </div>
     </div>
   );

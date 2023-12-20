@@ -21,8 +21,17 @@
   margin-top: 20vh;
 }
 
-.PhotoUpload {
+.imagecontainer {
   margin-top: 1vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.PhotoShow {
+  width: 16.4rem;
+  display: grid;
 }
 
 .DetailButtons {
