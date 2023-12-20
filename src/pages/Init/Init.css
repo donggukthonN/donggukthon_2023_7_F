@@ -1,12 +1,17 @@
-.back {
+.container {
   height: 100vh;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.back {
+  height: 100%;
   background-image: url("../../assets/initBackground.svg");
   background-size: cover;
   display: flex;
   align-items: center;
   flex-direction: column;
-  overflow: hidden;
-  isolation: isolate;
 }
 
 .title {

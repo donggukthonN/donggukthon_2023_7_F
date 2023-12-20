@@ -63,52 +63,62 @@ const Init = () => {
   };
 
   return (
-    <div className="back">
-      <div className="title">
+    <div className="container">
+      <div className="back">
+        <div className="title">
+          <img
+            src={LOGO}
+            alt="snowManHouse"
+            className="logo"
+            style={{ opacity: opacity }}
+          />
+        </div>
         <img
-          src={LOGO}
-          alt="snowManHouse"
-          className="logo"
-          style={{ opacity: opacity }}
-        />
-      </div>
-      <img
-        src={Santahat}
-        alt="santahat"
-        ref={imageRef}
-        className="santaHat"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        style={{
-          position: "absolute",
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-          cursor: "grab",
-        }}
-      />
-      {textFlag && (
-        <span style={{ position: "absolute", top: "25vh", fontSize: "1rem", fontWeight: "900" }}>
-          눈사람에게 모자를 씌워주세요
-        </span>
-      )}
-      <img
-        src={SNOWMAN_IMAGE}
-        alt="snowMan"
-        className="snowMan"
-        ref={snowmanRef}
-      />
-      {thank && (
-        <span
+          src={Santahat}
+          alt="santahat"
+          ref={imageRef}
+          className="santaHat"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
           style={{
             position: "absolute",
-            left: `40vw`,
-            top: `50vh`,
-            fontSize: "1.1rem", fontWeight: "900"
+            left: `${position.x}px`,
+            top: `${position.y}px`,
+            cursor: "grab",
           }}
-        >
-          고마워요!
-        </span>
-      )}
+        />
+        {textFlag && (
+          <span
+            style={{
+              position: "absolute",
+              top: "25vh",
+              fontSize: "1rem",
+              fontWeight: "900",
+            }}
+          >
+            눈사람에게 모자를 씌워주세요
+          </span>
+        )}
+        <img
+          src={SNOWMAN_IMAGE}
+          alt="snowMan"
+          className="snowMan"
+          ref={snowmanRef}
+        />
+        {thank && (
+          <span
+            style={{
+              position: "absolute",
+              left: `40vw`,
+              top: `50vh`,
+              fontSize: "1.1rem",
+              fontWeight: "900",
+            }}
+          >
+            고마워요!
+          </span>
+        )}
+      </div>
     </div>
   );
 };
