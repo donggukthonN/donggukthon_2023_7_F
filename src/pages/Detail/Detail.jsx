@@ -1,11 +1,5 @@
 import styles from "../../pages/Detail/Detail.module.css";
-<<<<<<< HEAD
-import { LocationInput, Title, PhotoShow } from "../../components/index";
-import { useGeoLocation } from "../../hooks/useGeoLocation";
-import { useReverseGeocoding } from "../../hooks/useReverseGeocoding";
-=======
 import { useLocation } from "react-router-dom";
->>>>>>> d1e396fb98e49f222627be9ebfbec0d855978b07
 import {
   HomeHeartButton,
   PhotoUpload,
@@ -40,25 +34,9 @@ const Detail = () => {
 
   return (
     <div className={styles.Detailpage}>
-<<<<<<< HEAD
-      {address ? (
-        <div className={styles.Detailcomponent}>
-          <div className={styles.TitleInput}>
-            <Title />
-          </div>
-          <div className={styles.PhotoUpload}>
-            <PhotoShow />
-          </div>
-          <div className={styles.DetailButtons}>
-            <HeartButton />
-            <ShareButton />
-            <DeleteButton />
-          </div>
-=======
       <div className={styles.Detailcomponent}>
         <div className={styles.TitleInput}>
           {title && <Title title={title} />}
->>>>>>> d1e396fb98e49f222627be9ebfbec0d855978b07
         </div>
         <div className={styles.PhotoUpload}>
           {image && <PhotoUpload serverPhoto={image} />}

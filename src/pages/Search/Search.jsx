@@ -22,30 +22,6 @@ const Search = () => {
     setSearchType(selectedType);
   };
 
-<<<<<<< HEAD
-  const getInfo = async () => {
-    try {
-      setLoading(true);
-      const res = await photoSearch(searchType, searchValue);
-
-      console.log('API 응답:', res); // 전체 응답을 로그로 출력
-
-      if (res && res.data && Array.isArray(res.data.photoList)) {
-        setImageData(res.data.photoList);
-      } else {
-        console.error('데이터 가져오기 오류: 예상하지 못한 응답 형식', res);
-      }
-    } catch (error) {
-      console.error('데이터 가져오기 오류:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getInfo();
-  }, [searchType, searchValue]);
-=======
   const moveDetail = (photoID) => {
     navigate(`/detail/${photoID}`);
   };
@@ -57,7 +33,6 @@ const Search = () => {
       setImageData(res);
     }
   };
->>>>>>> d1e396fb98e49f222627be9ebfbec0d855978b07
 
   return (
     <div className={styles.frame}>
@@ -68,29 +43,17 @@ const Search = () => {
       />
       <hr />
       <Select title={"카테고리"} onSelectChange={handleSelectChange} />
-<<<<<<< HEAD
-
-=======
->>>>>>> d1e396fb98e49f222627be9ebfbec0d855978b07
       <div className={styles.displayContainer}>
         {loading && <p>Loading...</p>}
         {imageData &&
           imageData.map((data, index) => (
             <Photoframe
-<<<<<<< HEAD
-              key={index}
-              image={data.imageUrl}
-              likes={data.likeCount}
-              title={data.title}
-              username={data.username}
-=======
               // key={index}
               data={FRAME_DATA[0]}
               image={data.imageUrl}
               likes={data.likeCount}
               photoID={data.id}
               moveDetail={moveDetail}
->>>>>>> d1e396fb98e49f222627be9ebfbec0d855978b07
             />
           ))}
       </div>

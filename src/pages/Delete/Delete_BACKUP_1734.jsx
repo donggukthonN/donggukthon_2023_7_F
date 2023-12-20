@@ -29,7 +29,7 @@ const Delete = () => {
         setImage(res.image);
       };
       handleOnephoto();
-    } catch (error) {}
+    } catch (error) { }
   }, [ID]);
 
   const handleDeletePhoto = async (pw) => {
