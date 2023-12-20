@@ -33,7 +33,12 @@ const Home = () => {
     try {
       const handlePhotoAll = async () => {
         const res = await getPhotoAll(selectStatus);
-        setImageData(res);
+        // console.log(res);
+        if (selectStatus === "LIKES") {
+          setImageData(res);
+        } else {
+          setImageData(res);
+        }
       };
       handlePhotoAll();
     } catch (error) {
