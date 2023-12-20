@@ -34,3 +34,4 @@ export { default as First } from "./First.svg";
 export { default as Second } from "./Second.svg";
 export { default as dummy } from "./dummy.svg";
 export { default as HomeDeco } from "./HomeDeco.svg";
+export { default as woodframephoto } from "./woodframephoto.svg";

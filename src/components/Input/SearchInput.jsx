@@ -2,13 +2,16 @@ import React from "react";
 import styles from "./Input.module.css";
 import { SEARCH_IMAGE } from "../../assets";
 
-const SearchInput = ({onSearchInputChange, onClick}) => {
+// SearchInput 컴포넌트에서 onClick 처리 부분 수정
+const SearchInput = ({ onSearchInputChange, onClick }) => {
   const handleOnClick = () => {
-    onClick()
-  }
+    onClick(); // 여기서 onClick을 직접 호출
+  };
+
   const handleOnChange = (e) => {
-    onSearchInputChange(e.target.value)
-  }
+    onSearchInputChange(e.target.value);
+  };
+
   return (
     <div className={styles.SearchInputFrame}>
       <div className={styles.searchBox}>
