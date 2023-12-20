@@ -11,9 +11,9 @@ const photoAdd = async (imageFile, photoInfo, locationInfo) => {
     };
 
     const location = {
-      address: locationInfo.address,
-      latitude: locationInfo.lat,
-      longitude: locationInfo.lng,
+      address: localStorage.getItem("address"),
+      latitude: localStorage.getItem("lat"),
+      longitude: localStorage.getItem("lng"),
     };
 
     const formData = new FormData();
