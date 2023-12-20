@@ -11,14 +11,8 @@ const Init = () => {
   const [snowLocation, setSnowLocation] = useState({ x: 0, y: 0 });
   const [opacity, setOpacity] = useState(0);
   const snowmanRef = useRef(null);
-  const [position, setPosition] = useState({
-    x: window.innerWidth / 2.755,
-    y: window.innerHeight / 15,
-  });
-  const touchStart = useRef({
-    x: window.innerWidth / 2.755,
-    y: window.innerHeight / 15,
-  });
+  const [position, setPosition] = useState({ x: 0, y: 0 }); // 초기 값 변경
+  const touchStart = useRef({ x: 0, y: 0 }); // 초기 값 변경
 
   useEffect(() => {
     const getSnowmanCoordinates = () => {
@@ -27,7 +21,21 @@ const Init = () => {
         setSnowLocation({ x: left + 40, y: top - 40 });
       }
     };
+
+    const initializePosition = () => {
+      setPosition({
+        x: window.innerWidth / 2.755,
+        y: window.innerHeight / 15,
+      });
+
+      touchStart.current = {
+        x: window.innerWidth / 2.755,
+        y: window.innerHeight / 15,
+      };
+    };
+
     getSnowmanCoordinates();
+    initializePosition();
   }, []);
 
   const handleTouchStart = (e) => {
@@ -48,7 +56,7 @@ const Init = () => {
     touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
 
     if (
-      Math.abs(position.x - snowLocation.x) < 9 &&
+      Math.abs(position.x - snowLocation.x) < 10 &&
       Math.abs(position.y - snowLocation.y) < 17
     ) {
       setThank(true);
