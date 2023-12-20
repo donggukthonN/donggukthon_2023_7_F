@@ -1,0 +1,15 @@
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+.loading-style {
+  margin-top: 30vh;
+  margin-bottom: 5vh;
+  color: #222222;
+  height: 6rem;
+  width: 6rem;
+}

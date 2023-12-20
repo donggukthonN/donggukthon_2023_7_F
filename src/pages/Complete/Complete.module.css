@@ -1,0 +1,39 @@
+.Completepage {
+    height: 100vh;
+    background-image: url("../../assets/UploadBackimg.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-attachment: fixed;
+}
+
+
+.Completecomponent {
+    display: flex;
+    flex-direction: column;
+    margin-top: 22vh;
+}
+
+.CompleteText {
+    margin-left: 22%;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.PhotoDisplay {
+    margin-top: 1vh;
+}
+
+.GoToHome {
+    margin-top: 3vh;
+    background-color:transparent;
+    border: none;
+    margin-left: 38%;
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-decoration: underline;
+    color: black;
+}

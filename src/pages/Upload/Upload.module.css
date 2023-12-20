@@ -1,0 +1,39 @@
+.Uploadback {
+  height: 100vh;
+  background-image: url("../../assets/UploadBackimg.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-attachment: fixed;
+}
+
+.Uploadpage {
+  /* margin: auto; */
+  margin-top: 24vh;
+}
+
+.XmasDeco {
+  margin-left: 4rem;
+  width: 7rem;
+  height: 7rem;
+}
+
+.TitleInput {
+  margin-top: -3vh;
+}
+
+.PhotoUpload {
+  margin-top: 1vh;
+}
+
+.UploadInput {
+  display: flex;
+}
+
+.UploadButton {
+  margin-left: 2.5rem;
+  margin-top: 5vh;
+}
