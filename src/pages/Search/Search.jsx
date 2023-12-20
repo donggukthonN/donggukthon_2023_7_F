@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Search.module.css";
 import { SearchInput, Select } from "../../components/index";
+import Photoframe from "../Home/Photoframe";
 import photoSearch from "../../apis/photoSearch";
 import { FRAME_DATA } from "../../assets";
 import Photoframe from "../Home/Photoframe";

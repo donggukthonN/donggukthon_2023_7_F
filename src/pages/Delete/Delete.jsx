@@ -42,6 +42,7 @@ const Delete = () => {
       } else {
         alert("비밀번호 오류!");
       }
+
     }
   };
 
