@@ -7,7 +7,7 @@ const DeletePhoto = async () => {
     const password = {
       password: "1234",
     };
-    const response = await axios.post(`${API_URL}/photo/delete/7`, password, {
+    const response = await axios.post(`${API_URL}/photo/delete`, password, {
       headers: {
         "Content-Type": "application/json",
       },
