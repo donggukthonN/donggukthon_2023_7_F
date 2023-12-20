@@ -13,15 +13,22 @@ import Photoframe from "./Photoframe";
 
 function Home() {
   const [imageData, setImageData] = useState([]);
+  const [BestData, setBestData] = useState([]);
   const [selectStatus, setSelectStatus] = useState("LIKES");
   useEffect(() => {
     try {
       const handlePhotoAll = async () => {
         const res = await getPhotoAll(selectStatus);
-        const resp = await addPhotoLike();
-        console.log(resp);
-        setImageData(res);
+        // const resp = await addPhotoLike();
+        // console.log(resp);
         console.log(res);
+        setImageData(res);
+        if (selectStatus === "LIKES") {
+          const bestData = [res[0], res[1]];
+          setBestData(bestData);
+          setImageData(res.slice(2));
+        }
+        // console.log(res);
       };
       handlePhotoAll();
     } catch (error) {
@@ -42,14 +49,33 @@ function Home() {
           <SearchButton className={styles.SearchButton} />
         </div>
         <div className={styles.BestImg}>
-          <div>
-            <img src={First} alt="first" className={styles.Best} />
-            <HomeHeartButton />
-          </div>
-          <div>
-            <img src={Second} alt="first" className={styles.Second} />
-            <HomeHeartButton />
-          </div>
+          {BestData ? (
+            <>
+              <div className={styles.bestContainer}>
+                <div
+                  style={{
+                    backgroundImage: `url("https://donggukthon-seven-bucket.s3.ap-northeast-2.amazonaws.com/${BestData[0].imageUrl}")`,
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <img src={First} alt="first" className={styles.Best} />
+                </div>
+
+                <HomeHeartButton likes={BestData[0].likeCount} />
+              </div>
+              <div className={styles.bestContainer}>
+                <div
+                  style={{
+                    backgroundImage: `url("https://donggukthon-seven-bucket.s3.ap-northeast-2.amazonaws.com/${BestData[1].imageUrl}")`,
+                    backgroundSize: "cover",
+                  }}
+                >
+                  <img src={Second} alt="first" className={styles.Second} />
+                </div>
+                <HomeHeartButton likes={BestData[1].likeCount} />
+              </div>
+            </>
+          ) : null}
         </div>
         <hr className={styles.line} />
         <SnowmanList toggleStatus={toggleSelect} />
