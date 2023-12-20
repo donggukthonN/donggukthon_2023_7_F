@@ -87,7 +87,7 @@ const Init = () => {
         }}
       />
       {textFlag && (
-        <span style={{ position: "absolute", top: "25vh" }}>
+        <span style={{ position: "absolute", top: "25vh", fontSize: "1rem", fontWeight: "900" }}>
           눈사람에게 모자를 씌워주세요
         </span>
       )}
@@ -103,6 +103,7 @@ const Init = () => {
             position: "absolute",
             left: `40vw`,
             top: `50vh`,
+            fontSize: "1.1rem", fontWeight: "900"
           }}
         >
           고마워요!
