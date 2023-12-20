@@ -285,7 +285,6 @@ function SnowmanList({ toggleStatus }) {
 
   return (
     <div className={styles.SnowmanList}>
-      <hr className={styles.Listline}></hr>
       <button
         className={
           selectedButton === "LIKES"

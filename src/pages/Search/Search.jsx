@@ -11,7 +11,6 @@ const Search = () => {
   const [searchType, setSearchType] = useState("TITLE");
   const [searchValue, setSearchValue] = useState("");
   const [imageData, setImageData] = useState(null);
-  const [loading, setLoading] = useState(false);
 
   const handleSearchInputChange = (value) => {
     setSearchValue(value);
@@ -38,12 +37,10 @@ const Search = () => {
       <SearchInput
         onSearchInputChange={handleSearchInputChange}
         onClick={getInfo}
-        disabled={loading}
       />
       <hr />
       <Select title={"카테고리"} onSelectChange={handleSelectChange} />
       <div className={styles.displayContainer}>
-        {loading && <p>Loading...</p>}
         {imageData &&
           imageData.map((data, index) => (
             <Photoframe
