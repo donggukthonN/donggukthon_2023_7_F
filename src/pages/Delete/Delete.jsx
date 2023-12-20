@@ -18,7 +18,7 @@ const Delete = () => {
   useEffect(() => {
     try {
       const handleOnephoto = async () => {
-        const res = await getOnephoto(8);
+        const res = await getOnephoto(26);
         console.log(res);
       };
       handleOnephoto();
@@ -34,6 +34,7 @@ const Delete = () => {
       if (res.data === "포토 삭제 완료") {
         alert("삭제 완료");
       }
+
     }
   };
 

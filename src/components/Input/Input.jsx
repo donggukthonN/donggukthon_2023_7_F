@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Inputstyle.module.css";
 
 function input() {
@@ -62,6 +63,7 @@ function PasswordCheck({ onSubmitPassword }) {
     }
   };
 
+
   const onClick = () => {
     return onSubmitPassword(real.join(""));
   };
@@ -82,9 +84,9 @@ function PasswordCheck({ onSubmitPassword }) {
               value={newT}
             ></input>
           </div>
-          <button className={styles.PhotodeleteBtn} onClick={onClick}>
+          <Link to="/end" className={styles.PhotodeleteBtn} onClick={onClick}>
             삭제하기
-          </button>
+          </Link>
           {/* <button onClick={handleDeleteAccount}>계정 삭제</button> */}
         </div>
       )}
