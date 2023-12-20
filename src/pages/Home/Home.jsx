@@ -65,35 +65,39 @@ const Home = () => {
         <div className={styles.BestImg}>
           {BestData && (
             <>
-              <div
-                className={styles.bestContainer}
-                onClick={() => {
-                  moveDetail(BestData[0].id);
-                }}
-              >
+              <div className={styles.bestContainer}>
                 <div
                   style={{
                     backgroundImage: `url("https://donggukthon-seven-bucket.s3.ap-northeast-2.amazonaws.com/${BestData[0].imageUrl}")`,
                     backgroundSize: "cover",
                   }}
                 >
-                  <img src={First} alt="first" className={styles.Best} />
+                  <img
+                    src={First}
+                    alt="first"
+                    className={styles.Best}
+                    onClick={() => {
+                      moveDetail(BestData[0].id);
+                    }}
+                  />
                 </div>
                 <HomeHeartButton likes={BestData[0].likeCount} />
               </div>
-              <div
-                className={styles.bestContainer}
-                onClick={() => {
-                  moveDetail(BestData[1].id);
-                }}
-              >
+              <div className={styles.bestContainer}>
                 <div
                   style={{
                     backgroundImage: `url("https://donggukthon-seven-bucket.s3.ap-northeast-2.amazonaws.com/${BestData[1].imageUrl}")`,
                     backgroundSize: "cover",
                   }}
                 >
-                  <img src={Second} alt="first" className={styles.Second} />
+                  <img
+                    src={Second}
+                    alt="first"
+                    className={styles.Second}
+                    onClick={() => {
+                      moveDetail(BestData[1].id);
+                    }}
+                  />
                 </div>
                 <HomeHeartButton likes={BestData[1].likeCount} />
               </div>

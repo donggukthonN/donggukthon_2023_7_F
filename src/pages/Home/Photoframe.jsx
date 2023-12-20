@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import { fullheart, emptyheart } from "../../components/Button/image";
+import addPhotoLike from "../../apis/addPhotoLike";
 
 import styles from "./Photoframe.module.css";
 
 function Photoframe({ data, image, likes, photoID, moveDetail }) {
-  const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
-
+  localStorage.setItem(photoID, false);
+  const plusLike = async () => {
+    const res = await addPhotoLike(parseInt(photoID, 10));
+    console.log(res);
+  };
   const handleLikeToggle = () => {
-    setLiked(!liked);
-    setLikeCount(liked ? likeCount - 1 : likeCount + 1);
+    const status = localStorage.getItem(photoID);
+    localStorage.setItem(photoID, !status);
+    if (localStorage.getItem(photoID) === true) {
+      plusLike();
+    }
   };
 
   const handleClick = () => {
@@ -17,7 +23,7 @@ function Photoframe({ data, image, likes, photoID, moveDetail }) {
   };
 
   return (
-    <div className={styles.Photoframe} onClick={handleClick}>
+    <div className={styles.Photoframe}>
       <div
         style={{
           backgroundImage: `url("https://donggukthon-seven-bucket.s3.ap-northeast-2.amazonaws.com/${image}")`,
@@ -25,21 +31,35 @@ function Photoframe({ data, image, likes, photoID, moveDetail }) {
           marginBottom: "0.5vh",
         }}
       >
-        <img src={data} alt="액자" className={styles.image} />
+        <img
+          src={data}
+          alt="액자"
+          className={styles.image}
+          onClick={handleClick}
+        />
       </div>
       <div className={styles.heartContainer}>
         <div
-          onClick={handleLikeToggle}
           style={{ background: "none", border: "none", cursor: "pointer" }}
           className={styles.heartCenter}
         >
-          {liked ? (
-            <img src={fullheart} alt="Heart" className={styles.heart} />
+          {localStorage.getItem(photoID) ? (
+            <img
+              src={fullheart}
+              alt="Heart"
+              className={styles.heart}
+              onClick={handleLikeToggle}
+            />
           ) : (
-            <img src={emptyheart} alt="Heart" className={styles.heart} />
+            <img
+              src={emptyheart}
+              alt="Heart"
+              className={styles.heart}
+              onClick={handleLikeToggle}
+            />
           )}
         </div>
-        <span>{likes}</span>
+        <span>{localStorage.getItem(photoID) ? likes + 1 : likes}</span>
       </div>
     </div>
   );

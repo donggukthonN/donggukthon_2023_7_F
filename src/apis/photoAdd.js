@@ -11,11 +11,11 @@ const photoAdd = async (imageFile, photoInfo, locationInfo) => {
     };
 
     const location = {
-      lotNumber: locationInfo.address,
+      address: locationInfo.address,
       latitude: locationInfo.lat,
       longitude: locationInfo.lng,
     };
-    
+
     const formData = new FormData();
     formData.append("image", imageFile);
     formData.append("photoRequest", JSON.stringify(photo));
