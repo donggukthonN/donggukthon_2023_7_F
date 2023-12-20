@@ -15,6 +15,7 @@ const photoAdd = async (imageFile, photoInfo, locationInfo) => {
       latitude: locationInfo.lat,
       longitude: locationInfo.lng,
     };
+    
     const formData = new FormData();
     formData.append("image", imageFile);
     formData.append("photoRequest", JSON.stringify(photo));

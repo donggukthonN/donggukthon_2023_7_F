@@ -33,7 +33,7 @@ const Delete = () => {
   useEffect(() => {
     try {
       const handleOnephoto = async () => {
-        const res = await getOnephoto(8);
+        const res = await getOnephoto(26);
         console.log(res);
       };
       handleOnephoto();
@@ -41,9 +41,6 @@ const Delete = () => {
       console.log(error);
     }
   }, []);
-
-  const [photo_id, setPhotoId] = useState(8); // 예시로 photo_id 설정
-  const [password, setPassword] = useState('1234'); // 예시로 password 설정
 
   const handleDeletePhoto = async () => {
     try {
