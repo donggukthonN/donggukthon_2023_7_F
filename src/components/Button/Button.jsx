@@ -320,9 +320,9 @@ function UploadButton({ onClick }) {
     onClick();
   };
   return (
-    <div className={styles.UploadButton} onClick={handleClick}>
+    <Link to="/complete" className={styles.UploadButton} onClick={handleClick}>
       <p className={styles.UploadText}>전시하기</p>
-    </div>
+    </Link>
   );
 }
 
