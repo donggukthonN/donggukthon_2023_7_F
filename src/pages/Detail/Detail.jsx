@@ -1,5 +1,5 @@
 import styles from "../../pages/Detail/Detail.module.css";
-import { LocationInput } from "../../components/index";
+import { LocationInput, Title } from "../../components/index";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
 import { useReverseGeocoding } from "../../hooks/useReverseGeocoding";
 import {
@@ -8,8 +8,9 @@ import {
   ShareButton,
   DeleteButton,
 } from "../../components/Button/Button";
-import { useEffect, useState } from "react";
+import react, { useEffect, useState } from "react";
 import LoadingPage from "../Loading/LoadingPage";
+import getOnephoto from "../../apis/getOnephoto";
 
 const Detail = () => {
   const [lat, setLat] = useState();
@@ -28,12 +29,24 @@ const Detail = () => {
     setAddress(data);
   }, [data]);
 
+  useEffect(() => {
+    try {
+      const handleOnephoto = async () => {
+        const res = await getOnephoto(1);
+        console.log(res);
+      };
+      handleOnephoto();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   return (
     <div className={styles.Detailpage}>
       {address ? (
         <div className={styles.Detailcomponent}>
-          <div className={styles.LocationInput}>
-            <LocationInput location={address} />
+          <div className={styles.TitleInput}>
+            <Title />
           </div>
           <div className={styles.PhotoUpload}>
             <PhotoUpload />

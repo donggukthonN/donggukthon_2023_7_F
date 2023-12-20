@@ -1,17 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   SnowmanList,
   SearchButton,
   HomeHeartButton,
   Showoff,
 } from "../../components/Button/Button";
+import getPhotoAll from "../../apis/getPhotoAll";
+import addPhotoLike from "../../apis/addPhotoLike";
 import styles from "./Home.module.css";
 import { FRAME_DATA, HomeDeco, First, Second } from "../../assets";
 import Photoframe from "./Photoframe";
 
 function Home() {
-  // const FRAME_DATA = [/* your image URLs or data here */];
-
+  const [imageData, setImageData] = useState([]);
+  const [selectStatus, setSelectStatus] = useState("LIKES");
+  useEffect(() => {
+    try {
+      const handlePhotoAll = async () => {
+        const res = await getPhotoAll(selectStatus);
+        const resp = await addPhotoLike();
+        console.log(resp);
+        setImageData(res);
+        console.log(res);
+      };
+      handlePhotoAll();
+    } catch (error) {
+      console.log(error);
+    }
+  }, [selectStatus]);
+  const getRandomIndex = () => {
+    return Math.floor(Math.random() * FRAME_DATA.length);
+  };
+  const toggleSelect = (status) => {
+    setSelectStatus(status);
+  };
   return (
     <div className={styles.frame}>
       <div className={styles.back}>
@@ -30,12 +52,17 @@ function Home() {
           </div>
         </div>
         <hr className={styles.line} />
-        <SnowmanList />
+        <SnowmanList toggleStatus={toggleSelect} />
         <Showoff />
         <div className={styles.displayContainer}>
-          {FRAME_DATA &&
-            FRAME_DATA.map((data, index) => (
-              <Photoframe key={index} data={data} />
+          {imageData &&
+            imageData.map((data, index) => (
+              <Photoframe
+                key={index}
+                data={FRAME_DATA[getRandomIndex()]}
+                image={data.imageUrl}
+                likes={data.likeCount}
+              />
             ))}
         </div>
       </div>

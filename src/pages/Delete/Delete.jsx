@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { LocationInput } from "../../components/index";
+import { LocationInput, Title } from "../../components/index";
 import LoadingPage from "../Loading/LoadingPage";
 import { useReverseGeocoding } from "../../hooks/useReverseGeocoding";
 import styles from "../../pages/Delete/Delete.module.css";
@@ -10,6 +10,8 @@ import {
 } from "../../components/Button/Button";
 import { PasswordCheck } from "../../components/Input/Input";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
+import getOnephoto from "../../apis/getOnephoto";
+import DeletePhoto from '../../apis/DeletePhoto';
 
 const Delete = () => {
   const [lat, setLat] = useState();
@@ -28,12 +30,37 @@ const Delete = () => {
     setAddress(data);
   }, [data]);
 
+  useEffect(() => {
+    try {
+      const handleOnephoto = async () => {
+        const res = await getOnephoto(1);
+        console.log(res);
+      };
+      handleOnephoto();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  const [photo_id, setPhotoId] = useState(1); // 예시로 photo_id 설정
+  const [password, setPassword] = useState('1234'); // 예시로 password 설정
+
+  const handleDeletePhoto = async () => {
+    try {
+      const response = await DeletePhoto(photo_id, { password });
+      console.log(response);
+      // 서버 응답을 기반으로 추가적인 로직 수행 가능
+    } catch (error) {
+      console.error('Error deleting photo:', error);
+    }
+  };
+
   return (
     <div className={styles.Deletepage}>
       {address ? (
-        <div className={styles.Deletecomponen}>
-          <div className={styles.LocationInput}>
-            <LocationInput location={address} />
+        <div className={styles.Deletecomponent}>
+          <div className={styles.TitleInput}>
+            <Title />
           </div>
           <div className={styles.PhotoDisplay}>
             <PhotoDisplay />
@@ -41,7 +68,8 @@ const Delete = () => {
           <div className={styles.DeleteButtons}>
             <HeartButton />
             <ShareButton />
-            <PasswordCheck />
+            <PasswordCheck
+            />
           </div>
         </div>
       ) : (
