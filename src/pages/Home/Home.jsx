@@ -22,7 +22,7 @@ const Home = () => {
       const handlePhotoAll = async () => {
         const res = await getPhotoAll("LIKES");
         setBestData([res[0], res[1]]);
-        setImageData(res.slice(2));
+        setImageData(res);
       };
       handlePhotoAll();
     } catch (err) {
@@ -33,12 +33,7 @@ const Home = () => {
     try {
       const handlePhotoAll = async () => {
         const res = await getPhotoAll(selectStatus);
-        // console.log(res);
-        if (selectStatus === "LIKES") {
-          setImageData(res.slice(2));
-        } else {
-          setImageData(res);
-        }
+        setImageData(res);
       };
       handlePhotoAll();
     } catch (error) {
@@ -81,7 +76,7 @@ const Home = () => {
                     }}
                   />
                 </div>
-                <HomeHeartButton likes={BestData[0].likeCount} />
+                {/* <HomeHeartButton likes={BestData[0].likeCount} /> */}
               </div>
               <div className={styles.bestContainer}>
                 <div
@@ -99,7 +94,7 @@ const Home = () => {
                     }}
                   />
                 </div>
-                <HomeHeartButton likes={BestData[1].likeCount} />
+                {/* <HomeHeartButton likes={BestData[1].likeCount} /> */}
               </div>
             </>
           )}

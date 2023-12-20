@@ -5,6 +5,7 @@ import {
   ShareButton,
   DeleteButton,
 } from "../../components/Button/Button";
+import { woodframe } from "../../components/Button/image";
 import PhotoShow from "../../components/PhotoShow/PhotoShow";
 import { Title } from "../../components";
 import React, { useEffect, useState } from "react";
@@ -39,16 +40,24 @@ const Detail = () => {
         <div className={styles.TitleInput}>
           {title && <Title title={title} />}
         </div>
-        <div className={styles.PhotoUpload}>
-          {image && <PhotoShow serverPhoto={`${IMG_BASE_URL}/${image}`} />}
+        <div className={styles.imagecontainer}>
+          <div style={{
+            backgroundImage: `url(${IMG_BASE_URL}/${image})`,
+            backgroundSize: "cover",
+          }}>
+            <img src={woodframe} alt="first" className={styles.PhotoShow} />
+          </div>
         </div>
+        {/* <div className={styles.PhotoUpload}>
+        {image && <PhotoShow serverPhoto={`${IMG_BASE_URL}/${image}`} />}
+      </div> */}
         <div className={styles.DetailButtons}>
           {likes && <HomeHeartButton likes={likes} />}
           <ShareButton />
           <DeleteButton id={ID} />
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 export default Detail;
