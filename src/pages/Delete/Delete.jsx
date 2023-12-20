@@ -7,7 +7,7 @@ import {
   ShareButton,
   PhotoDisplay,
 } from "../../components/Button/Button";
-import { PasswordCheck } from "../../components/Input/Input";
+import { PasswordCheck, PhotoShow } from "../../components/Input/Input";
 import getOnephoto from "../../apis/getOnephoto";
 import DeletePhoto from "../../apis/DeletePhoto";
 
@@ -30,7 +30,7 @@ const Delete = () => {
         setImage(res.image);
       };
       handleOnephoto();
-    } catch (error) {}
+    } catch (error) { }
   }, [ID]);
 
   const handleDeletePhoto = async (pw) => {

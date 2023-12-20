@@ -13,11 +13,11 @@ const Init = () => {
   const snowmanRef = useRef(null);
   const [position, setPosition] = useState({
     x: window.innerWidth / 2.755,
-    y: window.innerHeight / 8,
+    y: window.innerHeight / 15,
   });
   const touchStart = useRef({
     x: window.innerWidth / 2.755,
-    y: window.innerHeight / 8,
+    y: window.innerHeight / 15,
   });
 
   useEffect(() => {
@@ -48,8 +48,8 @@ const Init = () => {
     touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
 
     if (
-      Math.abs(position.x - snowLocation.x) < 10 &&
-      Math.abs(position.y - snowLocation.y) < 10
+      Math.abs(position.x - snowLocation.x) < 9 &&
+      Math.abs(position.y - snowLocation.y) < 17
     ) {
       setThank(true);
       const timeoutId = setTimeout(() => {
