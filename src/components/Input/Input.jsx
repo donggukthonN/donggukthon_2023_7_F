@@ -24,8 +24,6 @@ function Name({ onUsernameChange }) {
   );
 }
 
-const real = [];
-
 function PasswordInput({ onPasswordChange }) {
   const [newT, setPassword] = useState(""); // 비밀번호 상태를 관리하기 위한 state
 
@@ -46,17 +44,13 @@ function PasswordInput({ onPasswordChange }) {
     </div>
   );
 }
+const real = [];
 
 function PasswordCheck({ onSubmitPassword }) {
   const [newT, setNewT] = useState("");
-  const [isAuthenticated, setAuthenticated] = useState(false);
   const [isDeleted, setDeleted] = useState(false);
-
-  // const handlePasswordChange = (e) => {
-  //   setPassword(e.target.value);
-  // };
-
   const changeText = (e) => {
+    console.log(real);
     if (e.nativeEvent.data === null) {
       if (real.length > 0) {
         setNewT("🍪".repeat(real.length - 1));
@@ -68,48 +62,9 @@ function PasswordCheck({ onSubmitPassword }) {
     }
   };
 
-  const handlePhotoDelete = () => {
-    // 여기에서는 인증 API를 호출하고, 성공적으로 인증되면 상태를 업데이트합니다.
-    // 아래는 간단한 시뮬레이션 코드입니다.
-
-    const correctPassword = "your_password"; // 실제 비밀번호를 입력하세요.
-
-    if (newT === correctPassword) {
-      setAuthenticated(true);
-      // alert('인증되었습니다.');
-      setDeleted(true);
-      console.log(isAuthenticated);
-      // }).catch((error) => {
-      //   console.error('삭제 실패:', error);
-      // });
-
-      // 시뮬레이션: 간단하게 삭제 성공으로 가정
-      // setDeleted(true);
-    } else {
-      // alert('비밀번호가 일치하지 않습니다.');
-    }
-  };
-
-  // const handleDeleteAccount = () => {
-  //   if (isAuthenticated) {
-  //     // 여기에서는 삭제 API를 호출하고, 성공적으로 삭제되면 상태를 업데이트합니다.
-  //     // 아래는 간단한 시뮬레이션 코드입니다.
-
-  //     // deleteAccountAPI().then(() => {
-  //     //   setDeleted(true);
-  //     // }).catch((error) => {
-  //     //   console.error('삭제 실패:', error);
-  //     // });
-
-  //     // 시뮬레이션: 간단하게 삭제 성공으로 가정
-  //     setDeleted(true);
-  //   } else {
-  //     alert('인증되지 않았습니다. 먼저 비밀번호를 인증하세요.');
-  //   }
-  // };
   const onClick = () => {
-    onSubmitPassword()
-  }
+    return onSubmitPassword(real.join(""));
+  };
   return (
     <div>
       {isDeleted ? (

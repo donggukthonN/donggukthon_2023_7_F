@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { LocationInput, Title } from "../../components/index";
-import LoadingPage from "../Loading/LoadingPage";
-import { useReverseGeocoding } from "../../hooks/useReverseGeocoding";
+import { Title } from "../../components/index";
+import { useLocation } from "react-router-dom";
 import styles from "../../pages/Delete/Delete.module.css";
 import {
   HeartButton,
@@ -9,26 +8,12 @@ import {
   PhotoDisplay,
 } from "../../components/Button/Button";
 import { PasswordCheck } from "../../components/Input/Input";
-import { useGeoLocation } from "../../hooks/useGeoLocation";
 import getOnephoto from "../../apis/getOnephoto";
-import DeletePhoto from '../../apis/DeletePhoto';
+import DeletePhoto from "../../apis/DeletePhoto";
 
 const Delete = () => {
-  const [lat, setLat] = useState();
-  const [lng, setLng] = useState();
-  const [address, setAddress] = useState();
-  const { loc } = useGeoLocation();
-  useEffect(() => {
-    if (loc) {
-      setLat(loc.latitude);
-      setLng(loc.longitude);
-    }
-  }, [loc]);
-  const data = useReverseGeocoding(lat, lng);
-
-  useEffect(() => {
-    setAddress(data);
-  }, [data]);
+  const location = useLocation();
+  const ID = parseInt(location.pathname.replace("/delete/", ""), 10);
 
   useEffect(() => {
     try {
@@ -42,39 +27,31 @@ const Delete = () => {
     }
   }, []);
 
-  const [photo_id, setPhotoId] = useState(8); // 예시로 photo_id 설정
-  const [password, setPassword] = useState('1234'); // 예시로 password 설정
-
-  const handleDeletePhoto = async () => {
-    try {
-      const response = await DeletePhoto();
-      console.log(response);
-      // 서버 응답을 기반으로 추가적인 로직 수행 가능
-    } catch (error) {
-      console.error('Error deleting photo:', error);
+  const handleDeletePhoto = async (pw) => {
+    if (pw && ID) {
+      console.log(pw);
+      const res = await DeletePhoto(ID, pw);
+      if (res.data === "포토 삭제 완료") {
+        alert("삭제 완료");
+      }
     }
   };
 
   return (
     <div className={styles.Deletepage}>
-      {address ? (
-        <div className={styles.Deletecomponent}>
-          <div className={styles.TitleInput}>
-            <Title />
-          </div>
-          <div className={styles.PhotoDisplay}>
-            <PhotoDisplay />
-          </div>
-          <div className={styles.DeleteButtons}>
-            <HeartButton />
-            <ShareButton />
-            <PasswordCheck onSubmitPassword={handleDeletePhoto}
-            />
-          </div>
+      <div className={styles.Deletecomponent}>
+        <div className={styles.TitleInput}>
+          <Title />
         </div>
-      ) : (
-        <LoadingPage title={"현재 위치를 파악중입니다."} />
-      )}
+        <div className={styles.PhotoDisplay}>
+          <PhotoDisplay />
+        </div>
+        <div className={styles.DeleteButtons}>
+          <HeartButton />
+          <ShareButton />
+          <PasswordCheck onSubmitPassword={handleDeletePhoto} />
+        </div>
+      </div>
     </div>
   );
 };
