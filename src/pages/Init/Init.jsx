@@ -57,7 +57,7 @@ const Init = () => {
 
     if (
       Math.abs(position.x - snowLocation.x) < 10 &&
-      Math.abs(position.y - snowLocation.y) < 17
+      Math.abs(position.y - snowLocation.y) < 19
     ) {
       setThank(true);
       const timeoutId = setTimeout(() => {
