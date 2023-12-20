@@ -16,6 +16,9 @@ import {
 } from "./pages/index";
 
 function App() {
+  document.body.style.overflowY = "scroll";
+  document.body.style.overflowX = "hidden";
+  document.body.style["-webkit-overflow-scrolling"] = "touch";
   return (
     <div className="App">
       <BrowserRouter>
