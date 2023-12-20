@@ -3,10 +3,14 @@ import styles from "./Search.module.css";
 import { SearchInput, Select } from "../../components/index";
 import Photoframe from "../Home/Photoframe";
 import photoSearch from "../../apis/photoSearch";
+import { FRAME_DATA } from "../../assets";
+import Photoframe from "../Home/Photoframe";
+import { useNavigate } from "react-router-dom";
 
-const Search = ({ initialSearchType = "TITLE", initialSearchValue = "example title" }) => {
-  const [searchType, setSearchType] = useState(initialSearchType);
-  const [searchValue, setSearchValue] = useState(initialSearchValue);
+const Search = () => {
+  const navigate = useNavigate();
+  const [searchType, setSearchType] = useState("TITLE");
+  const [searchValue, setSearchValue] = useState("");
   const [imageData, setImageData] = useState(null);
 
   const handleSearchInputChange = (value) => {
@@ -17,21 +21,17 @@ const Search = ({ initialSearchType = "TITLE", initialSearchValue = "example tit
     setSearchType(selectedType);
   };
 
-  const getInfo = async () => {
-    if (searchType && searchValue) {
-      try {
-        const res = await photoSearch(searchType, searchValue);
-        setImageData(res);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    }
+  const moveDetail = (photoID) => {
+    navigate(`/detail/${photoID}`);
   };
 
-  useEffect(() => {
-    // Perform the initial data fetch when the component mounts
-    getInfo();
-  }, []);
+  const getInfo = async () => {
+    if (searchType && searchValue) {
+      const res = await photoSearch(searchType, searchValue);
+      console.log(res);
+      setImageData(res);
+    }
+  };
 
   return (
     <div className={styles.frame}>
@@ -41,13 +41,16 @@ const Search = ({ initialSearchType = "TITLE", initialSearchValue = "example tit
       />
       <hr />
       <Select title={"카테고리"} onSelectChange={handleSelectChange} />
-      {/* Display fetched data in a container */}
       <div className={styles.displayContainer}>
         {imageData &&
           imageData.map((data, index) => (
             <Photoframe
-              key={index}
-              data={data}
+              // key={index}
+              data={FRAME_DATA[0]}
+              image={data.imageUrl}
+              likes={data.likeCount}
+              photoID={data.id}
+              moveDetail={moveDetail}
             />
           ))}
       </div>

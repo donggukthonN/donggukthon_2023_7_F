@@ -9,7 +9,6 @@ const getOnephoto = async (photo_id) => {
       },
       params: { photo_id },
     });
-    console.log(res); // 서버 응답 상태 코드 확인용 로그
     return res.data;
   } catch (err) {
     console.error(err);
