@@ -11,24 +11,32 @@ import styles from "./Home.module.css";
 import { FRAME_DATA, HomeDeco, First, Second } from "../../assets";
 import Photoframe from "./Photoframe";
 
-function Home() {
-  const [imageData, setImageData] = useState([]);
-  const [BestData, setBestData] = useState([]);
+const Home = () => {
+  const [imageData, setImageData] = useState(null);
+  const [BestData, setBestData] = useState(null);
   const [selectStatus, setSelectStatus] = useState("LIKES");
   useEffect(() => {
     try {
       const handlePhotoAll = async () => {
+        const res = await getPhotoAll("LIKES");
+        setBestData([res[0], res[1]]);
+        setImageData(res.slice(2));
+      };
+      handlePhotoAll();
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
+  useEffect(() => {
+    try {
+      const handlePhotoAll = async () => {
         const res = await getPhotoAll(selectStatus);
-        // const resp = await addPhotoLike();
-        // console.log(resp);
-        console.log(res);
-        setImageData(res);
-        if (selectStatus === "LIKES") {
-          const bestData = [res[0], res[1]];
-          setBestData(bestData);
-          setImageData(res.slice(2));
-        }
         // console.log(res);
+        if (selectStatus === "LIKES") {
+          setImageData(res.slice(2));
+        } else {
+          setImageData(res);
+        }
       };
       handlePhotoAll();
     } catch (error) {
@@ -49,7 +57,7 @@ function Home() {
           <SearchButton className={styles.SearchButton} />
         </div>
         <div className={styles.BestImg}>
-          {BestData ? (
+          {BestData && (
             <>
               <div className={styles.bestContainer}>
                 <div
@@ -60,7 +68,6 @@ function Home() {
                 >
                   <img src={First} alt="first" className={styles.Best} />
                 </div>
-
                 <HomeHeartButton likes={BestData[0].likeCount} />
               </div>
               <div className={styles.bestContainer}>
@@ -75,7 +82,7 @@ function Home() {
                 <HomeHeartButton likes={BestData[1].likeCount} />
               </div>
             </>
-          ) : null}
+          )}
         </div>
         <hr className={styles.line} />
         <SnowmanList toggleStatus={toggleSelect} />
@@ -94,7 +101,7 @@ function Home() {
       </div>
     </div>
   );
-}
+};
 
 export default Home;
 
