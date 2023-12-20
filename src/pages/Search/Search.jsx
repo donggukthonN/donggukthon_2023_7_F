@@ -4,7 +4,6 @@ import { SearchInput, Select } from "../../components/index";
 import Photoframe from "../Home/Photoframe";
 import photoSearch from "../../apis/photoSearch";
 import { FRAME_DATA } from "../../assets";
-import Photoframe from "../Home/Photoframe";
 import { useNavigate } from "react-router-dom";
 
 const Search = () => {
