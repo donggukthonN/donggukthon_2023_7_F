@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { LocationInput, Title } from "../../components/index";
+import { LocationInput, Title, PhotoShow } from "../../components/index";
 import LoadingPage from "../Loading/LoadingPage";
 import { useReverseGeocoding } from "../../hooks/useReverseGeocoding";
 import styles from "../../pages/Delete/Delete.module.css";
@@ -60,7 +60,7 @@ const Delete = () => {
             <Title />
           </div>
           <div className={styles.PhotoDisplay}>
-            <PhotoDisplay />
+            <PhotoShow />
           </div>
           <div className={styles.DeleteButtons}>
             <HeartButton />

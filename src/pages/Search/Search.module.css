@@ -3,3 +3,15 @@
   background-image: url("../../assets/initBackground.svg");
   background-size: cover;
 }
+
+.displayContainer {
+  display: grid;
+  margin: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem 2rem;
+}
+
+.image {
+  width: 32vw;
+  height: 15vh;
+}

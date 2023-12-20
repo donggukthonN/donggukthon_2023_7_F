@@ -1,5 +1,5 @@
 import styles from "../../pages/Detail/Detail.module.css";
-import { LocationInput, Title } from "../../components/index";
+import { LocationInput, Title, PhotoShow } from "../../components/index";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
 import { useReverseGeocoding } from "../../hooks/useReverseGeocoding";
 import {
@@ -49,7 +49,7 @@ const Detail = () => {
             <Title />
           </div>
           <div className={styles.PhotoUpload}>
-            <PhotoUpload />
+            <PhotoShow />
           </div>
           <div className={styles.DetailButtons}>
             <HeartButton />
