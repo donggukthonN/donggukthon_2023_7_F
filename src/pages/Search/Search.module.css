@@ -3,15 +3,21 @@
   background-image: url("../../assets/initBackground.svg");
   background-size: cover;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> d1e396fb98e49f222627be9ebfbec0d855978b07
 .displayContainer {
   display: grid;
   margin: 2rem;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem 2rem;
 }
+<<<<<<< HEAD
 
 .image {
   width: 32vw;
   height: 15vh;
 }
+=======
+>>>>>>> d1e396fb98e49f222627be9ebfbec0d855978b07

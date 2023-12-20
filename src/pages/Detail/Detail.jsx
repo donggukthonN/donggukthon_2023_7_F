@@ -1,48 +1,46 @@
 import styles from "../../pages/Detail/Detail.module.css";
+<<<<<<< HEAD
 import { LocationInput, Title, PhotoShow } from "../../components/index";
 import { useGeoLocation } from "../../hooks/useGeoLocation";
 import { useReverseGeocoding } from "../../hooks/useReverseGeocoding";
+=======
+import { useLocation } from "react-router-dom";
+>>>>>>> d1e396fb98e49f222627be9ebfbec0d855978b07
 import {
-  HeartButton,
+  HomeHeartButton,
   PhotoUpload,
   ShareButton,
   DeleteButton,
 } from "../../components/Button/Button";
-import react, { useEffect, useState } from "react";
-import LoadingPage from "../Loading/LoadingPage";
+import { Title } from "../../components";
+import React, { useEffect, useState } from "react";
 import getOnephoto from "../../apis/getOnephoto";
 
 const Detail = () => {
-  const [lat, setLat] = useState();
-  const [lng, setLng] = useState();
-  const [address, setAddress] = useState();
-  const { loc } = useGeoLocation();
-  useEffect(() => {
-    if (loc) {
-      setLat(loc.latitude);
-      setLng(loc.longitude);
-    }
-  }, [loc]);
-  const data = useReverseGeocoding(lat, lng);
+  const location = useLocation();
+  const ID = parseInt(location.pathname.replace("/detail/", ""), 10);
 
-  useEffect(() => {
-    setAddress(data);
-  }, [data]);
-
+  const [title, setTitle] = useState("");
+  const [image, setImage] = useState("");
+  const [likes, setLikes] = useState("");
   useEffect(() => {
     try {
       const handleOnephoto = async () => {
-        const res = await getOnephoto(1);
+        const res = await getOnephoto(ID);
         console.log(res);
+        setTitle(res.title);
+        setImage(res.imageUrl);
+        setLikes(res.likeCount);
       };
       handleOnephoto();
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [ID]);
 
   return (
     <div className={styles.Detailpage}>
+<<<<<<< HEAD
       {address ? (
         <div className={styles.Detailcomponent}>
           <div className={styles.TitleInput}>
@@ -56,10 +54,21 @@ const Detail = () => {
             <ShareButton />
             <DeleteButton />
           </div>
+=======
+      <div className={styles.Detailcomponent}>
+        <div className={styles.TitleInput}>
+          {title && <Title title={title} />}
+>>>>>>> d1e396fb98e49f222627be9ebfbec0d855978b07
         </div>
-      ) : (
-        <LoadingPage title={"현재 위치를 파악중입니다."} />
-      )}
+        <div className={styles.PhotoUpload}>
+          {image && <PhotoUpload serverPhoto={image} />}
+        </div>
+        <div className={styles.DetailButtons}>
+          {likes && <HomeHeartButton likes={likes} />}
+          <ShareButton />
+          <DeleteButton id={ID} />
+        </div>
+      </div>
     </div>
   );
 };

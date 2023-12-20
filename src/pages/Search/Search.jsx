@@ -3,10 +3,14 @@ import styles from "./Search.module.css";
 import { SearchInput, Select } from "../../components/index";
 import Photoframe from "../Home/Photoframe";
 import photoSearch from "../../apis/photoSearch";
+import { FRAME_DATA } from "../../assets";
+import Photoframe from "../Home/Photoframe";
+import { useNavigate } from "react-router-dom";
 
-const Search = ({ initialSearchType = "TITLE", initialSearchValue = "example title" }) => {
-  const [searchType, setSearchType] = useState(initialSearchType);
-  const [searchValue, setSearchValue] = useState(initialSearchValue);
+const Search = () => {
+  const navigate = useNavigate();
+  const [searchType, setSearchType] = useState("TITLE");
+  const [searchValue, setSearchValue] = useState("");
   const [imageData, setImageData] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -18,6 +22,7 @@ const Search = ({ initialSearchType = "TITLE", initialSearchValue = "example tit
     setSearchType(selectedType);
   };
 
+<<<<<<< HEAD
   const getInfo = async () => {
     try {
       setLoading(true);
@@ -40,6 +45,19 @@ const Search = ({ initialSearchType = "TITLE", initialSearchValue = "example tit
   useEffect(() => {
     getInfo();
   }, [searchType, searchValue]);
+=======
+  const moveDetail = (photoID) => {
+    navigate(`/detail/${photoID}`);
+  };
+
+  const getInfo = async () => {
+    if (searchType && searchValue) {
+      const res = await photoSearch(searchType, searchValue);
+      console.log(res);
+      setImageData(res);
+    }
+  };
+>>>>>>> d1e396fb98e49f222627be9ebfbec0d855978b07
 
   return (
     <div className={styles.frame}>
@@ -50,17 +68,29 @@ const Search = ({ initialSearchType = "TITLE", initialSearchValue = "example tit
       />
       <hr />
       <Select title={"카테고리"} onSelectChange={handleSelectChange} />
+<<<<<<< HEAD
 
+=======
+>>>>>>> d1e396fb98e49f222627be9ebfbec0d855978b07
       <div className={styles.displayContainer}>
         {loading && <p>Loading...</p>}
         {imageData &&
           imageData.map((data, index) => (
             <Photoframe
+<<<<<<< HEAD
               key={index}
               image={data.imageUrl}
               likes={data.likeCount}
               title={data.title}
               username={data.username}
+=======
+              // key={index}
+              data={FRAME_DATA[0]}
+              image={data.imageUrl}
+              likes={data.likeCount}
+              photoID={data.id}
+              moveDetail={moveDetail}
+>>>>>>> d1e396fb98e49f222627be9ebfbec0d855978b07
             />
           ))}
       </div>
