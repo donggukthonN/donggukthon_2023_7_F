@@ -1,65 +1,52 @@
 import styles from "../../pages/Detail/Detail.module.css";
-import { LocationInput, Title } from "../../components/index";
-import { useGeoLocation } from "../../hooks/useGeoLocation";
-import { useReverseGeocoding } from "../../hooks/useReverseGeocoding";
+import { useLocation } from "react-router-dom";
 import {
-  HeartButton,
+  HomeHeartButton,
   PhotoUpload,
   ShareButton,
   DeleteButton,
 } from "../../components/Button/Button";
-import react, { useEffect, useState } from "react";
-import LoadingPage from "../Loading/LoadingPage";
+import { Title } from "../../components";
+import React, { useEffect, useState } from "react";
 import getOnephoto from "../../apis/getOnephoto";
 
 const Detail = () => {
-  const [lat, setLat] = useState();
-  const [lng, setLng] = useState();
-  const [address, setAddress] = useState();
-  const { loc } = useGeoLocation();
-  useEffect(() => {
-    if (loc) {
-      setLat(loc.latitude);
-      setLng(loc.longitude);
-    }
-  }, [loc]);
-  const data = useReverseGeocoding(lat, lng);
+  const location = useLocation();
+  const ID = parseInt(location.pathname.replace("/detail/", ""), 10);
 
-  useEffect(() => {
-    setAddress(data);
-  }, [data]);
-
+  const [title, setTitle] = useState("");
+  const [image, setImage] = useState("");
+  const [likes, setLikes] = useState("");
   useEffect(() => {
     try {
       const handleOnephoto = async () => {
-        const res = await getOnephoto(1);
+        const res = await getOnephoto(ID);
         console.log(res);
+        setTitle(res.title);
+        setImage(res.imageUrl);
+        setLikes(res.likeCount);
       };
       handleOnephoto();
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [ID]);
 
   return (
     <div className={styles.Detailpage}>
-      {address ? (
-        <div className={styles.Detailcomponent}>
-          <div className={styles.TitleInput}>
-            <Title />
-          </div>
-          <div className={styles.PhotoUpload}>
-            <PhotoUpload />
-          </div>
-          <div className={styles.DetailButtons}>
-            <HeartButton />
-            <ShareButton />
-            <DeleteButton />
-          </div>
+      <div className={styles.Detailcomponent}>
+        <div className={styles.TitleInput}>
+          {title && <Title title={title} />}
         </div>
-      ) : (
-        <LoadingPage title={"현재 위치를 파악중입니다."} />
-      )}
+        <div className={styles.PhotoUpload}>
+          {image && <PhotoUpload serverPhoto={image} />}
+        </div>
+        <div className={styles.DetailButtons}>
+          {likes && <HomeHeartButton likes={likes} />}
+          <ShareButton />
+          <DeleteButton id={ID} />
+        </div>
+      </div>
     </div>
   );
 };

@@ -10,8 +10,10 @@ import addPhotoLike from "../../apis/addPhotoLike";
 import styles from "./Home.module.css";
 import { FRAME_DATA, HomeDeco, First, Second } from "../../assets";
 import Photoframe from "./Photoframe";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   const [imageData, setImageData] = useState(null);
   const [BestData, setBestData] = useState(null);
   const [selectStatus, setSelectStatus] = useState("LIKES");
@@ -49,6 +51,10 @@ const Home = () => {
   const toggleSelect = (status) => {
     setSelectStatus(status);
   };
+
+  const moveDetail = (photoID) => {
+    navigate(`/detail/${photoID}`);
+  };
   return (
     <div className={styles.frame}>
       <div className={styles.back}>
@@ -59,7 +65,12 @@ const Home = () => {
         <div className={styles.BestImg}>
           {BestData && (
             <>
-              <div className={styles.bestContainer}>
+              <div
+                className={styles.bestContainer}
+                onClick={() => {
+                  moveDetail(BestData[0].id);
+                }}
+              >
                 <div
                   style={{
                     backgroundImage: `url("https://donggukthon-seven-bucket.s3.ap-northeast-2.amazonaws.com/${BestData[0].imageUrl}")`,
@@ -70,7 +81,12 @@ const Home = () => {
                 </div>
                 <HomeHeartButton likes={BestData[0].likeCount} />
               </div>
-              <div className={styles.bestContainer}>
+              <div
+                className={styles.bestContainer}
+                onClick={() => {
+                  moveDetail(BestData[1].id);
+                }}
+              >
                 <div
                   style={{
                     backgroundImage: `url("https://donggukthon-seven-bucket.s3.ap-northeast-2.amazonaws.com/${BestData[1].imageUrl}")`,
@@ -95,6 +111,7 @@ const Home = () => {
                 data={FRAME_DATA[getRandomIndex()]}
                 image={data.imageUrl}
                 likes={data.likeCount}
+                photoID={data.photoID}
               />
             ))}
         </div>
