@@ -123,7 +123,7 @@ const HeartButton = ({ photoId }) => {
   );
 };
 
-const HomeHeartButton = ({ photoId }) => {
+const HomeHeartButton = ({ photoId, likes }) => {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
 
@@ -169,7 +169,7 @@ const HomeHeartButton = ({ photoId }) => {
           <img src={emptyheart} alt="Heart" className={styles.heart} />
         )}
       </div>
-      <span>{likeCount}</span>
+      <span>{likes}</span>
     </div>
   );
 };
@@ -223,11 +223,11 @@ function PhotoUpload({ onSuccessPhoto }) {
   }, []);
 
   return (
-    <div>
+    <>
       {lodaing ? (
         <LoadingPage title={"사진을 분석중입니다."} />
       ) : (
-        <>
+        <div>
           <input
             className={styles.imageInput}
             type="file"
@@ -250,13 +250,12 @@ function PhotoUpload({ onSuccessPhoto }) {
               <span className={styles.Phototext}>작품 업로드</span>
             )}
           </button>
-        </>
+          <Modal show={showModal} handleClose={handleCloseModal}>
+            <p>눈사람을 올려주세요!</p>
+          </Modal>
+        </div>
       )}
-      <Modal show={showModal} handleClose={handleCloseModal}>
-        <p>눈사람을 올려주세요!</p>
-      </Modal>
-      ;
-    </div>
+    </>
   );
 }
 
@@ -278,36 +277,33 @@ function Showoff() {
   );
 }
 
-function SnowmanList() {
-  const [selectedButton, setSelectedButton] = useState("LikeList");
-
-  const handleButtonClick = (buttonType) => {
-    setSelectedButton(buttonType);
+function SnowmanList({ toggleStatus }) {
+  const [selectedButton, setSelectedButton] = useState("LIKES");
+  const handleButtonClick = (type) => {
+    setSelectedButton(type);
+    toggleStatus(type);
   };
 
   return (
     <div className={styles.SnowmanList}>
-      {" "}
-      {/* Use styles.SnowmanList instead of "SnowmanList" */}
-      <hr className={styles.Listline}></hr>{" "}
-      {/* Use styles.Listline instead of "Listline" */}
+      <hr className={styles.Listline}></hr>
       <button
         className={
-          selectedButton === "LikeList"
+          selectedButton === "LIKES"
             ? `${styles.LikeList} ${styles.selected}`
             : styles.LikeList
         }
-        onClick={() => handleButtonClick("LikeList")}
+        onClick={() => handleButtonClick("LIKES")}
       >
         좋아요순
       </button>
       <button
         className={
-          selectedButton === "NewList"
+          selectedButton === "DATE"
             ? `${styles.NewList} ${styles.selected}`
             : styles.NewList
         }
-        onClick={() => handleButtonClick("NewList")}
+        onClick={() => handleButtonClick("DATE")}
       >
         최신순
       </button>

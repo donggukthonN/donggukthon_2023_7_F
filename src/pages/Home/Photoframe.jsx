@@ -3,7 +3,7 @@ import { fullheart, emptyheart } from "../../components/Button/image";
 
 import styles from "./Photoframe.module.css";
 
-function Photoframe({ data, image }) {
+function Photoframe({ data, image, likes }) {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
 
@@ -35,7 +35,7 @@ function Photoframe({ data, image }) {
             <img src={emptyheart} alt="Heart" className={styles.heart} />
           )}
         </div>
-        <span>{likeCount}</span>
+        <span>{likes}</span>
       </div>
     </div>
   );

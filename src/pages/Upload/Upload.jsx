@@ -73,6 +73,7 @@ const Upload = () => {
           </div>
           <div className={styles.PhotoUpload}>
             <PhotoUpload onSuccessPhoto={handlePhoto} />
+            {/* 여기서 loading status 다시 받아서 부모에서 다시 돌리게 수정해야할듯 */}
           </div>
         </div>
         <div className={styles.UploadInput}>

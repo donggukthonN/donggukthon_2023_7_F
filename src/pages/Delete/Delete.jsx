@@ -42,9 +42,6 @@ const Delete = () => {
     }
   }, []);
 
-  const [photo_id, setPhotoId] = useState(26); // 예시로 photo_id 설정
-  const [password, setPassword] = useState('1234'); // 예시로 password 설정
-
   const handleDeletePhoto = async () => {
     try {
       const response = await DeletePhoto();

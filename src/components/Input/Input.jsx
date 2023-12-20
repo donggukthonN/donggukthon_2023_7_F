@@ -91,23 +91,6 @@ function PasswordCheck({ onSubmitPassword }) {
     }
   };
 
-  // const handleDeleteAccount = () => {
-  //   if (isAuthenticated) {
-  //     // 여기에서는 삭제 API를 호출하고, 성공적으로 삭제되면 상태를 업데이트합니다.
-  //     // 아래는 간단한 시뮬레이션 코드입니다.
-
-  //     // deleteAccountAPI().then(() => {
-  //     //   setDeleted(true);
-  //     // }).catch((error) => {
-  //     //   console.error('삭제 실패:', error);
-  //     // });
-
-  //     // 시뮬레이션: 간단하게 삭제 성공으로 가정
-  //     setDeleted(true);
-  //   } else {
-  //     alert('인증되지 않았습니다. 먼저 비밀번호를 인증하세요.');
-  //   }
-  // };
   const onClick = () => {
     onSubmitPassword()
   }
