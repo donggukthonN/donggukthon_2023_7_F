@@ -3,7 +3,7 @@ import { fullheart, emptyheart } from "../../components/Button/image";
 
 import styles from "./Photoframe.module.css";
 
-function Photoframe({ data, image, likes }) {
+function Photoframe({ data, image, likes, photoID, moveDetail }) {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
 
@@ -12,8 +12,12 @@ function Photoframe({ data, image, likes }) {
     setLikeCount(liked ? likeCount - 1 : likeCount + 1);
   };
 
+  const handleClick = () => {
+    return moveDetail(photoID);
+  };
+
   return (
-    <div className={styles.Photoframe}>
+    <div className={styles.Photoframe} onClick={handleClick}>
       <div
         style={{
           backgroundImage: `url("https://donggukthon-seven-bucket.s3.ap-northeast-2.amazonaws.com/${image}")`,
