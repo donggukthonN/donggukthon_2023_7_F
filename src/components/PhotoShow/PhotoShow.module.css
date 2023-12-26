@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PhotoShow {
+  width: 63%;
+}
+
+.photoImage {
+  height: 100%;
+  width: 100%;
+}

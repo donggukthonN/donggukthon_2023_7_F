@@ -30,7 +30,7 @@ function SearchButton() {
   );
 }
 
-function DeleteButton() {
+function DeleteButton({ id }) {
   return (
     <button className={styles.DeleteButton}>
       <div className={styles.Deleteproperty}>
@@ -39,8 +39,7 @@ function DeleteButton() {
           alt="Trashcan"
           style={{ width: "0.4rem", height: "0.4rem", padding: "auto" }}
         />
-        <Link to="/delete" className={styles.DeleteText}>
-          {" "}
+        <Link to={`/delete/${id}`} className={styles.DeleteText}>
           삭제하기
         </Link>
       </div>
@@ -174,7 +173,7 @@ const HomeHeartButton = ({ photoId, likes }) => {
   );
 };
 
-function PhotoUpload({ onSuccessPhoto }) {
+function PhotoUpload({ onSuccessPhoto, serverPhoto }) {
   const [showModal, setShowModal] = useState(false);
 
   const handleCloseModal = () => {
@@ -286,10 +285,6 @@ function SnowmanList({ toggleStatus }) {
 
   return (
     <div className={styles.SnowmanList}>
-      {" "}
-      {/* Use styles.SnowmanList instead of "SnowmanList" */}
-      <hr className={styles.Listline}></hr>{" "}
-      {/* Use styles.Listline instead of "Listline" */}
       <button
         className={
           selectedButton === "LIKES"
@@ -319,9 +314,9 @@ function UploadButton({ onClick }) {
     onClick();
   };
   return (
-    <div className={styles.UploadButton} onClick={handleClick}>
+    <Link to="/complete" className={styles.UploadButton} onClick={handleClick}>
       <p className={styles.UploadText}>전시하기</p>
-    </div>
+    </Link>
   );
 }
 

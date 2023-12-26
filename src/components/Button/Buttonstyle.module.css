@@ -69,6 +69,10 @@
   align-items: center;
 }
 
+.DeleteText {
+  color: black;
+}
+
 /* Share-Button.css */
 .uploadImage {
   width: 100%;
@@ -83,7 +87,7 @@
   height: 3vh;
   margin-top: 0.3vh;
   margin-right: 0.3rem;
-  margin-left: 3.5rem;
+  margin-left: 3rem;
   background-color: white;
   border-color: black;
   border-width: 0.08rem;
@@ -219,6 +223,7 @@
   justify-content: space-around;
   align-items: center;
 }
+
 .heartCenter {
   display: flex;
   justify-content: center;

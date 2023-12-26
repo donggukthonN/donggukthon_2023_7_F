@@ -1,80 +1,78 @@
 import React, { useState, useEffect } from "react";
-import { LocationInput, Title } from "../../components/index";
-import LoadingPage from "../Loading/LoadingPage";
-import { useReverseGeocoding } from "../../hooks/useReverseGeocoding";
+import { Title } from "../../components/index";
+import { useNavigate, useLocation } from "react-router-dom";
 import styles from "../../pages/Delete/Delete.module.css";
 import {
-  HeartButton,
+  HomeHeartButton,
   ShareButton,
   PhotoDisplay,
 } from "../../components/Button/Button";
-import { PasswordCheck } from "../../components/Input/Input";
-import { useGeoLocation } from "../../hooks/useGeoLocation";
+import { woodframe } from "../../components/Button/image";
+import { PasswordCheck, PhotoShow } from "../../components/Input/Input";
 import getOnephoto from "../../apis/getOnephoto";
-import DeletePhoto from '../../apis/DeletePhoto';
+import DeletePhoto from "../../apis/DeletePhoto";
+import { IMG_BASE_URL } from "../../utils/constant";
 
 const Delete = () => {
-  const [lat, setLat] = useState();
-  const [lng, setLng] = useState();
-  const [address, setAddress] = useState();
-  const { loc } = useGeoLocation();
-  useEffect(() => {
-    if (loc) {
-      setLat(loc.latitude);
-      setLng(loc.longitude);
-    }
-  }, [loc]);
-  const data = useReverseGeocoding(lat, lng);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const ID = parseInt(location.pathname.replace("/delete/", ""), 10);
 
-  useEffect(() => {
-    setAddress(data);
-  }, [data]);
+  const [title, setTitle] = useState(null);
+  const [likes, setLikes] = useState(null);
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     try {
       const handleOnephoto = async () => {
-        const res = await getOnephoto(1);
+        const res = await getOnephoto(ID);
+        setLikes(res.likeCount);
+        setTitle(res.title);
+        setImage(res.imageUrl);
         console.log(res);
+
       };
       handleOnephoto();
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [ID]);
 
-  const [photo_id, setPhotoId] = useState(1); // 예시로 photo_id 설정
-  const [password, setPassword] = useState('1234'); // 예시로 password 설정
-
-  const handleDeletePhoto = async () => {
-    try {
-      const response = await DeletePhoto(photo_id, { password });
-      console.log(response);
-      // 서버 응답을 기반으로 추가적인 로직 수행 가능
-    } catch (error) {
-      console.error('Error deleting photo:', error);
+  const handleDeletePhoto = async (pw) => {
+    if (pw && ID) {
+      const res = await DeletePhoto(ID, pw);
+      if (res.data === "포토 삭제 완료") {
+        alert("삭제 완료");
+        navigate("/end");
+      } else {
+        alert("비밀번호 오류!");
+      }
     }
   };
 
   return (
     <div className={styles.Deletepage}>
-      {address ? (
-        <div className={styles.Deletecomponent}>
-          <div className={styles.TitleInput}>
-            <Title />
-          </div>
-          <div className={styles.PhotoDisplay}>
-            <PhotoDisplay />
-          </div>
-          <div className={styles.DeleteButtons}>
-            <HeartButton />
-            <ShareButton />
-            <PasswordCheck
-            />
+      <div className={styles.Deletecomponent}>
+        <div className={styles.TitleInput}>
+          {title && <Title title={title} />}
+        </div>
+        {/* imagecontainer 추가 */}
+        <div className={styles.imagecontainer}>
+          <div
+            style={{
+              backgroundImage: `url(${IMG_BASE_URL}/${image})`,
+              backgroundSize: "cover",
+            }}
+          >
+            <img src={woodframe} alt="first" className={styles.PhotoShow} />
           </div>
         </div>
-      ) : (
-        <LoadingPage title={"현재 위치를 파악중입니다."} />
-      )}
+        <div className={styles.DeleteButtons}>
+          {likes && <HomeHeartButton likes={likes} />}
+          <ShareButton />
+          <PasswordCheck onSubmitPassword={handleDeletePhoto} />
+        </div>
+      </div>
     </div>
   );
 };

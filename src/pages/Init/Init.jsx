@@ -11,14 +11,8 @@ const Init = () => {
   const [snowLocation, setSnowLocation] = useState({ x: 0, y: 0 });
   const [opacity, setOpacity] = useState(0);
   const snowmanRef = useRef(null);
-  const [position, setPosition] = useState({
-    x: window.innerWidth / 2.755,
-    y: window.innerHeight / 8,
-  });
-  const touchStart = useRef({
-    x: window.innerWidth / 2.755,
-    y: window.innerHeight / 8,
-  });
+  const [position, setPosition] = useState({ x: 0, y: 0 }); // 초기 값 변경
+  const touchStart = useRef({ x: 0, y: 0 }); // 초기 값 변경
 
   useEffect(() => {
     const getSnowmanCoordinates = () => {
@@ -27,7 +21,21 @@ const Init = () => {
         setSnowLocation({ x: left + 40, y: top - 40 });
       }
     };
+
+    const initializePosition = () => {
+      setPosition({
+        x: window.innerWidth / 2.755,
+        y: window.innerHeight / 15,
+      });
+
+      touchStart.current = {
+        x: window.innerWidth / 2.755,
+        y: window.innerHeight / 15,
+      };
+    };
+
     getSnowmanCoordinates();
+    initializePosition();
   }, []);
 
   const handleTouchStart = (e) => {
@@ -49,7 +57,7 @@ const Init = () => {
 
     if (
       Math.abs(position.x - snowLocation.x) < 10 &&
-      Math.abs(position.y - snowLocation.y) < 10
+      Math.abs(position.y - snowLocation.y) < 19
     ) {
       setThank(true);
       const timeoutId = setTimeout(() => {
@@ -63,51 +71,62 @@ const Init = () => {
   };
 
   return (
-    <div className="back">
-      <div className="title">
+    <div className="container">
+      <div className="back">
+        <div className="title">
+          <img
+            src={LOGO}
+            alt="snowManHouse"
+            className="logo"
+            style={{ opacity: opacity }}
+          />
+        </div>
         <img
-          src={LOGO}
-          alt="snowManHouse"
-          className="logo"
-          style={{ opacity: opacity }}
-        />
-      </div>
-      <img
-        src={Santahat}
-        alt="santahat"
-        ref={imageRef}
-        className="santaHat"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        style={{
-          position: "absolute",
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-          cursor: "grab",
-        }}
-      />
-      {textFlag && (
-        <span style={{ position: "absolute", top: "25vh" }}>
-          눈사람에게 모자를 씌워주세요
-        </span>
-      )}
-      <img
-        src={SNOWMAN_IMAGE}
-        alt="snowMan"
-        className="snowMan"
-        ref={snowmanRef}
-      />
-      {thank && (
-        <span
+          src={Santahat}
+          alt="santahat"
+          ref={imageRef}
+          className="santaHat"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
           style={{
             position: "absolute",
-            left: `40vw`,
-            top: `50vh`,
+            left: `${position.x}px`,
+            top: `${position.y}px`,
+            cursor: "grab",
           }}
-        >
-          고마워요!
-        </span>
-      )}
+        />
+        {textFlag && (
+          <span
+            style={{
+              position: "absolute",
+              top: "25vh",
+              fontSize: "1rem",
+              fontWeight: "900",
+            }}
+          >
+            눈사람에게 모자를 씌워주세요
+          </span>
+        )}
+        <img
+          src={SNOWMAN_IMAGE}
+          alt="snowMan"
+          className="snowMan"
+          ref={snowmanRef}
+        />
+        {thank && (
+          <span
+            style={{
+              position: "absolute",
+              left: `40vw`,
+              top: `50vh`,
+              fontSize: "1.1rem",
+              fontWeight: "900",
+            }}
+          >
+            고마워요!
+          </span>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,15 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { fullheart, emptyheart } from "../../components/Button/image";
+import addPhotoLike from "../../apis/addPhotoLike";
 
 import styles from "./Photoframe.module.css";
 
-function Photoframe({ data, image, likes }) {
-  const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(0);
+function Photoframe({ data, image, likes, photoID, moveDetail }) {
+  const [isClicked, setIsClicked] = useState(false);
+  const [likeCount, setLikeCount] = useState(likes);
+  useEffect(() => {
+    // localStorage에서 값을 읽어와서 isClicked 상태를 설정
+    const localStorageValue = localStorage.getItem(photoID);
+    setIsClicked(localStorageValue === "1");
+  }, [photoID, likeCount]);
 
-  const handleLikeToggle = () => {
-    setLiked(!liked);
-    setLikeCount(liked ? likeCount - 1 : likeCount + 1);
+  const plusLike = async () => {
+    const res = await addPhotoLike(parseInt(photoID, 10));
+    setLikeCount(res.likeCount);
+  };
+
+  const handleMove = () => {
+    moveDetail(photoID);
+  };
+
+  const handleClick = () => {
+    if (!isClicked) {
+      plusLike();
+      setIsClicked(true);
+      localStorage.setItem(photoID, "1");
+    }
   };
 
   return (
@@ -21,21 +39,30 @@ function Photoframe({ data, image, likes }) {
           marginBottom: "0.5vh",
         }}
       >
-        <img src={data} alt="액자" className={styles.image} />
+        <img
+          src={data}
+          alt="액자"
+          className={styles.image}
+          onClick={handleMove}
+        />
       </div>
       <div className={styles.heartContainer}>
         <div
-          onClick={handleLikeToggle}
           style={{ background: "none", border: "none", cursor: "pointer" }}
           className={styles.heartCenter}
         >
-          {liked ? (
+          {isClicked ? (
             <img src={fullheart} alt="Heart" className={styles.heart} />
           ) : (
-            <img src={emptyheart} alt="Heart" className={styles.heart} />
+            <img
+              src={emptyheart}
+              alt="Heart"
+              className={styles.heart}
+              onClick={handleClick}
+            />
           )}
         </div>
-        <span>{likes}</span>
+        <span>{likeCount}</span>
       </div>
     </div>
   );

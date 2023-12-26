@@ -10,11 +10,9 @@ const photoSearch = async (searchType, searchValue) => {
       },
       params: { searchType, searchValue },
     });
-    console.log(res);
-    console.log(res.data); // Add this line to log the data
+    return res.data;
   } catch (err) {
     console.error(err);
-    console.log(err.response);
   }
 };
 

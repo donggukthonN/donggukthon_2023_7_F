@@ -1,66 +1,63 @@
 import styles from "../../pages/Detail/Detail.module.css";
-import { LocationInput, Title } from "../../components/index";
-import { useGeoLocation } from "../../hooks/useGeoLocation";
-import { useReverseGeocoding } from "../../hooks/useReverseGeocoding";
+import { useLocation } from "react-router-dom";
 import {
-  HeartButton,
-  PhotoUpload,
+  HomeHeartButton,
   ShareButton,
   DeleteButton,
 } from "../../components/Button/Button";
-import react, { useEffect, useState } from "react";
-import LoadingPage from "../Loading/LoadingPage";
+import { woodframe } from "../../components/Button/image";
+import PhotoShow from "../../components/PhotoShow/PhotoShow";
+import { Title } from "../../components";
+import React, { useEffect, useState } from "react";
 import getOnephoto from "../../apis/getOnephoto";
+import { IMG_BASE_URL } from "../../utils/constant";
 
 const Detail = () => {
-  const [lat, setLat] = useState();
-  const [lng, setLng] = useState();
-  const [address, setAddress] = useState();
-  const { loc } = useGeoLocation();
-  useEffect(() => {
-    if (loc) {
-      setLat(loc.latitude);
-      setLng(loc.longitude);
-    }
-  }, [loc]);
-  const data = useReverseGeocoding(lat, lng);
+  const location = useLocation();
+  const ID = parseInt(location.pathname.replace("/detail/", ""), 10);
 
-  useEffect(() => {
-    setAddress(data);
-  }, [data]);
-
+  const [title, setTitle] = useState("");
+  const [image, setImage] = useState("");
+  const [likes, setLikes] = useState("");
   useEffect(() => {
     try {
       const handleOnephoto = async () => {
-        const res = await getOnephoto(1);
+        const res = await getOnephoto(ID);
         console.log(res);
+        setTitle(res.title);
+        setImage(res.imageUrl);
+        setLikes(res.likeCount);
       };
       handleOnephoto();
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [ID]);
 
   return (
     <div className={styles.Detailpage}>
-      {address ? (
-        <div className={styles.Detailcomponent}>
-          <div className={styles.TitleInput}>
-            <Title />
-          </div>
-          <div className={styles.PhotoUpload}>
-            <PhotoUpload />
-          </div>
-          <div className={styles.DetailButtons}>
-            <HeartButton />
-            <ShareButton />
-            <DeleteButton />
+      <div className={styles.Detailcomponent}>
+        <div className={styles.TitleInput}>
+          {title && <Title title={title} />}
+        </div>
+        <div className={styles.imagecontainer}>
+          <div style={{
+            backgroundImage: `url(${IMG_BASE_URL}/${image})`,
+            backgroundSize: "cover",
+          }}>
+            <img src={woodframe} alt="first" className={styles.PhotoShow} />
           </div>
         </div>
-      ) : (
-        <LoadingPage title={"현재 위치를 파악중입니다."} />
-      )}
-    </div>
+        {/* <div className={styles.PhotoUpload}>
+        {image && <PhotoShow serverPhoto={`${IMG_BASE_URL}/${image}`} />}
+      </div> */}
+        <div className={styles.DetailButtons}>
+          {likes && <HomeHeartButton likes={likes} />}
+          <ShareButton />
+          <DeleteButton id={ID} />
+        </div>
+      </div>
+    </div >
   );
 };
 export default Detail;

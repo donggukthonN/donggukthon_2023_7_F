@@ -16,18 +16,14 @@ import {
 } from "./pages/index";
 
 function App() {
-  document.body.style.overflowX = "hidden";
-  document.body.style["-webkit-overflow-scrolling"] = "touch";
-  document.body.style["-webkit-mask-image"] =
-    "-webkit-radial-gradient(white, black)";
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Init />}></Route>
           <Route path="/home" element={<Home />}></Route>
-          <Route path="/detail" element={<Detail />}></Route>
-          <Route path="/delete" element={<Delete />}></Route>
+          <Route path="/detail/*" element={<Detail />}></Route>
+          <Route path="/delete/*" element={<Delete />}></Route>
           <Route path="/upload" element={<Upload />}></Route>
           <Route path="/end" element={<End />}></Route>
           <Route path="/location" element={<Location />}></Route>

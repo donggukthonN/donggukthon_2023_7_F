@@ -10,25 +10,30 @@ import addPhotoLike from "../../apis/addPhotoLike";
 import styles from "./Home.module.css";
 import { FRAME_DATA, HomeDeco, First, Second } from "../../assets";
 import Photoframe from "./Photoframe";
+import { useNavigate } from "react-router-dom";
 
-function Home() {
-  const [imageData, setImageData] = useState([]);
-  const [BestData, setBestData] = useState([]);
+const Home = () => {
+  const navigate = useNavigate();
+  const [imageData, setImageData] = useState(null);
+  const [BestData, setBestData] = useState(null);
   const [selectStatus, setSelectStatus] = useState("LIKES");
   useEffect(() => {
     try {
       const handlePhotoAll = async () => {
-        const res = await getPhotoAll(selectStatus);
-        // const resp = await addPhotoLike();
-        // console.log(resp);
-        console.log(res);
+        const res = await getPhotoAll("LIKES");
+        setBestData([res[0], res[1]]);
         setImageData(res);
-        if (selectStatus === "LIKES") {
-          const bestData = [res[0], res[1]];
-          setBestData(bestData);
-          setImageData(res.slice(2));
-        }
-        // console.log(res);
+      };
+      handlePhotoAll();
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
+  useEffect(() => {
+    try {
+      const handlePhotoAll = async () => {
+        const res = await getPhotoAll(selectStatus);
+        setImageData(res);
       };
       handlePhotoAll();
     } catch (error) {
@@ -41,6 +46,10 @@ function Home() {
   const toggleSelect = (status) => {
     setSelectStatus(status);
   };
+
+  const moveDetail = (photoID) => {
+    navigate(`/detail/${photoID}`);
+  };
   return (
     <div className={styles.frame}>
       <div className={styles.back}>
@@ -49,7 +58,7 @@ function Home() {
           <SearchButton className={styles.SearchButton} />
         </div>
         <div className={styles.BestImg}>
-          {BestData ? (
+          {BestData && (
             <>
               <div className={styles.bestContainer}>
                 <div
@@ -58,10 +67,16 @@ function Home() {
                     backgroundSize: "cover",
                   }}
                 >
-                  <img src={First} alt="first" className={styles.Best} />
+                  <img
+                    src={First}
+                    alt="first"
+                    className={styles.Best}
+                    onClick={() => {
+                      moveDetail(BestData[0].id);
+                    }}
+                  />
                 </div>
-
-                <HomeHeartButton likes={BestData[0].likeCount} />
+                {/* <HomeHeartButton likes={BestData[0].likeCount} /> */}
               </div>
               <div className={styles.bestContainer}>
                 <div
@@ -70,12 +85,19 @@ function Home() {
                     backgroundSize: "cover",
                   }}
                 >
-                  <img src={Second} alt="first" className={styles.Second} />
+                  <img
+                    src={Second}
+                    alt="first"
+                    className={styles.Second}
+                    onClick={() => {
+                      moveDetail(BestData[1].id);
+                    }}
+                  />
                 </div>
-                <HomeHeartButton likes={BestData[1].likeCount} />
+                {/* <HomeHeartButton likes={BestData[1].likeCount} /> */}
               </div>
             </>
-          ) : null}
+          )}
         </div>
         <hr className={styles.line} />
         <SnowmanList toggleStatus={toggleSelect} />
@@ -88,13 +110,15 @@ function Home() {
                 data={FRAME_DATA[getRandomIndex()]}
                 image={data.imageUrl}
                 likes={data.likeCount}
+                photoID={data.id}
+                moveDetail={moveDetail}
               />
             ))}
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Home;
 
